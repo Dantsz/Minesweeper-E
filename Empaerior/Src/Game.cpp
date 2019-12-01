@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Sprite.h"
-#include <fstream>
-#include <sstream>
+
 #define fullscreen 0
 
 
@@ -116,11 +115,11 @@ void Game::handlevents()
 void Game::render()
 {
 	
-	SDL_RenderClear(Game::renderer);
+	//SDL_RenderClear(Game::renderer);
 
 	cur_state->Render();
 
-	SDL_RenderPresent(Game::renderer);
+	//SDL_RenderPresent(Game::renderer);
 
 }
 

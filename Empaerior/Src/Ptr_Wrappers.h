@@ -5,10 +5,11 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 /*
-**Wraps poniters to basic sdl structs in std::unique_ptr and std::shated_ptr*/
+**Wraps pointers of basic sdl structs in std::unique_ptr and std::shated_ptr*/
 
 //default destructor for unique ptr	
-namespace std {
+namespace std 
+{
 	//texture
 	template<>
 	struct std::default_delete<SDL_Texture> {

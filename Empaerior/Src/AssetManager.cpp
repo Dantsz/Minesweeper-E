@@ -1,32 +1,78 @@
 #include "AssetManager.h"
 #include "Game.h"
-
-
+#include  <string>
+#include <iostream>
 std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_path)
 {
+	
+		//search for texture
+		auto tex = Textures.find(tex_path);
+		if (tex == Textures.end())
+		{
+			try {
+				//if not found create the texture		
+				SDL_RWops* rwop;
 
-	//search for texture
-	auto tex = Textures.find(tex_path);
-	if (tex == Textures.end())
-	{
-		//if not found create the texture
-		
-		std::shared_ptr<SDL_Texture> tex_p = sdl_shared( IMG_LoadTexture(Game::renderer,tex_path.c_str()));
-		Textures.insert({tex_path,tex_p});  // put texture in  map
-		
-		return tex_p;
-	}
-	else
-	{
-		
-		//if found 
-		return tex->second;	
-		
-	}
+				if (!(rwop = SDL_RWFromFile(tex_path.c_str(), "rb"))) // if the file doesn't exists throws exception
+				{
+					//not very nice method to make the string
+					std::string message = "File not found, exception at ";
+					message += __FILE__;
+					message += " at line ";
+					message += std::to_string(__LINE__);
 
+					throw std::invalid_argument(message);
+					
+				}
+
+
+
+				if (IMG_isPNG(rwop))  // if the  image is a good png
+				{
+					//create atextureand free the rwop
+					std::shared_ptr<SDL_Texture> tex_p = sdl_shared(IMG_LoadTextureTyped_RW(Game::renderer, rwop, 1, "PNG"));
+
+					Textures.insert({ tex_path,tex_p });  // put texture in  map
+
+					return tex_p;
+				}
+				else
+				{
+
+					//delete rwop
+					SDL_RWclose(rwop);
+					//send the exception
+					std::string message = "File is not a valid PNG, exception at ";
+					message += __FILE__;
+					message += " at line ";
+					message += std::to_string(__LINE__);
+					throw std::invalid_argument(message);
+
+				}
+
+
+			}
+			catch (const std::invalid_argument & e) {
+					// do stuff with exception... 
+				    std::cout << e.what() << '\n';
+					//return a nullpointer
+					return nullptr;
+			}
+
+	
+		}
+		else
+		{
+
+			//if found 
+			return tex->second;
+
+		}
+	
+	
 
 }
-#include <iostream>
+
 TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 {
 	//this was a fucking rollercoaster

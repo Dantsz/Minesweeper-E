@@ -4,7 +4,7 @@
 void Sprite::draw(const Camera& camera)
 {
 	SDL_Rect position_rect = {rect.x - camera.rect.x,rect.y - camera.rect.y,rect.w,rect.h };
-	SDL_RenderCopyEx(Game::renderer, &(*texture), &tex_rect, &position_rect, angle, NULL, SDL_FLIP_NONE);
+	if(texture != nullptr)SDL_RenderCopyEx(Game::renderer, &(*texture), &tex_rect, &position_rect, angle, NULL, SDL_FLIP_NONE);
 }
 void Text_Sprite::draw(const Camera& camera)
 {

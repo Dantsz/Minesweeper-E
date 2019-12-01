@@ -1,4 +1,5 @@
 
+#include <crtdbg.h>
 
 #include "Game.h"
 
@@ -36,7 +37,8 @@ int main(int argc, char** argv)
 
 	}
 
-
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
 	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 	TTF_Init();
 
@@ -47,7 +49,7 @@ int main(int argc, char** argv)
 	#pragma endregion
 
 
-
+	Camera cam = { 0,0,100,100 };
 
 	bool quit = false;
 	SDL_Event event;
@@ -100,18 +102,24 @@ int main(int argc, char** argv)
 
 		
 		
-	
+		//I use this to test for leaks//
+
 		//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
-		
-		game->render();
+		//Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/font.ttf", 1);
 
 		
+		SDL_RenderClear(Game::renderer);
+		game->render();
+	  //  norge->draw(cam);
+		SDL_RenderPresent(Game::renderer);
 		
+		//delete norge;
 		assetManager::clean_textures();
+		
 	}
 
 	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
-
+	_CrtDumpMemoryLeaks();
 
 	SDL_DestroyRenderer(Game::renderer);
 	SDL_DestroyWindow(Game::window);
