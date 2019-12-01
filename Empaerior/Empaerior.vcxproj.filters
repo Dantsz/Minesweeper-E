@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\AssetManager">
+      <UniqueIdentifier>{ab3f60dd-1570-45ac-8947-ca02a93d41eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{c17c7de0-e384-4384-afa6-842cfafcaf93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Camera">
+      <UniqueIdentifier>{fe2f93f5-ae8d-4f81-903b-45d09a53012b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Sprite">
+      <UniqueIdentifier>{6e2326fd-35ab-4612-b3cf-5aad34d3ac73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Glyph System">
+      <UniqueIdentifier>{e2d98d29-29d9-4660-9895-2bafef3fc88f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\State">
+      <UniqueIdentifier>{24238635-3976-4da6-84e6-388bc024be94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Misc">
+      <UniqueIdentifier>{c4486094-5f67-419a-a4e4-259852a29174}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AssetManager.cpp">
+      <Filter>Source Files\AssetManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Sprite.cpp">
+      <Filter>Source Files\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Camera.cpp">
+      <Filter>Source Files\Graphics\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Glyphs.cpp">
+      <Filter>Source Files\Graphics\Glyph System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\State.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Vec2.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\AssetManager.h">
+      <Filter>Source Files\AssetManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Sprite.h">
+      <Filter>Source Files\Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Camera.h">
+      <Filter>Source Files\Graphics\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Glyphs.h">
+      <Filter>Source Files\Graphics\Glyph System</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\State.h">
+      <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Ptr_Wrappers.h">
+      <Filter>Source Files\Misc</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
