@@ -13,7 +13,7 @@ typedef uint32_t Uint32;
 std::map<std::string, std::shared_ptr<SDL_Texture>> assetManager::Textures;
 std::map<std::string, std::map<int, std::unique_ptr<TTF_Font>>> assetManager::Fonts;
 
-std::map<std::string, Mix_Chunk*> assetManager::Sounds;
+std::map<std::string, std::unique_ptr<Mix_Chunk>> assetManager::Sounds;
 
 SDL_Renderer* Game::renderer;
 SDL_Window* Game::window;
@@ -99,7 +99,7 @@ int main(int argc, char** argv)
 		}
 
 		
-	
+		
 	
 		//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
 		

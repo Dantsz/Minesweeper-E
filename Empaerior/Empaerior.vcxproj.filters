@@ -62,9 +62,6 @@
     <ClInclude Include="Src\Game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Vec2.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\AssetManager.h">
       <Filter>Source Files\AssetManager</Filter>
     </ClInclude>

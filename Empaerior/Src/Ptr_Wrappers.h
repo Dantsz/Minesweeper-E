@@ -3,19 +3,26 @@
 #pragma once
 #include <memory>
 #include <SDL.h>
-
+#include <SDL_mixer.h>
 /*
 **Wraps poniters to basic sdl structs in std::unique_ptr and std::shated_ptr*/
 
 //default destructor for unique ptr	
 namespace std {
+	//texture
 	template<>
 	struct std::default_delete<SDL_Texture> {
 		void operator()(SDL_Texture* p) { SDL_DestroyTexture(p); }
 	};
+	//font
 	template<>
 	struct std::default_delete<TTF_Font> {
-		void operator()(TTF_Font* p) { TTF_CloseFont(p); }
+		void operator()(TTF_Font* f) { TTF_CloseFont(f); }
+	};
+	//mix chunk
+	template<>
+	struct std::default_delete<Mix_Chunk> {
+		void operator()(Mix_Chunk* ch) { Mix_FreeChunk(ch); }
 	};
 
 

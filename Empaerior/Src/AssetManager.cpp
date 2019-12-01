@@ -74,16 +74,16 @@ void assetManager::play_sound(const std::string& sound_path)
 	auto sound = Sounds.find(sound_path);
 	if (sound == Sounds.end())// not found, create new one
 	{
-		Mix_Chunk* TempSound = NULL;
+		
 
-		TempSound = Mix_LoadWAV(sound_path.c_str());
+		std::unique_ptr<Mix_Chunk>TempSound = std::unique_ptr<Mix_Chunk>(Mix_LoadWAV(sound_path.c_str()));
 	
-		Sounds.insert({sound_path,TempSound});
-		Mix_PlayChannel(-1, TempSound, 0);
+		Sounds.insert({sound_path,std::move(TempSound)});
+		Mix_PlayChannel(-1, &(*Sounds[sound_path]), 0);
 	}
 	else
 	{
-		Mix_PlayChannel(-1, sound->second , 0);
+		Mix_PlayChannel(-1, &(*sound->second) , 0);
 	}
 }
 

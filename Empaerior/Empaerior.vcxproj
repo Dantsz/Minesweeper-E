@@ -35,7 +35,6 @@
     <ClInclude Include="Src\Ptr_Wrappers.h" />
     <ClInclude Include="Src\Sprite.h" />
     <ClInclude Include="Src\State.h" />
-    <ClInclude Include="Src\Vec2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
