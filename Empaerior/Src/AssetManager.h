@@ -25,13 +25,15 @@ public:
 
 
 
-
+	//clear ununsed
 	static void clean_textures();
-
+	//clear all
+	static void clear_fonts();
+	static void clear_sounds();
+	static void clear_textures();
 
 private:
 static std::map<std::string,std::shared_ptr<SDL_Texture>> Textures;
 static std::map<std::string,std::map<int, std::unique_ptr<TTF_Font>>> Fonts;
-
 static std::map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
 };

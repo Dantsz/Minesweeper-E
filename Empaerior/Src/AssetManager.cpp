@@ -106,3 +106,8 @@ void assetManager::clean_textures()
 	}
 
 }
+
+void assetManager::clear_fonts()
+{
+	Fonts.clear();
+}

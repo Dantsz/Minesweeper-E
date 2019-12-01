@@ -14,7 +14,7 @@ namespace std {
 	struct std::default_delete<SDL_Texture> {
 		void operator()(SDL_Texture* p) { SDL_DestroyTexture(p); }
 	};
-	//font
+	//font 
 	template<>
 	struct std::default_delete<TTF_Font> {
 		void operator()(TTF_Font* f) { TTF_CloseFont(f); }
