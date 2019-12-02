@@ -2,9 +2,11 @@
 #include "Game.h"
 #include  <string>
 #include <iostream>
-std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_path)
+#include "Ptr_Wrappers.h"
+
+std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_path)//returnsnullptr on  exception
 {
-	
+		//I Had to rewrite this whole fucking things so please don't have leaks....
 		//search for texture
 		auto tex = Textures.find(tex_path);
 		if (tex == Textures.end())
@@ -78,40 +80,64 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 	//this was a fucking rollercoaster
 	//I hope I never have to do this ever again
 	//search for good font
-	
-	auto f_name = Fonts.find(font_path);//search for font map
-	if (f_name == Fonts.end())
-	{
-		
-		//create font ( and font) map and put in the font
-		Fonts.insert({ font_path,std::move(std::map<int,std::unique_ptr<TTF_Font>>()) });
-		std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFont(font_path.c_str(),size));
-		
-		
-
-		Fonts[font_path].insert({ size,std::move(fnt) });
-	
-		return &(*Fonts[font_path][size]);
-	}
-	else
-	{
-		//if there is a map with the font name
-		auto size_find = Fonts[font_path].find(size);
-		if (size_find == Fonts[font_path].end())
+	try {
+		auto f_name = Fonts.find(font_path);//search for font map
+		if (f_name == Fonts.end())
 		{
+
+			//create font ( and font) map and put in the font
+			Fonts.insert({ font_path,std::move(std::map<int,std::unique_ptr<TTF_Font>>()) });
 			std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFont(font_path.c_str(), size));
+			if (fnt == nullptr)//throw exception
+			{
+				std::string message = "File is not a valid TTF, exception at ";
+				message += __FILE__;
+				message += " at line ";
+				message += std::to_string(__LINE__);
+				throw std::invalid_argument(message);
+			}
+
+
 			Fonts[font_path].insert({ size,std::move(fnt) });
-			//std::cout << "loaded new size for font" << '\n';
-		
+
 			return &(*Fonts[font_path][size]);
 		}
 		else
 		{
-			//if there's a font found
-			//std::cout << "found a font" << '\n';
-			return &(*size_find->second);
-		}
+			//if there is a map with the font name
+			auto size_find = Fonts[font_path].find(size);
+			if (size_find == Fonts[font_path].end())
+			{
+				std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFont(font_path.c_str(), size));
+				
+				//std::cout << "loaded new size for font" << '\n';
+				if (fnt == nullptr)//throw exception
+				{
+					std::string message = "File is not a valid TTF, exception at ";
+					message += __FILE__;
+					message += " at line ";
+					message += std::to_string(__LINE__);
+					throw std::invalid_argument(message);
 
+				}
+
+				Fonts[font_path].insert({ size,std::move(fnt) });
+				return &(*Fonts[font_path][size]);
+			}
+			else
+			{
+				//if there's a font found
+				//std::cout << "found a font" << '\n';
+				return &(*size_find->second);
+			}
+
+		}
+	}
+	catch (const std::invalid_argument & e) {
+		// do stuff with exception... 
+		std::cout << e.what() << '\n';
+		//return a nullpointer
+		return nullptr;
 	}
 }
 
@@ -155,5 +181,42 @@ void assetManager::clean_textures()
 
 void assetManager::clear_fonts()
 {
+	for (auto i = Fonts.begin(); i != Fonts.end();)
+	{
+		for (auto j = i->second.begin(); j != i->second.end();)
+		{
+			j->second.reset();
+			i->second.erase(j);
+			if (Textures.empty()) return;
+		}
+		Fonts.erase(i);
+		if (Fonts.empty()) return;
+	}
 	Fonts.clear();
+}
+
+void assetManager::clear_sounds()
+{
+	for (auto i = Sounds.begin(); i != Sounds.end();)
+	{
+		
+		i->second.reset();
+		Sounds.erase(i);
+		if (Sounds.empty()) return;
+	}
+	
+	Sounds.clear();
+}
+
+void assetManager::clear_textures()
+{
+	for (auto i = Textures.begin(); i != Textures.end();)
+	{
+		
+		i->second.reset();
+		Textures.erase(i);
+		if (Textures.empty()) return;
+	}
+	
+	Textures.clear();
 }

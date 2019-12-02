@@ -14,7 +14,7 @@ State::State()
 
 {
 
-	morge = new Sprite({ 0,0,960,960 }, { 0,0,1000,1000 }, "assets/font.ttf", 1);
+	morge = new Sprite({ 0,0,960,960 }, { 0,0,1000,1000 }, "assets/img.png", 1);
 	auto q = assetManager::load_font("assets/font.ttf", 36);
 	camera = std::make_shared<Camera>(0,0,Game::width,Game::height);
 }

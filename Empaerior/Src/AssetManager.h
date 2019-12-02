@@ -28,9 +28,10 @@ public:
 	//clear ununsed
 	static void clean_textures();
 	//clear all
+	static void clear_textures();
 	static void clear_fonts();
 	static void clear_sounds();
-	static void clear_textures();
+	
 
 private:
 static std::map<std::string,std::shared_ptr<SDL_Texture>> Textures;

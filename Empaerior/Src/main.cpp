@@ -117,8 +117,12 @@ int main(int argc, char** argv)
 		assetManager::clean_textures();
 		
 	}
-
+	
+	assetManager::clear_textures();
 	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
+	assetManager::clear_sounds();
+
+
 	_CrtDumpMemoryLeaks();
 
 	SDL_DestroyRenderer(Game::renderer);

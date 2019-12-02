@@ -9,7 +9,10 @@ public:
 	{
 		
 	}
+	~Camera()
+	{
 
+	}
 	Camera(const SDL_Rect &camera)
 		:rect(camera)
 		
