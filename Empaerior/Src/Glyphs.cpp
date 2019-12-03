@@ -2,7 +2,8 @@
 #include "AssetManager.h"
 
 
-int createGlyphs(std::vector <glyph>& glyphs, const std::string& path ,const unsigned int & size , SDL_Renderer* renderer,SDL_Color& color) {
+int createGlyphs(std::vector <glyph>& glyphs, const std::string& path ,const unsigned int & size , SDL_Renderer* renderer,SDL_Color& color) 
+{
 	int w, h;
 	char fontChar[86] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";
 	fontChar[84] = '"'; fontChar[85] = ' ';
@@ -24,7 +25,8 @@ int createGlyphs(std::vector <glyph>& glyphs, const std::string& path ,const uns
 }
 
 //renders from string
-int renderLine_st(const std::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y) {
+int renderLine_st(const std::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y) 
+{
 	int x = margin, y = Y, wX = 0;
 	SDL_Rect textRect;
 	int lValue = 0;
@@ -64,7 +66,8 @@ int renderLine_st(const std::string& text, int const& margin, int const& Y, std:
 
 
 //renders from a vector of int,where each int is a value of a char from glyphs
-int renderLine(const std::vector<int>& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle,const int& camera_x,const int& camera_y) {
+int renderLine(const std::vector<int>& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle,const int& camera_x,const int& camera_y)
+{
 	int x = margin, y = Y, wX = 0;
 	SDL_Rect textRect;
 	int lValue = 0;

@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include "Exceptions.h"
 
 typedef uint32_t Uint32;
 
@@ -31,20 +32,22 @@ Game* game;
 
 int main(int argc, char** argv)
 {
-	#pragma region SDL_Inititalization
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-	{
-
-	}
-
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
-	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
-	TTF_Init();
 
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) < 0) {
-		
+	#pragma region SDL_Inititalization
+	try {
+		if (SDL_Init(SDL_INIT_EVERYTHING) < 0 || Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) < 0 || TTF_Init() < 0 || IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) < 0)
+		{
+			throw E_runtime_exception("Failed to initialize SDL", __FILE__, __LINE__);
+		}
 	}
+	catch (E_runtime_exception & e)
+	{
+		std::cout << e.what() << '\n';
+	}
+	
+	
 	
 	#pragma endregion
 
@@ -62,66 +65,69 @@ int main(int argc, char** argv)
 	Uint32 frametime = 0;
 	Uint32 currentime = 0;
 	Uint32 acumulator = 0;
-	
-	while (!quit)
-	{
-
-		
-		
-	
-		SDL_PollEvent(&event);
-
-		switch (event.type)
+	try {
+		while (!quit)
 		{
-		case SDL_QUIT:
-			quit = true;
-			break;
+
+
+
+
+			SDL_PollEvent(&event);
+
+			switch (event.type)
+			{
+			case SDL_QUIT:
+				quit = true;
+				break;
+			}
+
+
+			framestart = SDL_GetTicks();
+			frametime = framestart - currentime;
+
+			if (frametime > 25) frametime = 25; //if too many frames are skipped
+
+			currentime = framestart;
+			acumulator += frametime;
+
+
+			while (acumulator >= Game::dt)
+			{
+				//update 
+
+				game->Update(Game::dt);
+
+				acumulator -= Game::dt;
+
+
+
+			}
+
+
+
+			//I use this to test for leaks//
+
+			//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
+			//Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/font.ttf", 1);
+
+
+			SDL_RenderClear(Game::renderer);
+			game->render();
+			//  norge->draw(cam);
+			SDL_RenderPresent(Game::renderer);
+
+			//delete norge;
+			assetManager::clean_textures();
+
 		}
-
-		
-		framestart = SDL_GetTicks();
-		frametime = framestart - currentime;
-		
-		if (frametime > 25) frametime = 25; //if too many frames are skipped
-
-		currentime = framestart;
-	    acumulator += frametime;
-
-		
-		while (acumulator >= Game::dt)
-		{
-			//update 
-		
-			game->Update(Game::dt);
-		
-			acumulator -= Game::dt;
-			
-
-
-		}
-
-		
-		
-		//I use this to test for leaks//
-
-		//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
-		//Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/font.ttf", 1);
-
-		
-		SDL_RenderClear(Game::renderer);
-		game->render();
-	  //  norge->draw(cam);
-		SDL_RenderPresent(Game::renderer);
-		
-		//delete norge;
-		assetManager::clean_textures();
-		
 	}
-	
-	assetManager::clear_textures();
-	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
-	assetManager::clear_sounds();
+	catch (std::runtime_error & e)
+	{
+		std::cout <<e.what() << '\n';
+	}
 
+
+	assetManager::reset_assets();
 
 	_CrtDumpMemoryLeaks();
 

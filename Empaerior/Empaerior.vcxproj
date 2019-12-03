@@ -30,6 +30,7 @@
   <ItemGroup>
     <ClInclude Include="Src\AssetManager.h" />
     <ClInclude Include="Src\Camera.h" />
+    <ClInclude Include="Src\Exceptions.h" />
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\Glyphs.h" />
     <ClInclude Include="Src\Ptr_Wrappers.h" />

@@ -3,6 +3,7 @@
 #include  <string>
 #include <iostream>
 #include "Ptr_Wrappers.h"
+#include "Exceptions.h"
 
 std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_path)//returnsnullptr on  exception
 {
@@ -18,12 +19,12 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 				if (!(rwop = SDL_RWFromFile(tex_path.c_str(), "rb"))) // if the file doesn't exists throws exception
 				{
 					//not very nice method to make the string
-					std::string message = "File not found, exception at ";
+					/*std::string message = "File not found, exception at ";
 					message += __FILE__;
 					message += " at line ";
 					message += std::to_string(__LINE__);
-
-					throw std::invalid_argument(message);
+					*/
+					throw E_runtime_exception("File not found", __FILE__, __LINE__);
 					
 				}
 
@@ -44,17 +45,17 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 					//delete rwop
 					SDL_RWclose(rwop);
 					//send the exception
-					std::string message = "File is not a valid PNG, exception at ";
+				/*	std::string message = "File is not a valid PNG, exception at ";
 					message += __FILE__;
 					message += " at line ";
-					message += std::to_string(__LINE__);
-					throw std::invalid_argument(message);
+					message += std::to_string(__LINE__);*/
+					throw E_runtime_exception("File is not a valid PNG", __FILE__, __LINE__);
 
 				}
 
 
 			}
-			catch (const std::invalid_argument & e) {
+			catch (const E_runtime_exception & e) {
 					// do stuff with exception... 
 				    std::cout << e.what() << '\n';
 					//return a nullpointer
@@ -90,11 +91,8 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 			std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFont(font_path.c_str(), size));
 			if (fnt == nullptr)//throw exception
 			{
-				std::string message = "File is not a valid TTF, exception at ";
-				message += __FILE__;
-				message += " at line ";
-				message += std::to_string(__LINE__);
-				throw std::invalid_argument(message);
+	
+				throw E_runtime_exception("File is not a valid TTF or does not exist", __FILE__, __LINE__);
 			}
 
 
@@ -112,12 +110,8 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 				
 				//std::cout << "loaded new size for font" << '\n';
 				if (fnt == nullptr)//throw exception
-				{
-					std::string message = "File is not a valid TTF, exception at ";
-					message += __FILE__;
-					message += " at line ";
-					message += std::to_string(__LINE__);
-					throw std::invalid_argument(message);
+				{				
+					throw E_runtime_exception("File is not a valid TTF or does not exist", __FILE__, __LINE__);
 
 				}
 
@@ -133,12 +127,13 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 
 		}
 	}
-	catch (const std::invalid_argument & e) {
+	catch (const E_runtime_exception & e) {
 		// do stuff with exception... 
 		std::cout << e.what() << '\n';
 		//return a nullpointer
 		return nullptr;
 	}
+
 }
 
 void assetManager::play_sound(const std::string& sound_path)
@@ -206,6 +201,14 @@ void assetManager::clear_sounds()
 	}
 	
 	Sounds.clear();
+}
+
+void assetManager::reset_assets()
+{
+	assetManager::clear_textures();
+	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
+	assetManager::clear_sounds();
+
 }
 
 void assetManager::clear_textures()

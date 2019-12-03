@@ -32,6 +32,7 @@ public:
 	static void clear_fonts();
 	static void clear_sounds();
 	
+	static void reset_assets();
 
 private:
 static std::map<std::string,std::shared_ptr<SDL_Texture>> Textures;
