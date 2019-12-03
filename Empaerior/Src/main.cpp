@@ -125,14 +125,19 @@ int main(int argc, char** argv)
 	{
 		std::cout <<e.what() << '\n';
 	}
-
-
-	assetManager::reset_assets();
-
-	_CrtDumpMemoryLeaks();
-
+	
 	SDL_DestroyRenderer(Game::renderer);
 	SDL_DestroyWindow(Game::window);
+
+	assetManager::reset_assets();
+	assetManager::clear_textures();
+
+	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
+
+	assetManager::clear_sounds();
+	_CrtDumpMemoryLeaks();
+
+	
 	Mix_Quit();
 	TTF_Quit();
 	IMG_Quit();

@@ -34,7 +34,7 @@ public:
 	
 	static void reset_assets();
 
-private:
+public:
 static std::map<std::string,std::shared_ptr<SDL_Texture>> Textures;
 static std::map<std::string,std::map<int, std::unique_ptr<TTF_Font>>> Fonts;
 static std::map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;

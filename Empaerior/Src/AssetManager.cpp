@@ -176,17 +176,7 @@ void assetManager::clean_textures()
 
 void assetManager::clear_fonts()
 {
-	for (auto i = Fonts.begin(); i != Fonts.end();)
-	{
-		for (auto j = i->second.begin(); j != i->second.end();)
-		{
-			j->second.reset();
-			i->second.erase(j);
-			if (Textures.empty()) return;
-		}
-		Fonts.erase(i);
-		if (Fonts.empty()) return;
-	}
+	
 	Fonts.clear();
 }
 
@@ -205,9 +195,7 @@ void assetManager::clear_sounds()
 
 void assetManager::reset_assets()
 {
-	assetManager::clear_textures();
-	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
-	assetManager::clear_sounds();
+	
 
 }
 

@@ -8,12 +8,14 @@ int createGlyphs(std::vector <glyph>& glyphs, const std::string& path ,const uns
 	char fontChar[86] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";
 	fontChar[84] = '"'; fontChar[85] = ' ';
 	SDL_Surface* tempSurface;
+	TTF_Font* font = assetManager::load_font(path, size);
+	if (font == nullptr)  return -1;
 	glyph temp;
 	char shortString[2] = "";
 
 	for (int cnt = 0; cnt < 86; cnt++) {
 		shortString[0] = fontChar[cnt];
-		tempSurface = TTF_RenderText_Solid(assetManager::load_font(path, size), shortString,color);
+		tempSurface = TTF_RenderText_Solid(font, shortString,color);
 		temp.image = std::unique_ptr<SDL_Texture>(SDL_CreateTextureFromSurface(renderer, tempSurface));
 		SDL_QueryTexture(&(*temp.image), NULL, NULL, &w, &h);
 		temp.h = h; temp.w = w;
