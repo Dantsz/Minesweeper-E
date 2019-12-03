@@ -86,5 +86,8 @@
     <ClInclude Include="Src\Exceptions.h">
       <Filter>Source Files\Misc\Exceptions</Filter>
     </ClInclude>
+    <ClInclude Include="Src\SDL_Wrappers.h">
+      <Filter>Source Files\Misc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

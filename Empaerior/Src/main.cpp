@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iostream>
 #include "Exceptions.h"
-
+#include "SDL_Wrappers.h"
 typedef uint32_t Uint32;
 
 //static objects variables
@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 
 	#pragma region SDL_Inititalization
 	try {
-		if (SDL_Init(SDL_INIT_EVERYTHING) < 0 || Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) < 0 || TTF_Init() < 0 || IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) < 0)
+		if (SDL::Init())
 		{
 			throw E_runtime_exception("Failed to initialize SDL", __FILE__, __LINE__);
 		}
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 	#pragma endregion
 
 
-	Camera cam = { 0,0,100,100 };
+	//Camera cam = { 0,0,100,100 };
 
 	bool quit = false;
 	SDL_Event event;
@@ -104,7 +104,7 @@ int main(int argc, char** argv)
 			}
 
 
-
+			
 			//I use this to test for leaks//
 
 			//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
@@ -130,19 +130,10 @@ int main(int argc, char** argv)
 	SDL_DestroyWindow(Game::window);
 
 	assetManager::reset_assets();
-	assetManager::clear_textures();
 
-	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
-
-	assetManager::clear_sounds();
 	_CrtDumpMemoryLeaks();
 
-	
-	Mix_Quit();
-	TTF_Quit();
-	IMG_Quit();
-	SDL_Quit();
-
+	SDL::Quit();
 	
 	return 0;
 }

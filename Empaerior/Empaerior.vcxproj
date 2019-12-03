@@ -34,6 +34,7 @@
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\Glyphs.h" />
     <ClInclude Include="Src\Ptr_Wrappers.h" />
+    <ClInclude Include="Src\SDL_Wrappers.h" />
     <ClInclude Include="Src\Sprite.h" />
     <ClInclude Include="Src\State.h" />
   </ItemGroup>

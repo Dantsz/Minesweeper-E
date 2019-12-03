@@ -2,6 +2,7 @@
 #include <memory>
 #include <SDL.h>
 #include <SDL_mixer.h>
+
 /*
 **Wraps pointers of basic sdl structs in std::unique_ptr and std::shated_ptr*/
 

@@ -114,7 +114,6 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 					throw E_runtime_exception("File is not a valid TTF or does not exist", __FILE__, __LINE__);
 
 				}
-
 				Fonts[font_path].insert({ size,std::move(fnt) });
 				return &(*Fonts[font_path][size]);
 			}
@@ -195,7 +194,9 @@ void assetManager::clear_sounds()
 
 void assetManager::reset_assets()
 {
-	
+	assetManager::clear_textures();
+	assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
+	assetManager::clear_sounds();
 
 }
 
