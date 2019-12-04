@@ -117,7 +117,8 @@ int main(int argc, char** argv)
 			SDL_RenderPresent(Game::renderer);
 
 			delete norge;
-			Empaerior::set_clipboard_text("alabama");
+		
+			std::cout << Empaerior::get_platform() <<" "<<Empaerior::get_core_number() <<" " <<Empaerior::get_system_ram()<<" " <<Empaerior::cpu_cache_size() << '\n';
 			assetManager::clean_textures();
 
 		}
