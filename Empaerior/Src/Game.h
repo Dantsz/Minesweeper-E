@@ -41,6 +41,9 @@ public:
 	
 	static Uint32 width;
 	static Uint32 height;
+
+	static bool is_paused;
+	static bool is_running;
 private:
 
 

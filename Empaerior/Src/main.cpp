@@ -24,6 +24,8 @@ State* Game::cur_state;
 const Uint32 Game::dt = 1000 / 60;
 Uint32 Game::width  = 960;
 Uint32 Game::height = 800;
+bool Game::is_paused = 0;
+bool Game::is_running = 1;
 #pragma endregion
 
 
@@ -54,7 +56,7 @@ int main(int argc, char** argv)
 
 
 	Camera cam = { 0,0,100,100 };
-	bool quit = false;
+	
 	SDL_Event event;
 	
 	Game* game = new Game();
@@ -66,7 +68,7 @@ int main(int argc, char** argv)
 	Uint32 currentime = 0;
 	Uint32 acumulator = 0;
 	try {
-		while (!quit)
+		while (Game::is_running)
 		{
 
 
@@ -77,48 +79,52 @@ int main(int argc, char** argv)
 			switch (event.type)
 			{
 			case SDL_QUIT:
-				quit = true;
+				Game::is_running = false;
 				break;
+
 			}
 
-
-			framestart = SDL_GetTicks();
-			frametime = framestart - currentime;
-
-			if (frametime > 25) frametime = 25; //if too many frames are skipped
-
-			currentime = framestart;
-			acumulator += frametime;
-
-
-			while (acumulator >= Game::dt)
+			if (!Game::is_paused)
 			{
-				//update 
 
-				game->Update(Game::dt);
+				framestart = SDL_GetTicks();
+				frametime = framestart - currentime;
 
-				acumulator -= Game::dt;
+				if (frametime > 25) frametime = 25; //if too many frames are skipped
+
+				currentime = framestart;
+				acumulator += frametime;
 
 
 
+				while (acumulator >= Game::dt)
+				{
+					//update 
+
+					game->Update(Game::dt);
+
+					acumulator -= Game::dt;
+
+
+
+				}
+
+
+
+				//I use this to test for leaks//
+
+				//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
+				Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/img.png", 1);
+
+
+				SDL_RenderClear(Game::renderer);
+				game->render();
+				norge->draw(cam);
+				SDL_RenderPresent(Game::renderer);
+
+				delete norge;
 			}
-
-
-			
-			//I use this to test for leaks//
-
-			//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
-			Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/img.png", 1);
-
-
-			SDL_RenderClear(Game::renderer);
-			game->render();
-			  norge->draw(cam);
-			SDL_RenderPresent(Game::renderer);
-
-			delete norge;
 		
-			std::cout << Empaerior::get_platform() <<" "<<Empaerior::get_core_number() <<" " <<Empaerior::get_system_ram()<<" " <<Empaerior::cpu_cache_size() << '\n';
 			assetManager::clean_textures();
 
 		}

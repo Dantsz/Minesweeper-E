@@ -3,6 +3,7 @@
 #include <string>
 namespace Empaerior
 {
+	//clipboard functions
 	std::string get_clipboard_text()
 	{
 		if (SDL_HasClipboardText)//if there's text
@@ -14,6 +15,25 @@ namespace Empaerior
 		}
 		return "";
 	}
+	void set_clipboard_text(const char* text)
+	{
+		try
+		{
+			if (SDL_SetClipboardText(text) < 0)
+			{
+				throw E_runtime_exception("Cannot copy text to clipboard", __FILE__, __LINE__);
+			}
+		}
+		catch (const E_runtime_exception & e) {
+
+			std::cout << e.what() << '\n';
+			return;
+		}
+	}
+
+
+
+	//system functions
 	std::string get_platform()//gets the current platform
 	{
 		const char* sdl_platform = SDL_GetPlatform();
@@ -38,21 +58,7 @@ namespace Empaerior
 		return SDL_GetSystemRAM();
 	}
 
-	void set_clipboard_text(const char* text)
-	{
-		try
-		{
-			if (SDL_SetClipboardText(text) < 0)
-			{
-				throw E_runtime_exception("Cannot copy text to clipboard",__FILE__,__LINE__);
-			}
-		}
-		catch (const E_runtime_exception & e) {
-			
-			std::cout << e.what() << '\n';
-			return;
-		}
-	}
+	
 
 
 
