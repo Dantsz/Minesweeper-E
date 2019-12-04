@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Misc\Exceptions">
       <UniqueIdentifier>{38654a2e-ec5f-4702-b62f-55b59b97b3b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Misc\Utilities">
+      <UniqueIdentifier>{b50bc472-b81a-418d-82fd-3f0c26225c7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Game.cpp">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="Src\SDL_Wrappers.h">
       <Filter>Source Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities.h">
+      <Filter>Source Files\Misc\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

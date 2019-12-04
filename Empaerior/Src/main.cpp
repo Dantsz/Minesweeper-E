@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Exceptions.h"
 #include "SDL_Wrappers.h"
+#include "Utilities.h"
 typedef uint32_t Uint32;
 
 //static objects variables
@@ -52,8 +53,7 @@ int main(int argc, char** argv)
 	#pragma endregion
 
 
-	//Camera cam = { 0,0,100,100 };
-
+	Camera cam = { 0,0,100,100 };
 	bool quit = false;
 	SDL_Event event;
 	
@@ -108,18 +108,21 @@ int main(int argc, char** argv)
 			//I use this to test for leaks//
 
 			//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
-			//Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/font.ttf", 1);
+			Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/img.png", 1);
 
 
 			SDL_RenderClear(Game::renderer);
 			game->render();
-			//  norge->draw(cam);
+			  norge->draw(cam);
 			SDL_RenderPresent(Game::renderer);
 
-			//delete norge;
+			delete norge;
+			Empaerior::set_clipboard_text("alabama");
 			assetManager::clean_textures();
 
 		}
+
+
 	}
 	catch (std::runtime_error & e)
 	{
