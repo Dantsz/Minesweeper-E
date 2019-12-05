@@ -77,13 +77,31 @@ int main(int argc, char** argv)
 
 
 
+		
+			//not a permanent solution to handle events
 			SDL_PollEvent(&event);
-
 			switch (event.type)
 			{
-			case SDL_QUIT:
-				Game::is_running = false;
-				break;
+				case SDL_QUIT:
+					Game::is_running = false;
+					break;
+
+				
+				case SDL_WINDOWEVENT:
+					switch (event.window.event) {
+					 case SDL_WINDOWEVENT_MINIMIZED:
+						 Game::is_paused = true;
+						 std::cout << "minimized";
+						break;
+					
+					case SDL_WINDOWEVENT_RESTORED:
+						Game::is_paused = false;
+						std::cout << "maximized";
+						break;
+					}
+
+					break;
+				
 
 			}
 

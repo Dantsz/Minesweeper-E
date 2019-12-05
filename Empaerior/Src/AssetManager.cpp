@@ -18,12 +18,7 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 
 				if (!(rwop = SDL_RWFromFile(tex_path.c_str(), "rb"))) // if the file doesn't exists throws exception
 				{
-					//not very nice method to make the string
-					/*std::string message = "File not found, exception at ";
-					message += __FILE__;
-					message += " at line ";
-					message += std::to_string(__LINE__);
-					*/
+					//not very nice method to make the string 
 					throw E_runtime_exception("File not found", __FILE__, __LINE__);
 					
 				}
@@ -45,10 +40,6 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 					//delete rwop
 					SDL_RWclose(rwop);
 					//send the exception
-				/*	std::string message = "File is not a valid PNG, exception at ";
-					message += __FILE__;
-					message += " at line ";
-					message += std::to_string(__LINE__);*/
 					throw E_runtime_exception("File is not a valid PNG", __FILE__, __LINE__);
 
 				}
