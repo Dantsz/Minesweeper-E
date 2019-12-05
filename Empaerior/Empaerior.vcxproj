@@ -26,6 +26,7 @@
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Sprite.cpp" />
     <ClCompile Include="Src\State.cpp" />
+    <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\AssetManager.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="Src\Sprite.h" />
     <ClInclude Include="Src\State.h" />
     <ClInclude Include="Src\Utilities.h" />
+    <ClInclude Include="Src\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

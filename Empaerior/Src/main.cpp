@@ -9,6 +9,8 @@
 #include "Exceptions.h"
 #include "SDL_Wrappers.h"
 #include "Utilities.h"
+
+
 typedef uint32_t Uint32;
 
 //static objects variables
@@ -18,14 +20,15 @@ std::map<std::string, std::map<int, std::unique_ptr<TTF_Font>>> assetManager::Fo
 
 std::map<std::string, std::unique_ptr<Mix_Chunk>> assetManager::Sounds;
 
-SDL_Renderer* Game::renderer;
-SDL_Window* Game::window;
+/*SDL_Renderer* Game::renderer;
+SDL_Window* Game::s_window;*/
 State* Game::cur_state;
 const Uint32 Game::dt = 1000 / 60;
 Uint32 Game::width  = 960;
 Uint32 Game::height = 800;
 bool Game::is_paused = 0;
 bool Game::is_running = 1;
+Window Game::window;
 #pragma endregion
 
 
@@ -117,10 +120,10 @@ int main(int argc, char** argv)
 				Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/img.png", 1);
 
 
-				SDL_RenderClear(Game::renderer);
+				Game::window.clear();
 				game->render();
 				norge->draw(cam);
-				SDL_RenderPresent(Game::renderer);
+				Game::window.render();
 
 				delete norge;
 			}
@@ -136,8 +139,7 @@ int main(int argc, char** argv)
 		std::cout <<e.what() << '\n';
 	}
 	
-	SDL_DestroyRenderer(Game::renderer);
-	SDL_DestroyWindow(Game::window);
+	Game::window.reset();
 
 	assetManager::reset_assets();
 

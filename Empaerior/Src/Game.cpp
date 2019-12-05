@@ -7,16 +7,12 @@
 
 
 void ToggleFullscreen(SDL_Window* Window) {
-	Uint32 FullscreenFlag = SDL_WINDOW_FULLSCREEN;
-	bool IsFullscreen = SDL_GetWindowFlags(Window) & FullscreenFlag;
-	SDL_SetWindowFullscreen(Window, IsFullscreen ? 0 : FullscreenFlag);
-	//SDL_ShowCursor(IsFullscreen);
+	
 }
 
 Game::Game()
 {
-	create_window("test", Game::width, Game::height);
-
+	window.Init("test", Game::width, Game::height);
 	
 	first_state = new State();//add a new state
 	second_state = new State();
@@ -24,7 +20,7 @@ Game::Game()
 	set_state(first_state);
 	first_state->get_camera()->set_dimensions(960, 800);
 	set_state(second_state);
-	SDL_RenderSetLogicalSize(Game::renderer, Game::cur_state->get_camera().get()->rect.w, Game::cur_state->get_camera().get()->rect.h);
+	SDL_RenderSetLogicalSize(Game::window.renderer, Game::cur_state->get_camera().get()->rect.w, Game::cur_state->get_camera().get()->rect.h);
 }
 
 void Game::Init()
@@ -39,24 +35,24 @@ void Game::create_window(const std::string& name, const int& width, const int& h
 {
 
 	//also creates the renderer, because why not?
-
-	if (window != nullptr)//delete currewnt windows if there is one
+	/*
+	if (s_window != nullptr)//delete currewnt windows if there is one
 	{
 		SDL_DestroyRenderer(Game::renderer);
-		SDL_DestroyWindow(Game::window);
+		SDL_DestroyWindow(Game::s_window);
 
 	}
-	window = SDL_CreateWindow(name.c_str(),
-	 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
-	renderer = SDL_CreateRenderer(window, -1, 0);
+	s_window = SDL_CreateWindow(name.c_str(),
+	 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
+	renderer = SDL_CreateRenderer(s_window, -1, 0);
 	
-	
+	*/
 }
 
 void Game::set_state(State* new_state)
 {
 	cur_state = new_state;
-	SDL_RenderSetLogicalSize(Game::renderer, new_state->get_camera().get()->rect.w, new_state->get_camera().get()->rect.h); // set the render size to the new state's camera
+	SDL_RenderSetLogicalSize(Game::window.renderer, new_state->get_camera().get()->rect.w, new_state->get_camera().get()->rect.h); // set the render size to the new state's camera
 
 }
 

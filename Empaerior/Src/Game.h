@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Glyphs.h"
 #include "State.h"
+#include "Window.h"
 class Game
 {
 public:
@@ -33,9 +34,10 @@ public:
 	State* second_state;
 
 
-	static SDL_Renderer* renderer;
-	static SDL_Window* window;
+	/*static SDL_Renderer* renderer;
+	static SDL_Window* s_window;*/
 	
+	static Window window;
 
 	static const Uint32 dt;
 	

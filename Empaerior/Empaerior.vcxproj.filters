@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Misc\Utilities">
       <UniqueIdentifier>{b50bc472-b81a-418d-82fd-3f0c26225c7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Window">
+      <UniqueIdentifier>{c926d9b3-d9b9-4f49-bf37-8c2670cc6bc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Game.cpp">
@@ -62,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="Src\State.cpp">
       <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Window.cpp">
+      <Filter>Source Files\Graphics\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="Src\Utilities.h">
       <Filter>Source Files\Misc\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Window.h">
+      <Filter>Source Files\Graphics\Window</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
