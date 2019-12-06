@@ -31,23 +31,7 @@ void Empaerior::Game::Init()
 	
 }
 
-void Empaerior::Game::create_window(const std::string& name, const int& width, const int& height)
-{
 
-	//also creates the renderer, because why not?
-	/*
-	if (s_window != nullptr)//delete currewnt windows if there is one
-	{
-		SDL_DestroyRenderer(Game::renderer);
-		SDL_DestroyWindow(Game::s_window);
-
-	}
-	s_window = SDL_CreateWindow(name.c_str(),
-	 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
-	renderer = SDL_CreateRenderer(s_window, -1, 0);
-	
-	*/
-}
 
 void Empaerior::Game::set_state(State* new_state)
 {

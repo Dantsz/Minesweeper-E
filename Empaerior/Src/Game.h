@@ -12,10 +12,7 @@ public:
 
 	void Init();
 
-
-	 void create_window(const std::string& name, const int & width , const int&  height);
-	 
-	 void set_state(State* new_state); // sets a new state to be updated  & rendered 
+    void set_state(State* new_state); // sets a new state to be updated  & rendered 
 
 
 	 void Update(const unsigned int& dt);
