@@ -9,7 +9,7 @@
 #include "Exceptions.h"
 #include "SDL_Wrappers.h"
 #include "Utilities.h"
-
+#include  "Timer.h"
 
 typedef uint32_t Uint32;
 
@@ -54,7 +54,6 @@ int main(int argc, char** argv)
 	}
 	
 	
-	
 	#pragma endregion
 
 
@@ -65,11 +64,14 @@ int main(int argc, char** argv)
 	Game* game = new Game();
 	
 	game->Init();
-	
+
+
 	Uint32 framestart = 0;
 	Uint32 frametime = 0;
 	Uint32 currentime = 0;
 	Uint32 acumulator = 0;
+
+
 	try {
 		while (Game::is_running)
 		{
@@ -104,9 +106,10 @@ int main(int argc, char** argv)
 				
 
 			}
-
+			
 			if (!Game::is_paused)
 			{
+				
 
 				framestart = SDL_GetTicks();
 				frametime = framestart - currentime;
@@ -123,14 +126,15 @@ int main(int argc, char** argv)
 					//update 
 
 					game->Update(Game::dt);
-
+					
 					acumulator -= Game::dt;
 
 
 
 				}
 
-
+			
+				
 
 				//I use this to test for leaks//
 
