@@ -22,18 +22,18 @@ std::map<std::string, std::unique_ptr<Mix_Chunk>> assetManager::Sounds;
 
 /*SDL_Renderer* Game::renderer;
 SDL_Window* Game::s_window;*/
-State* Game::cur_state;
-const Uint32 Game::dt = 1000 / 60;
-Uint32 Game::width  = 960;
-Uint32 Game::height = 800;
-bool Game::is_paused = 0;
-bool Game::is_running = 1;
-Window Game::window;
+State* Empaerior::Game::cur_state;
+const Uint32 Empaerior::Game::dt = 1000 / 60;
+Uint32 Empaerior::Game::width  = 960;
+Uint32 Empaerior::Game::height = 800;
+bool Empaerior::Game::is_paused = 0;
+bool Empaerior::Game::is_running = 1;
+Empaerior::Window Empaerior::Game::window;
 #pragma endregion
 
 
 
-Game* game;
+Empaerior::Game* game;
 
 
 int main(int argc, char** argv)
@@ -61,7 +61,7 @@ int main(int argc, char** argv)
 	
 	SDL_Event event;
 	
-	Game* game = new Game();
+	Empaerior::Game* game = new Empaerior::Game();
 	
 	game->Init();
 
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 
 
 	try {
-		while (Game::is_running)
+		while (Empaerior::Game::is_running)
 		{
 
 
@@ -85,19 +85,19 @@ int main(int argc, char** argv)
 			switch (event.type)
 			{
 				case SDL_QUIT:
-					Game::is_running = false;
+					Empaerior::Game::is_running = false;
 					break;
 
 				
 				case SDL_WINDOWEVENT:
 					switch (event.window.event) {
 					 case SDL_WINDOWEVENT_MINIMIZED:
-						 Game::is_paused = true;
+						 Empaerior::Game::is_paused = true;
 						 std::cout << "minimized";
 						break;
 					
 					case SDL_WINDOWEVENT_RESTORED:
-						Game::is_paused = false;
+						Empaerior::Game::is_paused = false;
 						std::cout << "maximized";
 						break;
 					}
@@ -107,7 +107,7 @@ int main(int argc, char** argv)
 
 			}
 			
-			if (!Game::is_paused)
+			if (!Empaerior::Game::is_paused)
 			{
 				
 
@@ -121,13 +121,13 @@ int main(int argc, char** argv)
 
 
 
-				while (acumulator >= Game::dt)
+				while (acumulator >= Empaerior::Game::dt)
 				{
 					//update 
 
-					game->Update(Game::dt);
+					game->Update(Empaerior::Game::dt);
 					
-					acumulator -= Game::dt;
+					acumulator -= Empaerior::Game::dt;
 
 
 
@@ -139,13 +139,13 @@ int main(int argc, char** argv)
 				//I use this to test for leaks//
 
 				//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
-				Sprite* norge = new Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/img.png", 1);
+				Empaerior::Sprite* norge = new Empaerior::Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/img.png", 1);
 
 
-				Game::window.clear();
+				Empaerior::Game::window.clear();
 				game->render();
 				norge->draw(cam);
-				Game::window.render();
+				Empaerior::Game::window.render();
 
 				delete norge;
 			}
@@ -161,7 +161,7 @@ int main(int argc, char** argv)
 		std::cout <<e.what() << '\n';
 	}
 	
-	Game::window.reset();
+	Empaerior::Game::window.reset();
 
 	assetManager::reset_assets();
 

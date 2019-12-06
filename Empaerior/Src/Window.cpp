@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window(const std::string& name, const Uint32& width, const Uint32& height)
+Empaerior::Window::Window(const std::string& name, const Uint32& width, const Uint32& height)
 : width(width),height(height)
 {
 	window = SDL_CreateWindow(name.c_str(),
@@ -8,11 +8,11 @@ Window::Window(const std::string& name, const Uint32& width, const Uint32& heigh
 	renderer = SDL_CreateRenderer(window, -1, 0);
 }
 
-Window::Window()
+Empaerior::Window::Window()
 {
 }
 
-int Window::Init(const std::string& name, const Uint32& m_width, const Uint32& m_height)
+int Empaerior::Window::Init(const std::string& name, const Uint32& m_width, const Uint32& m_height)
 {
 	width = m_width;
 	height = m_height;
@@ -23,23 +23,23 @@ int Window::Init(const std::string& name, const Uint32& m_width, const Uint32& m
 	return 0;
 }
 
-void Window::render()
+void Empaerior::Window::render()
 {
 	SDL_RenderPresent(renderer);
 }
 
-void Window::clear()
+void Empaerior::Window::clear()
 {
 	SDL_RenderClear(renderer);
 }
 
-void Window::reset()
+void Empaerior::Window::reset()
 {
 	if (window != nullptr)	SDL_DestroyWindow(window);
 	if (renderer != nullptr)SDL_DestroyRenderer(renderer);
 }
 
-void Window::toggle_fullscreen()
+void Empaerior::Window::toggle_fullscreen()
 {
 	Uint32 FullscreenFlag = SDL_WINDOW_FULLSCREEN;
 	bool IsFullscreen = SDL_GetWindowFlags(window) & FullscreenFlag;

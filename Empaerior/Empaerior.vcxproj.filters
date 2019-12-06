@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Graphics\Window">
       <UniqueIdentifier>{c926d9b3-d9b9-4f49-bf37-8c2670cc6bc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Logic">
+      <UniqueIdentifier>{9b45c178-100b-4103-92e3-0c6ea0431040}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Game.cpp">
@@ -71,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="Src\Timer.cpp">
       <Filter>Source Files\Misc\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\EventHandler.cpp">
+      <Filter>Source Files\Logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Src\Timer.h">
       <Filter>Source Files\Misc\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\EventHandler.h">
+      <Filter>Source Files\Logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -14,9 +14,9 @@ public:
 	void set_camera(const SDL_Rect& rect);//sets the camera to the specified sdl rect
 	std::shared_ptr<Camera> get_camera() { return camera; } // return a shared pointer to the camera
 
-	Text_Sprite* norge;
+	Empaerior::Text_Sprite* norge;
 private:
 	std::shared_ptr<Camera> camera;
 
-	Sprite* morge;
+	Empaerior::Sprite* morge;
 };

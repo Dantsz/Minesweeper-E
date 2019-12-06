@@ -28,7 +28,7 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 				if (IMG_isPNG(rwop))  // if the  image is a good png
 				{
 					//create atextureand free the rwop
-					std::shared_ptr<SDL_Texture> tex_p = sdl_shared(IMG_LoadTextureTyped_RW(Game::window.renderer, rwop, 1, "PNG"));
+					std::shared_ptr<SDL_Texture> tex_p = sdl_shared(IMG_LoadTextureTyped_RW(Empaerior::Game::window.renderer, rwop, 1, "PNG"));
 
 					Textures.insert({ tex_path,tex_p });  // put texture in  map
 

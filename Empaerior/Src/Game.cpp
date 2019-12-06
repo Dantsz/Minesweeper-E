@@ -10,7 +10,7 @@ void ToggleFullscreen(SDL_Window* Window) {
 	
 }
 
-Game::Game()
+Empaerior::Game::Game()
 {
 	window.Init("test", Game::width, Game::height);
 	
@@ -23,15 +23,15 @@ Game::Game()
 	SDL_RenderSetLogicalSize(Game::window.renderer, Game::cur_state->get_camera().get()->rect.w, Game::cur_state->get_camera().get()->rect.h);
 }
 
-void Game::Init()
+void Empaerior::Game::Init()
 {
 	SDL_Color color = { 255,0 ,255 ,255 };
-	second_state->norge = new Text_Sprite({0,0,200,200}, "assets/font.ttf", 32, "Aldo adsadshbadsh gbaytu gvasty dvastyadsvtyvdasty ilea   ",color );
-	first_state->norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32, "Primul morge", color);
+	second_state->norge = new Empaerior::Text_Sprite({0,0,200,200}, "assets/font.ttf", 32, "Aldo adsadshbadsh gbaytu gvasty dvastyadsvtyvdasty ilea   ",color );
+	first_state->norge = new Empaerior::Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32, "Primul morge", color);
 	
 }
 
-void Game::create_window(const std::string& name, const int& width, const int& height)
+void Empaerior::Game::create_window(const std::string& name, const int& width, const int& height)
 {
 
 	//also creates the renderer, because why not?
@@ -49,14 +49,14 @@ void Game::create_window(const std::string& name, const int& width, const int& h
 	*/
 }
 
-void Game::set_state(State* new_state)
+void Empaerior::Game::set_state(State* new_state)
 {
 	cur_state = new_state;
 	SDL_RenderSetLogicalSize(Game::window.renderer, new_state->get_camera().get()->rect.w, new_state->get_camera().get()->rect.h); // set the render size to the new state's camera
 
 }
 
-void Game::Update(const unsigned int& dt )
+void Empaerior::Game::Update(const unsigned int& dt )
 {
 	//move camera
 
@@ -102,13 +102,13 @@ void Game::Update(const unsigned int& dt )
 
 }
 
-void Game::handlevents()
+void Empaerior::Game::handlevents()
 {
 
 
 }
 
-void Game::render()
+void Empaerior::Game::render()
 {
 	
 	//SDL_RenderClear(Game::renderer);

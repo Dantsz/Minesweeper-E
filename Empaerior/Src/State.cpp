@@ -14,9 +14,9 @@ State::State()
 
 {
 
-	morge = new Sprite({ 0,0,960,960 }, { 0,0,1000,1000 }, "assets/img.png", 1);
+	morge = new Empaerior::Sprite({ 0,0,960,960 }, { 0,0,1000,1000 }, "assets/img.png", 1);
 	auto q = assetManager::load_font("assets/font.ttf", 36);
-	camera = std::make_shared<Camera>(0,0,Game::width,Game::height);
+	camera = std::make_shared<Camera>(0,0, Empaerior::Game::width, Empaerior::Game::height);
 }
 
 void State::Update(const unsigned int& dt)
@@ -31,9 +31,9 @@ void State::Update(const unsigned int& dt)
 void State::Render()
 {
 
-	morge->draw(*Game::cur_state->camera);
+	morge->draw(*Empaerior::Game::cur_state->camera);
 
-	if(norge != nullptr) norge->draw(*Game::cur_state->camera);
+	if(norge != nullptr) norge->draw(*Empaerior::Game::cur_state->camera);
 }
 
 void State::set_camera(const SDL_Rect& rect) 

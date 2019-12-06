@@ -4,6 +4,7 @@
 #include "Glyphs.h"
 #include "State.h"
 #include "Window.h"
+namespace  Empaerior{
 class Game
 {
 public:
@@ -37,7 +38,7 @@ public:
 	/*static SDL_Renderer* renderer;
 	static SDL_Window* s_window;*/
 	
-	static Window window;
+	static Empaerior::Window window;
 
 	static const Uint32 dt;
 	
@@ -49,8 +50,9 @@ public:
 private:
 
 
-	Text_Sprite* texy;
+	Empaerior::Text_Sprite* texy;
 
 
 
 };
+}
