@@ -1,11 +1,17 @@
 
 #include <crtdbg.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include "EventHandler.h"
+//
+
+
 
 #include "Game.h"
 
-#include <fstream>
-#include <sstream>
-#include <iostream>
+
+
 #include "Exceptions.h"
 #include "SDL_Wrappers.h"
 #include "Utilities.h"
@@ -30,8 +36,6 @@ bool Empaerior::Game::is_paused = 0;
 bool Empaerior::Game::is_running = 1;
 Empaerior::Window Empaerior::Game::window;
 #pragma endregion
-
-
 
 Empaerior::Game* game;
 
@@ -72,6 +76,16 @@ int main(int argc, char** argv)
 	Uint32 acumulator = 0;
 
 
+	EventListener evy;
+	evy.register_event(SDL_KEYUP, [](SDL_Event const& event) {
+		if (event.key.keysym.sym == SDLK_ESCAPE) {
+			std::cout << "shoudl quit now" << '\n';
+		}
+		});
+
+
+
+
 	try {
 		while (Empaerior::Game::is_running)
 		{
@@ -81,21 +95,23 @@ int main(int argc, char** argv)
 
 		
 			//not a permanent solution to handle events
-			SDL_PollEvent(&event);
-			switch (event.type)
-			{
+			while (SDL_PollEvent(&event)) {
+
+				evy.handleEvents(event);
+				switch (event.type)
+				{
 				case SDL_QUIT:
 					Empaerior::Game::is_running = false;
 					break;
 
-				
+
 				case SDL_WINDOWEVENT:
 					switch (event.window.event) {
-					 case SDL_WINDOWEVENT_MINIMIZED:
-						 Empaerior::Game::is_paused = true;
-						 std::cout << "minimized";
+					case SDL_WINDOWEVENT_MINIMIZED:
+						Empaerior::Game::is_paused = true;
+						std::cout << "minimized";
 						break;
-					
+
 					case SDL_WINDOWEVENT_RESTORED:
 						Empaerior::Game::is_paused = false;
 						std::cout << "maximized";
@@ -103,10 +119,10 @@ int main(int argc, char** argv)
 					}
 
 					break;
-				
 
+
+				}
 			}
-			
 			if (!Empaerior::Game::is_paused)
 			{
 				
