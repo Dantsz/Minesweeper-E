@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "EventHandler.h"
+
 //
 
 
@@ -30,11 +30,10 @@ std::map<std::string, std::unique_ptr<Mix_Chunk>> assetManager::Sounds;
 SDL_Window* Game::s_window;*/
 State* Empaerior::Game::cur_state;
 const Uint32 Empaerior::Game::dt = 1000 / 60;
-Uint32 Empaerior::Game::width  = 960;
-Uint32 Empaerior::Game::height = 800;
 bool Empaerior::Game::is_paused = 0;
 bool Empaerior::Game::is_running = 1;
 Empaerior::Window Empaerior::Game::window;
+
 #pragma endregion
 
 Empaerior::Game* game;
@@ -76,12 +75,8 @@ int main(int argc, char** argv)
 	Uint32 acumulator = 0;
 
 
-	EventListener evy;
-	evy.register_event(SDL_KEYUP, [](SDL_Event const& event) {
-		if (event.key.keysym.sym == SDLK_ESCAPE) {
-			std::cout << "shoudl quit now" << '\n';
-		}
-		});
+	
+	
 
 
 
@@ -97,31 +92,8 @@ int main(int argc, char** argv)
 			//not a permanent solution to handle events
 			while (SDL_PollEvent(&event)) {
 
-				evy.handleEvents(event);
-				switch (event.type)
-				{
-				case SDL_QUIT:
-					Empaerior::Game::is_running = false;
-					break;
-
-
-				case SDL_WINDOWEVENT:
-					switch (event.window.event) {
-					case SDL_WINDOWEVENT_MINIMIZED:
-						Empaerior::Game::is_paused = true;
-						std::cout << "minimized";
-						break;
-
-					case SDL_WINDOWEVENT_RESTORED:
-						Empaerior::Game::is_paused = false;
-						std::cout << "maximized";
-						break;
-					}
-
-					break;
-
-
-				}
+				game->handlevents(event);
+				
 			}
 			if (!Empaerior::Game::is_paused)
 			{

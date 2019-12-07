@@ -1,11 +1,29 @@
 #include "Window.h"
-
+#include "Game.h"
+#include <iostream>
 Empaerior::Window::Window(const std::string& name, const Uint32& width, const Uint32& height)
 : width(width),height(height)
 {
 	window = SDL_CreateWindow(name.c_str(),
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
 	renderer = SDL_CreateRenderer(window, -1, 0);
+
+	window_listener.register_event(SDL_QUIT, [](SDL_Event const& event) { // add quit event 
+		Empaerior::Game::is_running = false;
+		});
+
+	window_listener.register_event(SDL_WINDOWEVENT, [](SDL_Event const& event) { //add 
+		switch (event.window.event) {
+		case SDL_WINDOWEVENT_MINIMIZED:
+			Empaerior::Game::is_paused = true;
+			break;
+
+		case SDL_WINDOWEVENT_RESTORED:
+			Empaerior::Game::is_paused = false;
+			break;
+		}
+		});
+
 }
 
 Empaerior::Window::Window()
@@ -19,6 +37,23 @@ int Empaerior::Window::Init(const std::string& name, const Uint32& m_width, cons
 	window = SDL_CreateWindow(name.c_str(),
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
 	renderer = SDL_CreateRenderer(window, -1, 0);
+
+	window_listener.register_event(SDL_QUIT, [](SDL_Event const& event) { // add quit event 
+		Empaerior::Game::is_running = false;
+		});
+
+	window_listener.register_event(SDL_WINDOWEVENT, [](SDL_Event const& event) { //add 
+		switch (event.window.event) {
+		case SDL_WINDOWEVENT_MINIMIZED:
+			std::cout << "da";
+			Empaerior::Game::is_paused = true;
+			break;
+
+		case SDL_WINDOWEVENT_RESTORED:
+			Empaerior::Game::is_paused = false;
+			break;
+		}
+		});
 
 	return 0;
 }

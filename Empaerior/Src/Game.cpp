@@ -6,13 +6,10 @@
 
 
 
-void ToggleFullscreen(SDL_Window* Window) {
-	
-}
 
 Empaerior::Game::Game()
 {
-	window.Init("test", Game::width, Game::height);
+	window.Init("test", 960, 800);
 	
 	first_state = new State();//add a new state
 	second_state = new State();
@@ -21,6 +18,9 @@ Empaerior::Game::Game()
 	first_state->get_camera()->set_dimensions(960, 800);
 	set_state(second_state);
 	SDL_RenderSetLogicalSize(Game::window.renderer, Game::cur_state->get_camera().get()->rect.w, Game::cur_state->get_camera().get()->rect.h);
+
+
+
 }
 
 void Empaerior::Game::Init()
@@ -86,9 +86,9 @@ void Empaerior::Game::Update(const unsigned int& dt )
 
 }
 
-void Empaerior::Game::handlevents()
+void Empaerior::Game::handlevents(const SDL_Event & event)
 {
-
+	Empaerior::Game::window.window_listener.handleEvents(event);
 
 }
 

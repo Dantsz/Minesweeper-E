@@ -4,6 +4,7 @@
 #include "Glyphs.h"
 #include "State.h"
 #include "Window.h"
+#include "EventHandler.h"
 namespace  Empaerior{
 class Game
 {
@@ -14,9 +15,9 @@ public:
 
     void set_state(State* new_state); // sets a new state to be updated  & rendered 
 
-
-	 void Update(const unsigned int& dt);
-	 void handlevents();
+	void handlevents(const SDL_Event& event);
+    void Update(const unsigned int& dt);
+	
 
 	 void render();
 
@@ -39,11 +40,11 @@ public:
 
 	static const Uint32 dt;
 	
-	static Uint32 width;
-	static Uint32 height;
 
 	static bool is_paused;
 	static bool is_running;
+
+
 private:
 
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <string>
+#include "EventHandler.h"
 namespace Empaerior
 {
 
@@ -28,11 +29,21 @@ namespace Empaerior
 		void reset();
 		void toggle_fullscreen();
 
+		Uint32 get_width()
+		{
+			return width;
+		}
+
+		Uint32 get_heigth()
+		{
+			return height;
+		}
+
 		SDL_Renderer* renderer;
 		SDL_Window* window;
 	private:
 
-
+		EventListener window_listener;
 		Uint32 width = 0;
 		Uint32 height = 0;
 	};

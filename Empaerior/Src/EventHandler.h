@@ -4,33 +4,36 @@
 #include <map>
 #include <functional>
 
-//stack overflow to the rescue
-class EventListener//handles only one type of SDL_event
-{
-public:
-	
-	using EventCallback = std::function<void(SDL_Event const&)>;
-	
-	EventListener() {};
-	~EventListener() {};
+namespace Empaerior {
 
 
-	void register_event(Uint32 type, EventCallback callback) //put a callback in the lisener
+	//stack overflow to the rescue
+	class EventListener//handles only one type of SDL_event
 	{
-		_registeredCallbacks[type].push_back(callback);
-	}
+	public:
 
-	void handleEvents(const SDL_Event& cur_event) //execute commands
-	{
-		for (int i = 0; i < _registeredCallbacks[cur_event.type].size(); i++)//iterate throught command and match thoose that fit
+		using EventCallback = std::function<void(SDL_Event const&)>;
+
+		EventListener() {};
+		~EventListener() {};
+
+
+		void register_event(Uint32 type, EventCallback callback) //put a callback in the lisener
 		{
-			_registeredCallbacks[cur_event.type][i](cur_event);
+			_registeredCallbacks[type].push_back(callback);
 		}
-	
-	}
 
-private:
-	std::map<Uint32, std::vector<EventCallback>> _registeredCallbacks;//type of the event and function
-};
+		void handleEvents(const SDL_Event& cur_event) //execute commands
+		{
+			for (int i = 0; i < _registeredCallbacks[cur_event.type].size(); i++)//iterate throught command and match thoose that fit
+			{
+				_registeredCallbacks[cur_event.type][i](cur_event);
+			}
 
+		}
+
+	private:
+		std::map<Uint32, std::vector<EventCallback>> _registeredCallbacks;//type of the event and function
+	};
+}
 
