@@ -128,23 +128,32 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 
 void assetManager::play_sound(const std::string& sound_path)
 {
-	auto sound = Sounds.find(sound_path);
-	if (sound == Sounds.end())// not found, create new one
-	{
-		
-		SDL_RWops* rwop;
-		rwop = SDL_RWFromFile(sound_path.c_str(), "rb");
-		//load the sound in the rwop
-		//Mix_LoadWAV(sound_path.c_str())
+	try {
+		auto sound = Sounds.find(sound_path);
+		if (sound == Sounds.end())// not found, create new one
+		{
 
-		std::unique_ptr<Mix_Chunk>TempSound = std::unique_ptr<Mix_Chunk>(Mix_LoadWAV_RW(rwop, 1));
-	
-		Sounds.insert({sound_path,std::move(TempSound)});
-		Mix_PlayChannel(-1, &(*Sounds[sound_path]), 0);
+			SDL_RWops* rwop;
+			rwop = SDL_RWFromFile(sound_path.c_str(), "rb");
+			//load the sound in the rwop
+			//Mix_LoadWAV(sound_path.c_str())
+			if (rwop == nullptr)
+			{
+				throw E_runtime_exception("Cannot .wav find file ", __FILE__, __LINE__);
+			}
+			std::unique_ptr<Mix_Chunk>TempSound = std::unique_ptr<Mix_Chunk>(Mix_LoadWAV_RW(rwop, 1));
+
+			Sounds.insert({ sound_path,std::move(TempSound) });
+			Mix_PlayChannel(-1, &(*Sounds[sound_path]), 0);
+		}
+		else
+		{
+			Mix_PlayChannel(-1, &(*sound->second), 0);
+		}
 	}
-	else
-	{
-		Mix_PlayChannel(-1, &(*sound->second) , 0);
+	catch (const E_runtime_exception & e) {
+		// do stuff with exception... 
+		std::cout << e.what() << '\n';
 	}
 }
 
