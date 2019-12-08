@@ -1,4 +1,11 @@
 
+#ifdef _DEBUG   
+#ifndef DBG_NEW      
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     
+#define new DBG_NEW   
+#endif
+#endif
+
 #include <crtdbg.h>
 #include <iostream>
 #include <fstream>
@@ -42,8 +49,7 @@ Empaerior::Game* game;
 int main(int argc, char** argv)
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
-
+	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
 	#pragma region SDL_Inititalization
 	try {
 		if (SDL::Init())
@@ -76,8 +82,6 @@ int main(int argc, char** argv)
 
 
 	
-	
-
 
 
 
@@ -88,6 +92,7 @@ int main(int argc, char** argv)
 
 
 
+		
 		
 			//not a permanent solution to handle events
 			while (SDL_PollEvent(&event)) {
@@ -108,7 +113,7 @@ int main(int argc, char** argv)
 				acumulator += frametime;
 
 
-
+				
 				while (acumulator >= Empaerior::Game::dt)
 				{
 					//update 
@@ -120,10 +125,6 @@ int main(int argc, char** argv)
 
 
 				}
-
-			
-				
-
 				//I use this to test for leaks//
 
 				//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
@@ -153,6 +154,8 @@ int main(int argc, char** argv)
 
 	assetManager::reset_assets();
 
+	
+	
 	_CrtDumpMemoryLeaks();
 
 	SDL::Quit();

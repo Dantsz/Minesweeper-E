@@ -28,6 +28,8 @@ Empaerior::Window::Window(const std::string& name, const Uint32& width, const Ui
 
 Empaerior::Window::Window()
 {
+	
+
 }
 
 int Empaerior::Window::Init(const std::string& name, const Uint32& m_width, const Uint32& m_height)
@@ -45,7 +47,6 @@ int Empaerior::Window::Init(const std::string& name, const Uint32& m_width, cons
 	window_listener.register_event(SDL_WINDOWEVENT, [](SDL_Event const& event) { //add 
 		switch (event.window.event) {
 		case SDL_WINDOWEVENT_MINIMIZED:
-			std::cout << "da";
 			Empaerior::Game::is_paused = true;
 			break;
 

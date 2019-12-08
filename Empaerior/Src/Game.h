@@ -40,7 +40,6 @@ public:
 
 	static const Uint32 dt;
 	
-
 	static bool is_paused;
 	static bool is_running;
 
