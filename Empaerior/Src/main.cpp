@@ -159,6 +159,6 @@ int main(int argc, char** argv)
 	_CrtDumpMemoryLeaks();
 
 	SDL::Quit();
-	
+	delete game;
 	return 0;
 }
