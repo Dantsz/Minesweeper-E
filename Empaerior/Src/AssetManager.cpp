@@ -15,10 +15,10 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 			try {
 				//if not found create the texture		
 				SDL_RWops* rwop;
-
-				if (!(rwop = SDL_RWFromFile(tex_path.c_str(), "rb"))) // if the file doesn't exists throws exception
+				rwop = SDL_RWFromFile(tex_path.c_str(), "rb");
+				if (rwop == nullptr) // if the file doesn't exists throws exception
 				{
-					//not very nice method to make the string 
+				
 					throw E_runtime_exception("File not found", __FILE__, __LINE__);
 					
 				}
@@ -79,7 +79,16 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 
 			//create font ( and font) map and put in the font
 			Fonts.insert({ font_path,std::move(std::map<int,std::unique_ptr<TTF_Font>>()) });
-			std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFont(font_path.c_str(), size));
+
+
+			SDL_RWops* rwop = SDL_RWFromFile(font_path.c_str(), "rb");
+			if (rwop == nullptr) // if the file doesn't exists throws exception
+			{
+
+				throw E_runtime_exception("File not found", __FILE__, __LINE__);
+
+			}
+			std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFontRW(rwop,1, size));
 			if (fnt == nullptr)//throw exception
 			{
 	
@@ -97,13 +106,19 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 			auto size_find = Fonts[font_path].find(size);
 			if (size_find == Fonts[font_path].end())
 			{
-				std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFont(font_path.c_str(), size));
-				
-				//std::cout << "loaded new size for font" << '\n';
-				if (fnt == nullptr)//throw exception
-				{				
-					throw E_runtime_exception("File is not a valid TTF or does not exist", __FILE__, __LINE__);
 
+				SDL_RWops* rwop = SDL_RWFromFile(font_path.c_str(), "rb");
+				if (rwop == nullptr) // if the file doesn't exists throws exception
+				{
+
+					throw E_runtime_exception("File not found", __FILE__, __LINE__);
+
+				}
+				std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFontRW(rwop, 1, size));
+				if (fnt == nullptr)//throw exception
+				{
+
+					throw E_runtime_exception("File is not a valid TTF or does not exist", __FILE__, __LINE__);
 				}
 				Fonts[font_path].insert({ size,std::move(fnt) });
 				return &(*Fonts[font_path][size]);
