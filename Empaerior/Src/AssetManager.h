@@ -18,10 +18,17 @@
 class assetManager
 {
 public:
-
+	//texture
 	static std::shared_ptr<SDL_Texture>  load_texture(const std::string& tex_path);
+	//font
 	static TTF_Font* load_font(const std::string& font_path, const int& size);
+
+	//sound   
 	static void play_sound(const std::string& sound_path);
+	static void set_volume(const int n_volume);
+
+
+
 
 
 
@@ -32,6 +39,9 @@ public:
 	static void clear_fonts();
 	static void clear_sounds();
 	
+
+
+
 	static void reset_assets();
 
 public:

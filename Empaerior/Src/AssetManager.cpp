@@ -160,6 +160,7 @@ void assetManager::play_sound(const std::string& sound_path)
 
 			Sounds.insert({ sound_path,std::move(TempSound) });
 			Mix_PlayChannel(-1, &(*Sounds[sound_path]), 0);
+			
 		}
 		else
 		{
@@ -170,6 +171,11 @@ void assetManager::play_sound(const std::string& sound_path)
 		// do stuff with exception... 
 		std::cout << e.what() << '\n';
 	}
+}
+
+void assetManager::set_volume(const int n_volume)
+{
+	Mix_Volume(-1, n_volume);	
 }
 
 
