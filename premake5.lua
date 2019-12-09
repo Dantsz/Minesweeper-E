@@ -30,17 +30,17 @@ project "Empaerior"
 	
 	includedirs
 	{
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2/include",
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2_image/include",
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2_mixer/include",
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2_ttf/include"
+	"SDL2/include",
+	"SDL2_image/include",
+	"SDL2_mixer/include",
+	"SDL2_ttf/include"
 	}
 	libdirs 
 	{ 
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2/lib/x64",
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2_image/lib/x64",
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2_mixer/lib/x64",
-	"C:/Users/Dan/Desktop/Empaerior-Engine/SDL2_ttf/lib/x64"
+	"SDL2/lib/x64",
+	"SDL2_image/lib/x64",
+	"SDL2_mixer/lib/x64",
+	"SDL2_ttf/lib/x64"
 	}
 	links 
 	{ 
