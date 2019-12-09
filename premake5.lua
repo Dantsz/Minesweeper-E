@@ -15,7 +15,9 @@ project "Empaerior"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "On"
-	systemversion "10.0.18362.0"	
+	
+	
+
 	
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -50,6 +52,10 @@ project "Empaerior"
 		"SDL2_ttf.lib",
 		"SDL2_mixer.lib"
 	}
+	
+	filter "system:windows"
+		systemversion "latest"
+	
 	
 	configuration "Debug"
          runtime "Debug"
