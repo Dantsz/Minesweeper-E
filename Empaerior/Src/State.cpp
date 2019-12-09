@@ -21,11 +21,7 @@ State::State()
 
 void State::Update(const unsigned int& dt)
 {
-
-
-	
 	morge->update(dt);
-
 }
 
 void State::Render()
