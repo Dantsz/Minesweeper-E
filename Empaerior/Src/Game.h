@@ -1,10 +1,10 @@
 #pragma once
-#include "AssetManager.h"
-#include "Sprite.h"
-#include "Glyphs.h"
+#include "assetmanager/AssetManager.h"
+#include "graphics/rendering/objects/Sprite.h"
+#include "graphics/glyphs/Glyphs.h"
 #include "State.h"
-#include "Window.h"
-#include "EventHandler.h"
+#include "graphics/rendering/Window.h"
+#include "eventhandler/EventHandler.h"
 namespace  Empaerior{
 class Game
 {

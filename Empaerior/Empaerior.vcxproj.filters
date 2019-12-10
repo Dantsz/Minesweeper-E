@@ -1,44 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Exceptions">
-      <UniqueIdentifier>{479CBBB0-3354-FDFD-9C5B-D659883298EE}</UniqueIdentifier>
+    <Filter Include="SDLwrappers">
+      <UniqueIdentifier>{3CECAFD4-A8A1-28CA-3196-22A19D4A1FCE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDL Wrappers">
-      <UniqueIdentifier>{3C1118E3-2874-A787-D1F9-DF3DBD3B730A}</UniqueIdentifier>
+    <Filter Include="assetmanager">
+      <UniqueIdentifier>{A08EF851-8CF1-87F6-3577-C0AC21B95379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="eventhandler">
+      <UniqueIdentifier>{C5B7C604-B11A-56A9-5AA0-8E5F46E2212C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="exceptions">
+      <UniqueIdentifier>{67C00D32-5378-4F7F-BC7F-28DBA856EA6F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{36EF08BC-22BC-63C7-4BD5-516F37019955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\glyphs">
+      <UniqueIdentifier>{3C11C448-A89C-310D-B1AD-B4011DB88D0D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\rendering">
+      <UniqueIdentifier>{23D44FEC-0FB8-1042-7818-0B95641BFBC3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\rendering\objects">
+      <UniqueIdentifier>{FC7DCE72-E88D-7A43-5147-DF613D7669DC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utilities">
+      <UniqueIdentifier>{212A0ED3-8D94-C249-D6D2-73EF427CA09E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\AssetManager.h" />
-    <ClInclude Include="src\Camera.h" />
-    <ClInclude Include="src\EventHandler.h" />
-    <ClInclude Include="src\Exceptions\Exceptions.h">
-      <Filter>Exceptions</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Glyphs.h" />
-    <ClInclude Include="src\SDL Wrappers\Ptr_Wrappers.h">
-      <Filter>SDL Wrappers</Filter>
+    <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h">
+      <Filter>SDLwrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\SDL Wrappers\SDL_Wrappers.h">
-      <Filter>SDL Wrappers</Filter>
+    <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h">
+      <Filter>SDLwrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\State.h" />
-    <ClInclude Include="src\Timer.h" />
-    <ClInclude Include="src\Utilities.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\assetmanager\AssetManager.h">
+      <Filter>assetmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\eventhandler\EventHandler.h">
+      <Filter>eventhandler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\exceptions\Exceptions.h">
+      <Filter>exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\glyphs\Glyphs.h">
+      <Filter>graphics\glyphs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\rendering\Camera.h">
+      <Filter>graphics\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\rendering\Window.h">
+      <Filter>graphics\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\rendering\objects\Sprite.h">
+      <Filter>graphics\rendering\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\Timer.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\Utilities.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\AssetManager.cpp" />
-    <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\EventHandler.cpp" />
     <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Glyphs.cpp" />
-    <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\State.cpp" />
-    <ClCompile Include="src\Timer.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\assetmanager\AssetManager.cpp">
+      <Filter>assetmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eventhandler\EventHandler.cpp">
+      <Filter>eventhandler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\glyphs\Glyphs.cpp">
+      <Filter>graphics\glyphs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\rendering\Camera.cpp">
+      <Filter>graphics\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\rendering\Window.cpp">
+      <Filter>graphics\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\rendering\objects\Sprite.cpp">
+      <Filter>graphics\rendering\objects</Filter>
+    </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\utilities\Timer.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

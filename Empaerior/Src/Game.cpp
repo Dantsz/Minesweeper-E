@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Sprite.h"
+
 
 #define fullscreen 0
 

@@ -1,9 +1,9 @@
 #include "AssetManager.h"
-#include "Game.h"
+#include "../Game.h"
 #include  <string>
 #include <iostream>
-#include "SDL Wrappers/Ptr_Wrappers.h"
-#include "Exceptions/Exceptions.h"
+#include "../SDLwrappers/Ptr_Wrappers.h"
+#include "../Exceptions/Exceptions.h"
 
 std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_path)//returnsnullptr on  exception
 {
