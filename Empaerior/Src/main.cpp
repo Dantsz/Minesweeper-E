@@ -19,8 +19,8 @@
 
 
 
-#include "Exceptions.h"
-#include "SDL_Wrappers.h"
+#include "Exceptions/Exceptions.h"
+#include "SDL Wrappers/SDL_Wrappers.h"
 #include "Utilities.h"
 #include  "Timer.h"
 

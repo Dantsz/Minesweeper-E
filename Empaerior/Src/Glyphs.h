@@ -7,8 +7,7 @@
 #include<SDL_ttf.h>
 #include<vector>
 #include <string>
-#include "Ptr_Wrappers.h"
-
+#include "SDL Wrappers/Ptr_Wrappers.h"
 
 
 

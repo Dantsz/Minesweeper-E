@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Exceptions">
+      <UniqueIdentifier>{479CBBB0-3354-FDFD-9C5B-D659883298EE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDL Wrappers">
+      <UniqueIdentifier>{3C1118E3-2874-A787-D1F9-DF3DBD3B730A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\AssetManager.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\EventHandler.h" />
+    <ClInclude Include="src\Exceptions\Exceptions.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Glyphs.h" />
+    <ClInclude Include="src\SDL Wrappers\Ptr_Wrappers.h">
+      <Filter>SDL Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDL Wrappers\SDL_Wrappers.h">
+      <Filter>SDL Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sprite.h" />
+    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\Timer.h" />
+    <ClInclude Include="src\Utilities.h" />
+    <ClInclude Include="src\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\AssetManager.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\EventHandler.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Glyphs.cpp" />
+    <ClCompile Include="src\Sprite.cpp" />
+    <ClCompile Include="src\State.cpp" />
+    <ClCompile Include="src\Timer.cpp" />
+    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+</Project>
