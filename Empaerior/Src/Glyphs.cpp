@@ -1,5 +1,5 @@
 ﻿#include "Glyphs.h"
-#include "../../assetmanager/AssetManager.h"
+#include "AssetManager.h"
 
 
 int createGlyphs(std::vector <glyph>& glyphs, const std::string& path ,const unsigned int & size , SDL_Renderer* renderer,SDL_Color& color) 

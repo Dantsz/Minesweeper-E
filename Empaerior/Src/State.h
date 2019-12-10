@@ -1,7 +1,5 @@
 #pragma once
-
-#include "graphics/rendering/objects/Sprite.h"
-#include "graphics/rendering/Camera.h"
+#include "Sprite.h"
 /*
 	A state of the game engine.
 */

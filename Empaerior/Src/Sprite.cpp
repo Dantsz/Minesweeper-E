@@ -1,8 +1,8 @@
 #include "Sprite.h"
-#include "../../../Game.h"
-#include "../../glyphs/Glyphs.h"
+#include "Game.h"
+#include "Glyphs.h"
 #include <iostream>
-#include "../Window.h"
+#include "Window.h"
 
 
 void Empaerior::Sprite::draw(const Camera& camera)

@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <string>
-#include "../../eventhandler/EventHandler.h"
+#include "EventHandler.h"
 namespace Empaerior
 {
 
