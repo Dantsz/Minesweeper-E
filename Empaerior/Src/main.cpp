@@ -52,10 +52,25 @@ int main(int argc, char** argv)
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
 	#pragma region SDL_Inititalization
 	try {
-		if (SDL::Init())
+		uint16_t error_flags = SDL::Init();
+		//check for errors
+		if(error_flags & sdl)
 		{
 			throw E_runtime_exception("Failed to initialize SDL", __FILE__, __LINE__);
 		}
+		if (error_flags & sdl_image)
+		{
+			throw E_runtime_exception("Failed to initialize SDL Graphics", __FILE__, __LINE__);
+		}
+		if (error_flags & sdl_ttf)
+		{
+			throw E_runtime_exception("Failed to initialize SDL Font", __FILE__, __LINE__);
+		}
+		if (error_flags & sdl_mix)
+		{
+			throw E_runtime_exception("Failed to initialize SDL Audio", __FILE__, __LINE__);
+		}
+
 	}
 	catch (E_runtime_exception & e)
 	{
