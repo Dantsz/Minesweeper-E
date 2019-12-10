@@ -1,8 +1,8 @@
 #pragma once
 #include <SDL.h>
 #include <string>
-#include "AssetManager.h"
-#include "Camera.h"
+#include "../../../assetmanager/AssetManager.h"
+#include "../Camera.h"
 namespace Empaerior {
 	///base  class for sprite elements, practically vritual
 	class Graphic_element

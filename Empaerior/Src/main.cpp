@@ -19,10 +19,10 @@
 
 
 
-#include "Exceptions/Exceptions.h"
-#include "SDL Wrappers/SDL_Wrappers.h"
-#include "Utilities.h"
-#include  "Timer.h"
+#include "exceptions/Exceptions.h"
+#include "SDLwrappers/SDL_Wrappers.h"
+#include "utilities/Utilities.h"
+#include  "utilities/Timer.h"
 
 typedef uint32_t Uint32;
 

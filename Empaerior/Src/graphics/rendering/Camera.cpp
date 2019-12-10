@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "Game.h"
+#include "../../Game.h"
 
 void Camera::set_dimensions(const int& w, const int& h)
 {

@@ -6,7 +6,7 @@
 #include <SDL_image.h>
 #include <string>
 #include <vector>
-#include "Glyphs.h"
+#include "../graphics/glyphs/Glyphs.h"
 
 
 
