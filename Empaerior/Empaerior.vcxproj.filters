@@ -53,6 +53,9 @@
     <ClInclude Include="src\entitysystem\components\Component.h">
       <Filter>entitysystem\components</Filter>
     </ClInclude>
+    <ClInclude Include="src\entitysystem\components\ComponentManager.h">
+      <Filter>entitysystem\components</Filter>
+    </ClInclude>
     <ClInclude Include="src\eventhandler\EventHandler.h">
       <Filter>eventhandler</Filter>
     </ClInclude>

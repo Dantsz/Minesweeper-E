@@ -2,6 +2,13 @@
 
 #include "graphics/rendering/objects/Sprite.h"
 #include "graphics/rendering/Camera.h"
+
+//entity tests
+#include "entitysystem/Entity.h"
+
+#include "entitysystem/components/ComponentManager.h"
+#include "entitysystem/components/Component.h"
+
 /*
 	A state of the game engine.
 */
@@ -20,5 +27,7 @@ public:
 private:
 	std::shared_ptr<Camera> camera;
 
-	Empaerior::Sprite* morge;
+	Empaerior::ComponentManager<Empaerior::Print_Component> printer;
+
+	Empaerior::Entity* morge;
 };

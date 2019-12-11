@@ -5,6 +5,10 @@
 #include "State.h"
 #include "graphics/rendering/Window.h"
 #include "eventhandler/EventHandler.h"
+
+
+
+
 namespace  Empaerior{
 class Game
 {
@@ -48,7 +52,7 @@ private:
 
 
 	Empaerior::Text_Sprite* texy;
-
+	
 
 
 };

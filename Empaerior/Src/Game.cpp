@@ -16,7 +16,7 @@ Empaerior::Game::Game()
 
 	set_state(first_state);
 	first_state->get_camera()->set_dimensions(960, 800);
-	set_state(second_state);
+	set_state(first_state);
 	SDL_RenderSetLogicalSize(Game::window.renderer, Game::cur_state->get_camera().get()->rect.w, Game::cur_state->get_camera().get()->rect.h);
 
 
@@ -29,6 +29,8 @@ void Empaerior::Game::Init()
 	second_state->norge = new Empaerior::Text_Sprite({0,0,200,200}, "assets/font.ttf", 32, "Aldo adsadshbadsh gbaytu gvasty dvastyadsvtyvdasty ilea   ",color );
 	first_state->norge = new Empaerior::Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32, "Primul morge", color);
 	
+
+
 }
 
 
