@@ -136,6 +136,8 @@
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\assetmanager\AssetManager.h" />
+    <ClInclude Include="src\entitysystem\Entity.h" />
+    <ClInclude Include="src\entitysystem\components\Component.h" />
     <ClInclude Include="src\eventhandler\EventHandler.h" />
     <ClInclude Include="src\exceptions\Exceptions.h" />
     <ClInclude Include="src\graphics\glyphs\Glyphs.h" />
