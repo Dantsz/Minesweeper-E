@@ -3,6 +3,7 @@
 #include <SDL.h>
 //for testing
 #include<iostream>
+#include "utilities/Timer.h"
 
 struct sdl_deleter
 {
@@ -17,7 +18,21 @@ State::State()
 {
 
 	//test
-	
+	Empaerior::EnityManager manager;
+	Empaerior::Timer timy;
+
+	timy.start();
+	for (int i = 0; i < 1000; i++)
+	{
+		std::cout << manager.add_Entity() << " ";
+	}
+	std::cout << '\n';
+	manager.delete_entity(4);
+	manager.delete_entity(10000);
+	std::cout << '\n';
+	std::cout << manager.add_Entity()<< '\n';
+
+	std::cout << timy.getTicks();
 
 
 	auto q = assetManager::load_font("assets/font.ttf", 36);

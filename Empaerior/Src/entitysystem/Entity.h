@@ -1,7 +1,11 @@
 #pragma once
 #include "components/Component.h"
 #include <vector>
-#include <queue>
+#include <algorithm>
+#include "../exceptions/Exceptions.h"
+#include<iostream>
+
+
 namespace Empaerior
 {
 	class Entity
@@ -16,21 +20,49 @@ namespace Empaerior
 	class EnityManager
 	{
 	public:
-		uint64_t add_Entity()//takes a fredor makes a new one if there's no id
+
+
+		uint64_t add_Entity()//takes a freed or makes a new one if there's no id
 		{
 			return get_id();
 		}
+
+
 		void delete_entity(const uint64_t & id)//deletes an entity ,removes all components and puts its id in the queue
 		{
+			try
+			{
+				if (id > lowest_unallocatedid )
+				{
+					throw E_runtime_exception("Invalid id for deletion : id doesn't exist", __FILE__, __LINE__);
 
-			//***delete entity's component's (not implemented yet) ***//
-			//
-			//
-			//.................
+				} 
+				//if the id appears in the delted entities
+				else if(std::binary_search(freed_id.begin(),freed_id.end(),id))
+				{
+					throw E_runtime_exception("Invalid id deletion : id is not a valid entity", __FILE__, __LINE__);
+				
+				}
 
-			//pushthe freed id into the queue
-			freed_id.push(id);
 
+
+
+				//***delete entity's component's (not implemented yet) ***//
+				//
+				//
+				//.................
+
+				//pushthe freed id into the queue
+
+
+				freed_id.push_back(id);
+				//the vector is always sorted in order to check if id apears in it using binary search
+				std::sort(freed_id.begin(), freed_id.end());
+			}
+			catch(E_runtime_exception& e)
+			{
+				std::cout << e.what() << '\n';
+			}
 
 
 		}
@@ -50,7 +82,7 @@ namespace Empaerior
 				//take the id from   the front of the queue
 				uint64_t id = freed_id.front();
 				//popit
-				freed_id.pop();
+				freed_id.pop_back();
 				return  id;
 
 			}
@@ -59,7 +91,7 @@ namespace Empaerior
 
 	private:
 		//ids that had once an entity but now are 
-		std::queue<uint64_t> freed_id;
+		std::vector<uint64_t> freed_id;
 
 
 		//the lowest unallocated id that has not interacted with
