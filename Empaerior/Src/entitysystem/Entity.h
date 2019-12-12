@@ -7,14 +7,22 @@ namespace Empaerior
 	class Entity
 	{
 	public:
-
-
-
-
-
-	//private:
-	
-		std::vector<Empaerior::Print_Component*> components;
+		bool active;
+		uint64_t id;
 
 	};
+
+
+	class EnityManager
+	{
+	public:
+		void addEntity();
+
+
+
+
+		
+	};
+
+
 }

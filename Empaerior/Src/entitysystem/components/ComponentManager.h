@@ -2,13 +2,14 @@
 #include "Component.h"
 #include <vector>
 #include <iostream>
+#include <map>
 //class that handles/update/render a certain type of component
 namespace Empaerior
 {
 
 
 	template <typename  T>
-	class ComponentManager
+	class ComponentSystem
 	{
 	public:
 		//update a specific component
@@ -16,18 +17,13 @@ namespace Empaerior
 
 
 	private:
-		std::vector<T> components;
-
+		std::map<uint64_t, T*> components;
+		
 
 
 	};
-
+	
 	//specialization for certain components
-	template <>
-	void ComponentManager<Empaerior::Print_Component>::update(Empaerior::Print_Component* component)
-	{
-		std::cout << component->message << '\n';
-	}
 
 
 }

@@ -14,7 +14,7 @@ namespace Empaerior
 	};
 
 	
-	class Print_Component : public Component
+	class Print_Component 
 	{
 	
 	public:

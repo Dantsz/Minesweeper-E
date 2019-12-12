@@ -18,10 +18,7 @@ State::State()
 	
 
 
-	morge = new Empaerior::Entity();
-	auto comp = new Empaerior::Print_Component();
 
-	morge->components.push_back(std::move(comp));
 
 
 
@@ -34,7 +31,7 @@ State::State()
 void State::Update(const unsigned int& dt)
 {
 	
-	printer.update(morge->components[0]);
+
 
 }
 
