@@ -7,7 +7,8 @@
 #endif
 
 #include <crtdbg.h>
-#include <iostream>
+
+
 #include <fstream>
 #include <sstream>
 
@@ -95,7 +96,7 @@ int main(int argc, char** argv)
 	Uint32 currentime = 0;
 	Uint32 acumulator = 0;
 
-
+	
 	
 
 
@@ -140,18 +141,18 @@ int main(int argc, char** argv)
 
 
 				}
-				//I use this to test for leaks//
+				
 
 				//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
-				Empaerior::Sprite* norge = new Empaerior::Sprite({ 0,0,100,100 }, { 0,0100,100 }, "assets/img.png", 1);
+			
 
 
 				Empaerior::Game::window.clear();
 				game->render();
-				norge->draw(cam);
+				
 				Empaerior::Game::window.render();
 
-				delete norge;
+				
 			}
 		
 			assetManager::clean_textures();

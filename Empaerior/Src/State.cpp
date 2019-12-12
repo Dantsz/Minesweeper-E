@@ -1,6 +1,8 @@
 #include "State.h"
 #include "Game.h"
 #include <SDL.h>
+//for testing
+#include<iostream>
 
 struct sdl_deleter
 {
@@ -14,12 +16,8 @@ State::State()
 
 {
 
-
+	//test
 	
-
-
-
-
 
 
 	auto q = assetManager::load_font("assets/font.ttf", 36);

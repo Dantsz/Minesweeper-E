@@ -1,12 +1,13 @@
 #pragma once
 #include <SDL.h>
 #include <string>
+#include <iostream>
 namespace Empaerior
 {
 	//clipboard functions
 	std::string get_clipboard_text()
 	{
-		if (SDL_HasClipboardText)//if there's text
+		if (SDL_HasClipboardText())//if there's text
 		{
 			char* sdl_text = SDL_GetClipboardText();//get the clipboard content as char*
 			std::string clip_text = sdl_text;//transfom  the char* intoa std::string
