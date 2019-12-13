@@ -4,15 +4,18 @@
 #include <algorithm>
 #include "../exceptions/Exceptions.h"
 #include<iostream>
-
+//thanks to Austin Morlan for providing a ECS template
 
 namespace Empaerior
 {
+	
 	class Entity
 	{
 	public:
 		bool active = true;
-		uint64_t id;
+		uint64_t id = 0;
+	
+	
 
 	};
 
@@ -100,5 +103,7 @@ namespace Empaerior
 		uint64_t lowest_unallocatedid = 0;
 	};
 
+
+	
 
 }

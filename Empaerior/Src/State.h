@@ -30,5 +30,5 @@ private:
 	
 
 	Empaerior::Entity morge;
-	Empaerior::ComponentCointainer<Empaerior::Print_Component> conty;
+	Empaerior::ComponentManager mangy;
 };

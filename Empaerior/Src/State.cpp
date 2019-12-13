@@ -27,14 +27,15 @@ State::State()
 	
 	
 
-	conty.add_component(morge, Empaerior::Print_Component{"merge"});
-	
-	
-	
+	mangy.add_component(morge, Empaerior::Print_Component{ "merge" });
 
-	
-	
 
+	mangy.remove_component<Empaerior::Print_Component>(morge);
+
+	mangy.add_component(morge, Empaerior::Print_Component{ "morge" });
+	std::cout << mangy.get_component<Empaerior::Print_Component>(morge).message << '\n';
+	mangy.remove_component<Empaerior::Print_Component>(morge);
+	
 	
 
 
@@ -46,7 +47,11 @@ State::State()
 
 void State::Update(const unsigned int& dt)
 {
-	
+	mangy.add_component(morge, Empaerior::Print_Component{ "merge" });
+
+
+	mangy.remove_component<Empaerior::Print_Component>(morge);
+
 	
 
 }
