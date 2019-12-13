@@ -4,7 +4,7 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 /*
-**Wraps pointers of basic sdl structs in std::unique_ptr and std::shated_ptr*/
+**Wraps pointers of basic sdl structs in std::unique_ptr and std::shared_ptr*/
 
 //default destructor for unique ptr	
 namespace std 

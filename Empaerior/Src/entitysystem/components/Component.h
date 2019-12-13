@@ -8,8 +8,6 @@ namespace Empaerior
 	
 	struct Print_Component 
 	{
-	
-	
 		std::string message = "succes";
 	};
 

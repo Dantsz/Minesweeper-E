@@ -11,7 +11,7 @@ namespace Empaerior
 	class Entity
 	{
 	public:
-		bool active;
+		bool active = true;
 		uint64_t id;
 
 	};
@@ -22,9 +22,11 @@ namespace Empaerior
 	public:
 
 
-		uint64_t add_Entity()//takes a freed or makes a new one if there's no id
+		Entity add_Entity()//takes a freed or makes a new one if there's no id
 		{
-			return get_id();
+			Entity new_ent;
+			new_ent.id = get_id();
+			return new_ent;
 		}
 
 

@@ -27,7 +27,8 @@ public:
 private:
 	std::shared_ptr<Camera> camera;
 
-	Empaerior::ComponentSystem<Empaerior::Print_Component> printer;
+	
 
-	Empaerior::Entity* morge;
+	Empaerior::Entity morge;
+	Empaerior::ComponentCointainer<Empaerior::Print_Component> conty;
 };
