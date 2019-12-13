@@ -15,9 +15,9 @@ Empaerior::Game::Game()
 	//second_state = new State();
 
 	set_state(first_state);
-	first_state->get_camera()->set_dimensions(960, 800);
+	first_state->get_camera().set_dimensions(960, 800);
 	set_state(first_state);
-	SDL_RenderSetLogicalSize(Game::window.renderer, Game::cur_state->get_camera().get()->rect.w, Game::cur_state->get_camera().get()->rect.h);
+	SDL_RenderSetLogicalSize(Game::window.renderer, Game::cur_state->get_camera().rect.w, Game::cur_state->get_camera().rect.h);
 
 
 
@@ -38,7 +38,7 @@ void Empaerior::Game::Init()
 void Empaerior::Game::set_state(State* new_state)
 {
 	cur_state = new_state;
-	SDL_RenderSetLogicalSize(Game::window.renderer, new_state->get_camera().get()->rect.w, new_state->get_camera().get()->rect.h); // set the render size to the new state's camera
+	SDL_RenderSetLogicalSize(Game::window.renderer, new_state->get_camera().rect.w, new_state->get_camera().rect.h); // set the render size to the new state's camera
 
 }
 
@@ -49,27 +49,27 @@ void Empaerior::Game::Update(const unsigned int& dt )
 	unsigned char const* keys = SDL_GetKeyboardState(nullptr);
 	if (keys[SDL_SCANCODE_UP])
 	{
-		Game::cur_state->get_camera().get()->set_dimensions(Game::cur_state->get_camera().get()->rect.w + 12, Game::cur_state->get_camera().get()->rect.h + 10);
+		Game::cur_state->get_camera().set_dimensions(Game::cur_state->get_camera().rect.w + 12, Game::cur_state->get_camera().rect.h + 10);
 	}
 	else if (keys[SDL_SCANCODE_DOWN])
 	{
-		Game::cur_state->get_camera().get()->set_dimensions(Game::cur_state->get_camera().get()->rect.w - 12, Game::cur_state->get_camera().get()->rect.h - 10);
+		Game::cur_state->get_camera().set_dimensions(Game::cur_state->get_camera().rect.w - 12, Game::cur_state->get_camera().rect.h - 10);
 	}
 	else if (keys[SDL_SCANCODE_W])
 	{
-		Game::cur_state->get_camera().get()->set_position(Game::cur_state->get_camera().get()->rect.x, Game::cur_state->get_camera().get()->rect.y - 10);
+		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x, Game::cur_state->get_camera().rect.y - 10);
 	}
 	else if (keys[SDL_SCANCODE_S])
 	{
-		Game::cur_state->get_camera().get()->set_position(Game::cur_state->get_camera().get()->rect.x , Game::cur_state->get_camera().get()->rect.y + 10);
+		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x , Game::cur_state->get_camera().rect.y + 10);
 	}
 	else if (keys[SDL_SCANCODE_A])
 	{
-		Game::cur_state->get_camera().get()->set_position(Game::cur_state->get_camera().get()->rect.x - 10, Game::cur_state->get_camera().get()->rect.y);
+		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x - 10, Game::cur_state->get_camera().rect.y);
 	}
 	else if (keys[SDL_SCANCODE_D])
 	{
-		Game::cur_state->get_camera().get()->set_position(Game::cur_state->get_camera().get()->rect.x + 10, Game::cur_state->get_camera().get()->rect.y);
+		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x + 10, Game::cur_state->get_camera().rect.y);
 	}
 	else if (keys[SDL_SCANCODE_RIGHT])
 	{

@@ -1,4 +1,4 @@
-
+ 
 #ifdef _DEBUG   
 #ifndef DBG_NEW      
 #define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     
@@ -86,9 +86,9 @@ int main(int argc, char** argv)
 	
 	SDL_Event event;
 	
-	Empaerior::Game* game = new Empaerior::Game();
+	Empaerior::Game game;
 	
-	game->Init();
+	game.Init();
 
 
 	Uint32 framestart = 0;
@@ -113,7 +113,7 @@ int main(int argc, char** argv)
 			//not a permanent solution to handle events
 			while (SDL_PollEvent(&event)) {
 
-				game->handlevents(event);
+				game.handlevents(event);
 				
 			}
 			if (!Empaerior::Game::is_paused)
@@ -134,7 +134,7 @@ int main(int argc, char** argv)
 				{
 					//update 
 
-					game->Update(Empaerior::Game::dt);
+					game.Update(Empaerior::Game::dt);
 					
 					acumulator -= Empaerior::Game::dt;
 
@@ -148,7 +148,7 @@ int main(int argc, char** argv)
 
 
 				Empaerior::Game::window.clear();
-				game->render();
+				game.render();
 				
 				Empaerior::Game::window.render();
 
@@ -175,6 +175,6 @@ int main(int argc, char** argv)
 	_CrtDumpMemoryLeaks();
 
 	SDL::Quit();
-	delete game;
+	
 	return 0;
 }
