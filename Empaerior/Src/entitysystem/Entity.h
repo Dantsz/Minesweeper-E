@@ -12,6 +12,7 @@ namespace Empaerior
 	class Entity
 	{
 	public:
+
 		bool active = true;
 		uint64_t id = 0;
 	
@@ -56,7 +57,7 @@ namespace Empaerior
 				//
 				//
 				//.................
-
+				entity_signature[id].clear();
 				//pushthe freed id into the queue
 
 
@@ -72,14 +73,68 @@ namespace Empaerior
 
 		}
 
+		//setsa the signature
+		void set_signature(const uint64_t& id, const std::vector<bool>& signature)
+		{
+			try
+			{
+				if (id > lowest_unallocatedid)
+				{
+					throw E_runtime_exception("Cannot set id signature  : id doesn't exist", __FILE__, __LINE__);
+
+				}
+				//if the id appears in the delted entities
+				else if (std::binary_search(freed_id.begin(), freed_id.end(), id))
+				{
+					throw E_runtime_exception("Cannot set id signature : id is not a valid entity", __FILE__, __LINE__);
+
+				}
+			}
+			catch (E_runtime_exception & e)
+			{
+				std::cout << e.what() << '\n';
+			}
+
+			entity_signature[id] = signature;
+		}
+
+		//gets the signature
+		std::vector<bool> get_signature(const uint64_t& id)
+		{
+
+			try
+			{
+				if (id > lowest_unallocatedid)
+				{
+					throw E_runtime_exception("Cannot fetch entity signature : id doesn't exist", __FILE__, __LINE__);
+
+				}
+				//if the id appears in the delted entities
+				else if (std::binary_search(freed_id.begin(), freed_id.end(), id))
+				{
+					throw E_runtime_exception("Cannot fetch entity signature : id is not a valid entity", __FILE__, __LINE__);
+
+				}
+			}
+			catch (E_runtime_exception & e)
+			{
+				std::cout << e.what() << '\n';
+			}
+			return entity_signature[id];
+
+		}
+
+
 		//gets an id that is not used
 		uint64_t get_id()
 		{
-			//if there isn't any idin the queue,create a new one
+			//if there isn't any idin the queue,create a new one and a new entry in the signature list
 			if (freed_id.empty())
 			{
 
+				entity_signature.emplace_back(std::vector<bool>());
 				return lowest_unallocatedid++;
+
 
 			}
 			else
@@ -98,6 +153,8 @@ namespace Empaerior
 		//ids that had once an entity but now are 
 		std::vector<uint64_t> freed_id;
 
+		//stores the signature of an entity with the id as key
+		std::vector<std::vector<bool>> entity_signature;
 
 		//the lowest unallocated id that has not interacted with
 		uint64_t lowest_unallocatedid = 0;

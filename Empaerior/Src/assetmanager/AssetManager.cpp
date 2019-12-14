@@ -78,9 +78,9 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 		{
 
 			//create font ( and font) map and put in the font
-			Fonts.insert({ font_path,std::move(std::map<int,std::unique_ptr<TTF_Font>>()) });
+			Fonts.insert({ font_path,std::move(std::unordered_map<int,std::unique_ptr<TTF_Font>>()) });
 
-
+			
 			SDL_RWops* rwop = SDL_RWFromFile(font_path.c_str(), "rb");
 			if (rwop == nullptr) // if the file doesn't exists throws exception
 			{

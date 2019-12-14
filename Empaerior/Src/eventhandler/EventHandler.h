@@ -23,7 +23,7 @@ namespace Empaerior {
 		void handleEvents(const SDL_Event& cur_event); //execute commands
 		
 	private:
-		std::map<Uint32, std::vector<EventCallback>> _registeredCallbacks;//type of the event and function
+		std::unordered_map<Uint32, std::vector<EventCallback>> _registeredCallbacks;//type of the event and function
 	};
 }
 
