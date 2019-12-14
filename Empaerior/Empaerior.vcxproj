@@ -139,6 +139,7 @@
     <ClInclude Include="src\entitysystem\Entity.h" />
     <ClInclude Include="src\entitysystem\components\Component.h" />
     <ClInclude Include="src\entitysystem\components\ComponentManager.h" />
+    <ClInclude Include="src\entitysystem\system\system.h" />
     <ClInclude Include="src\eventhandler\EventHandler.h" />
     <ClInclude Include="src\exceptions\Exceptions.h" />
     <ClInclude Include="src\graphics\glyphs\Glyphs.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\assetmanager\AssetManager.cpp" />
+    <ClCompile Include="src\entitysystem\system\system.cpp" />
     <ClCompile Include="src\eventhandler\EventHandler.cpp" />
     <ClCompile Include="src\graphics\glyphs\Glyphs.cpp" />
     <ClCompile Include="src\graphics\rendering\Camera.cpp" />

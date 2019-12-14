@@ -59,7 +59,7 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 		{
 
 			//if found 
-			return tex->second;
+			return std::move(tex->second);
 
 		}
 	

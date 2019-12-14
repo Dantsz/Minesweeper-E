@@ -13,6 +13,9 @@
     <Filter Include="entitysystem\components">
       <UniqueIdentifier>{DCDDAB8B-4815-F422-511F-5846BDD51A1C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="entitysystem\system">
+      <UniqueIdentifier>{5BA0C71D-C701-A52B-506F-EBDDBCCFDBEA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="eventhandler">
       <UniqueIdentifier>{C5B7C604-B11A-56A9-5AA0-8E5F46E2212C}</UniqueIdentifier>
     </Filter>
@@ -56,6 +59,9 @@
     <ClInclude Include="src\entitysystem\components\ComponentManager.h">
       <Filter>entitysystem\components</Filter>
     </ClInclude>
+    <ClInclude Include="src\entitysystem\system\system.h">
+      <Filter>entitysystem\system</Filter>
+    </ClInclude>
     <ClInclude Include="src\eventhandler\EventHandler.h">
       <Filter>eventhandler</Filter>
     </ClInclude>
@@ -86,6 +92,9 @@
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\assetmanager\AssetManager.cpp">
       <Filter>assetmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entitysystem\system\system.cpp">
+      <Filter>entitysystem\system</Filter>
     </ClCompile>
     <ClCompile Include="src\eventhandler\EventHandler.cpp">
       <Filter>eventhandler</Filter>

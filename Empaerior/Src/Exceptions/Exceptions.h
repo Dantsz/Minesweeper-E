@@ -11,7 +11,7 @@ public:
 
 	E_runtime_exception(const std::string& what, const std::string& file, const int& line)
 	{
-		message = "Exception: " + file + " at line " + std::to_string(line) +  ":" + what ;
+		message = "Exception: " + what + " in " + file + " at line " + std::to_string(line);
 	}
 	
 	const char* what() const noexcept override {
