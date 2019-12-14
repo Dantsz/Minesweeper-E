@@ -98,6 +98,7 @@ namespace Empaerior
 				//if the entity doesn't have this type of component throw exception
 				if (componenttoentity.find(entity.id) == componenttoentity.end())
 				{
+					//I don't know why it's giving a warning, oly here
 					E_runtime_exception("Cannot delete component: the entity doesn't have this type of component", __FILE__, __LINE__);
 				}
 				
@@ -155,10 +156,43 @@ namespace Empaerior
 	};
 	
 
-	//buck fitsets//
+	
 	//handles all components
 	class ComponentManager {
 	public:
+		//register a component
+		//Note: add_component already registers a coponentthat has not been use before
+		//this function is not really useful at this point
+		template<typename T>
+		void register_component()
+		{
+			try {
+				const char* componentid = typeid(T).name();
+				//and it does what it looks it should do
+
+				//check if the container type is registered
+				if (component_type.find(componentid) == component_type.end())
+				{
+					//if the type of the container is not registered ,register it
+					component_type.insert({ componentid,top_component_type++ });
+
+					component_containers.insert({ componentid,std::make_shared<ComponentContainer<T>>() });
+
+				}
+				else
+				{
+					throw E_runtime_exception("Component already registered", __FILE__, __LINE__);
+				}
+			}
+			catch (E_runtime_exception & e)
+			{
+				std::cout << e.what() << '\n';
+			}
+
+		}
+
+
+
 		template <typename T>
 		void add_component(const Entity& entity, T& component)
 		{

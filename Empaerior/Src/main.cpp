@@ -44,7 +44,7 @@ Empaerior::Window Empaerior::Game::window;
 
 #pragma endregion
 
-Empaerior::Game* game;
+
 
 
 int main(int argc, char** argv)
@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 	#pragma endregion
 
 
-	Camera cam = { 0,0,100,100 };
+
 	
 	SDL_Event event;
 	

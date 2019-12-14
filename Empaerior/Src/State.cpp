@@ -36,7 +36,7 @@ State::State()
 	std::cout << mangy.get_component<Empaerior::Print_Component>(morge).message << '\n';
 	mangy.remove_component<Empaerior::Print_Component>(morge);
 	
-	
+	mangy.register_component<Empaerior::Print_Component>();
 
 
 	auto q = assetManager::load_font("assets/font.ttf", 36);
