@@ -3,6 +3,7 @@
 #include <SDL.h>
 //for testing
 #include<iostream>
+
 #include "utilities/Timer.h"
 
 struct sdl_deleter
@@ -18,28 +19,26 @@ State::State()
 {
 
 	//test
-	Empaerior::EnityManager manager;
+	
 	Empaerior::Timer timy;
 
+	ecs.Init();
+	ecs.register_component<Empaerior::Print_Component>();
+    printy = ecs.register_system<Print_System>();
+
+	std::vector<bool> signature;
+	auto q = ecs.get_component_id<Empaerior::Print_Component>();
+	while (signature.size() <= q)
+	{
+		signature.emplace_back(0);
+	}
+	signature[q] = 1;
+	ecs.set_system_signature<Print_System>(signature);
+
+	morge.id  = ecs.create_entity_ID();
+	ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{"morge"});
+
 	
-	
-	morge = manager.add_Entity();
-	
-	
-
-	mangy.add_component(morge, Empaerior::Print_Component{ "merge" });
-
-
-	mangy.remove_component<Empaerior::Print_Component>(morge);
-
-	mangy.add_component(morge, Empaerior::Print_Component{ "morge" });
-	std::cout << mangy.get_component<Empaerior::Print_Component>(morge).message << '\n';
-	mangy.remove_component<Empaerior::Print_Component>(morge);
-	
-	mangy.register_component<Empaerior::Print_Component>();
-
-
-	auto q = assetManager::load_font("assets/font.ttf", 36);
 	camera = Camera(0,0, Empaerior::Game::window.get_width(), Empaerior::Game::window.get_heigth());
 
 
@@ -47,10 +46,10 @@ State::State()
 
 void State::Update(const unsigned int& dt)
 {
-	mangy.add_component(morge, Empaerior::Print_Component{ "merge" });
+	
 
-
-	mangy.remove_component<Empaerior::Print_Component>(morge);
+	printy->update(ecs);
+	
 
 	
 
@@ -63,7 +62,7 @@ void State::Render()
 
 	if(norge != nullptr) norge->draw(Empaerior::Game::cur_state->camera);
 }
-
+	
 void State::set_camera(const SDL_Rect& rect) 
 {
 	camera.set_dimensions(rect.w,rect.h);

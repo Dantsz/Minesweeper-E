@@ -16,6 +16,9 @@
     <Filter Include="entitysystem\system">
       <UniqueIdentifier>{5BA0C71D-C701-A52B-506F-EBDDBCCFDBEA}</UniqueIdentifier>
     </Filter>
+    <Filter Include="entitysystem\system\systems">
+      <UniqueIdentifier>{82B9C53A-EEC6-F320-77AD-EF0BE3B9BFD7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="eventhandler">
       <UniqueIdentifier>{C5B7C604-B11A-56A9-5AA0-8E5F46E2212C}</UniqueIdentifier>
     </Filter>
@@ -50,6 +53,9 @@
     <ClInclude Include="src\assetmanager\AssetManager.h">
       <Filter>assetmanager</Filter>
     </ClInclude>
+    <ClInclude Include="src\entitysystem\ECS.h">
+      <Filter>entitysystem</Filter>
+    </ClInclude>
     <ClInclude Include="src\entitysystem\Entity.h">
       <Filter>entitysystem</Filter>
     </ClInclude>
@@ -61,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="src\entitysystem\system\system.h">
       <Filter>entitysystem\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entitysystem\system\systems\print_system.h">
+      <Filter>entitysystem\system\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\eventhandler\EventHandler.h">
       <Filter>eventhandler</Filter>

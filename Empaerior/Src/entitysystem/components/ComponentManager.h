@@ -16,7 +16,7 @@ namespace Empaerior
 	{
 	public:
 		virtual ~VContainer() {};
-		virtual void EntityDestroyed(Entity entity) {};
+		virtual void EntityDestroyed(uint64_t entity_id) {};
 	};
 
 
@@ -28,11 +28,11 @@ namespace Empaerior
 		virtual ~ComponentContainer() {};
 
 		//update a specific component
-		void add_component(const Entity& entity,T component)
+		void add_component(const uint64_t& entity_id,T component)
 		{
 			try {
 				//if the entity does have this type of component throw exception
-				if (componenttoentity.find(entity.id) != componenttoentity.end())
+				if (componenttoentity.find(entity_id) != componenttoentity.end())
 				{
 					throw E_runtime_exception("Cannot add component: the entity already has this type of component",__FILE__,__LINE__);
 				}
@@ -43,15 +43,15 @@ namespace Empaerior
 				if (free_index.empty())
 				{
 					components.push_back(component);
-					entitytocomponent[entity.id] = components.size() - 1;
-					componenttoentity[components.size() - 1] = entity.id;
+					entitytocomponent[entity_id] = components.size() - 1;
+					componenttoentity[components.size() - 1] = entity_id;
 
 				}
 				else//just take an unused component
 				{
 					components[free_index.front()] = component;
-					entitytocomponent[entity.id] = free_index.front();
-					componenttoentity[free_index.front()] = entity.id;
+					entitytocomponent[entity_id] = free_index.front();
+					componenttoentity[free_index.front()] = entity_id;
 					free_index.pop();
 
 
@@ -67,18 +67,18 @@ namespace Empaerior
 
 		}
 
-		T& get_component(const Entity& entity)
+		T& get_component(const uint64_t& entity_id)
 		{
 
 			try
 			{
-				if (entitytocomponent.find(entity.id) == entitytocomponent.end())
+				if (entitytocomponent.find(entity_id) == entitytocomponent.end())
 				{
 					throw E_runtime_exception("Cannot get component : entity own the specified type of component ", __FILE__, __LINE__);
 				}
 				
 				
-				return components[entitytocomponent[entity.id]];
+				return components[entitytocomponent[entity_id]];
 
 
 			}
@@ -194,10 +194,10 @@ namespace Empaerior
 
 
 		template <typename T>
-		void add_component(const Entity& entity, T& component)
+		void add_component(const uint64_t& entity_id, T& component)
 		{
 		   
-			get_container<T>()->add_component(entity,std::move(component));
+			get_container<T>()->add_component(entity_id,std::move(component));
 	
 		}
 		template <typename T>
@@ -208,18 +208,42 @@ namespace Empaerior
 
 		}
 		template<typename T>
-		T& get_component(const Entity& entity)
+		T& get_component(const uint64_t& entity_id)
 		{
-			return get_container<T>()->get_component(entity);
+			return get_container<T>()->get_component(entity_id);
 		}
 
+		//gets the id of a component in the manager
+		template <typename T>
+		uint64_t get_component_id()
+		{
+			const char* component_name = typeid(T).name();
+			try
+			{
+				if (component_type.find(component_name) == component_type.end())
+				{
+					throw E_runtime_exception("Cannot fetch component id : invalid component", __FILE__, __LINE__);
+				}
+				return component_type[component_name];
+
+			}
+			catch (E_runtime_exception& e)
+			{
+				std::cout << e.what() << '\n';
+				return -1;
+			}
+
+
+		}
+
+
 		//iterate throught all components of the entity and delete them
-		void OnEntityDestroyed(const Entity& entity)
+		void OnEntityDestroyed(const uint64_t& entity_id)
 		{
 			for (auto const& i : component_containers)
 			{
 				auto const& component = i.second;
-				component->EntityDestroyed(entity);
+				component->EntityDestroyed(entity_id);
 			}
 
 		}

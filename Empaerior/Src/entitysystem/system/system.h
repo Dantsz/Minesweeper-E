@@ -6,6 +6,8 @@ namespace Empaerior {
 	//Thanks to 
 	//"A system is any functionality that iterates upon a list of entities with a certain signature of components."
 	//
+
+
 	class System
 	{
 	public:
@@ -13,6 +15,10 @@ namespace Empaerior {
 		std::set<uint64_t> entities_id;
 
 	};
+
+	
+
+
 
 	class SystemManager
 	{
@@ -39,6 +45,7 @@ namespace Empaerior {
 			catch (E_runtime_exception & e)
 			{
 				std::cout << e.what() << '\n';
+				return nullptr;
 			}
 			
 
@@ -69,30 +76,30 @@ namespace Empaerior {
 		}
 
 		//erase entity from all systems
-		void OnEntityDestroy(Entity& entity)
+		void OnEntityDestroy(const uint64_t& entity_id)
 		{
 			for (auto const& it : typetosystem)
 			{
-				it.second->entities_id.erase(entity.id);
+				it.second->entities_id.erase(entity_id);
 			}
 
 		}
 
 		// Notify each system that an entity's signature changed
-		void OnEntitySignatureChange(Entity& entity,std::vector<bool>& signature)
+		void OnEntitySignatureChange(const uint64_t& entity_id,std::vector<bool>& signature)
 		{
 			for (auto const& it : typetosystem)
 			{
 				auto const& type = it.first;
 				auto const& system = it.second;
 				auto const& systemSignature = typetosignature[type];
-				if (compare_signatures(signature,systemSignature))
+				if (compare_entity_to_system(signature,systemSignature))
 				{
-					system->entities_id.insert(entity.id);
+					system->entities_id.insert(entity_id);
 				}
 				else
 				{
-					system->entities_id.erase(entity.id);
+					system->entities_id.erase(entity_id);
 				}
 
 			}
@@ -106,6 +113,22 @@ namespace Empaerior {
 			for (int i = 0; i < signature1.size(); i++)
 			{
 				if (signature1[i] & signature2[i]) return false;
+			}
+			return true;
+		}
+		//compares the signature of an entity to a specific system
+		bool compare_entity_to_system(const std::vector<bool>& entity_s , const std::vector<bool> system_s)
+		{
+
+			///if the system signature doesn't match the entity
+			if (system_s.size() > entity_s.size()) return false;
+
+
+			//if a signature has a system but the tntity does not 
+			//return false
+			for (int i = 0; i < system_s.size(); i++)
+			{
+				if (system_s[i] && !entity_s[i]) return false;
 			}
 			return true;
 		}

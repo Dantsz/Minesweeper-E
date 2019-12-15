@@ -4,11 +4,9 @@
 #include "graphics/rendering/Camera.h"
 
 //entity tests
-#include "entitysystem/Entity.h"
 
-#include "entitysystem/components/ComponentManager.h"
-#include "entitysystem/components/Component.h"
-
+#include "entitysystem/ECS.h"
+#include "entitysystem/system/systems/print_system.h"
 /*
 	A state of the game engine.
 */
@@ -26,8 +24,8 @@ public:
 	Empaerior::Text_Sprite* norge;
 private:
 	Camera camera;
-
-	
+	Empaerior::ECS ecs;
+	std::shared_ptr<Print_System> printy;
 
 	Empaerior::Entity morge;
 	Empaerior::ComponentManager mangy;

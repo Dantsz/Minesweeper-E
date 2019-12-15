@@ -11,6 +11,12 @@ namespace Empaerior
 		std::string message = "succes";
 	};
 
+	struct Position_Component
+	{
+		int x;
+		int y;
+	};
+
 
 
 }

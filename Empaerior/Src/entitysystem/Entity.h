@@ -26,11 +26,10 @@ namespace Empaerior
 	public:
 
 
-		Entity add_Entity()//takes a freed or makes a new one if there's no id
+		uint64_t add_Entity()//takes a freed or makes a new one if there's no id
 		{
-			Entity new_ent;
-			new_ent.id = get_id();
-			return new_ent;
+			
+			return get_id();
 		}
 
 
