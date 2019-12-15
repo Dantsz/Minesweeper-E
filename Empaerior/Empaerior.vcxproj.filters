@@ -102,9 +102,6 @@
     <ClCompile Include="src\assetmanager\AssetManager.cpp">
       <Filter>assetmanager</Filter>
     </ClCompile>
-    <ClCompile Include="src\entitysystem\system\system.cpp">
-      <Filter>entitysystem\system</Filter>
-    </ClCompile>
     <ClCompile Include="src\eventhandler\EventHandler.cpp">
       <Filter>eventhandler</Filter>
     </ClCompile>

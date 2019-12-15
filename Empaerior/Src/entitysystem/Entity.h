@@ -9,15 +9,14 @@
 namespace Empaerior
 {
 	
+	//I could probably get away with just havind an id as an entity,but I prefer this way, consider I might need to add something else here someday
 	class Entity
 	{
 	public:
 
-		bool active = true;
+	
 		uint64_t id = 0;
 	
-	
-
 	};
 
 
@@ -25,8 +24,8 @@ namespace Empaerior
 	{
 	public:
 
-
-		uint64_t add_Entity()//takes a freed or makes a new one if there's no id
+		//takes a freed or makes a new one if there's no id
+		uint64_t add_Entity()
 		{
 			
 			return get_id();
@@ -49,16 +48,12 @@ namespace Empaerior
 				
 				}
 
-
-
-
 				//***delete entity's component's (not implemented yet) ***//
 				//
 				//
 				//.................
 				entity_signature[id].clear();
-				//pushthe freed id into the queue
-
+				//push the freed id into the queue
 
 				freed_id.push_back(id);
 				//the vector is always sorted in order to check if id apears in it using binary search

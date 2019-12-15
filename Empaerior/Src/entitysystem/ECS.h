@@ -3,6 +3,9 @@
 #include "components/ComponentManager.h"
 #include "system/system.h"
 
+
+/*The ECS is heaviley isnpired by AUSTIN MORLAN's implementation , but it has a bit more functionality and ease of use. It's a bit more loose than his*/
+
 namespace Empaerior
 {
 	class ECS

@@ -16,7 +16,7 @@ namespace Empaerior
 	{
 	public:
 		virtual ~VContainer() {};
-		virtual void EntityDestroyed(uint64_t entity_id) {};
+		virtual void OnEntityDestroyed(const uint64_t& entity_id) noexcept {};
 	};
 
 
@@ -91,19 +91,19 @@ namespace Empaerior
 		}
 
 		
-		void remove_component(const Entity& entity)
+		void remove_component(const uint64_t& entity_id)
 		{
 			try
 			{
 				//if the entity doesn't have this type of component throw exception
-				if (componenttoentity.find(entity.id) == componenttoentity.end())
+				if (componenttoentity.find(entity_id) == componenttoentity.end())
 				{
 					//I don't know why it's giving a warning, oly here
 					E_runtime_exception("Cannot delete component: the entity doesn't have this type of component", __FILE__, __LINE__);
 				}
 				
 				//get the index of the removed entity
-				uint64_t removed_index = entitytocomponent[entity.id];
+				uint64_t removed_index = entitytocomponent[entity_id];
 
 
 				//add the id to the list of unused ids
@@ -112,7 +112,7 @@ namespace Empaerior
 
 
 				//delete the entity from the registries
-				entitytocomponent.erase(entity.id);
+				entitytocomponent.erase(entity_id);
 				componenttoentity.erase(removed_index);
 
 				//the data is still there until is overwritten by a new component
@@ -126,10 +126,10 @@ namespace Empaerior
 		}
 
 		//deletes the 
-		void OnEntityDestroy(Entity& entity) noexcept //this function never throws exception because not finding the component of the entity is  intended
+		void OnEntityDestroyed(const uint64_t& entity_id)  noexcept  override//this function never throws exception because not finding the component of the entity is  intended
 		{
 			//there is already an exception to point if something happenes
-			remove_component(entity);
+			remove_component(entity_id);
 			//add more relevant code
 
 		}
@@ -243,7 +243,7 @@ namespace Empaerior
 			for (auto const& i : component_containers)
 			{
 				auto const& component = i.second;
-				component->EntityDestroyed(entity_id);
+				component->OnEntityDestroyed(entity_id);
 			}
 
 		}

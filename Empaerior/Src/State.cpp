@@ -3,7 +3,7 @@
 #include <SDL.h>
 //for testing
 #include<iostream>
-
+#include <string>
 #include "utilities/Timer.h"
 
 struct sdl_deleter
@@ -17,21 +17,31 @@ struct sdl_deleter
 State::State()
 
 {
-
-	//test
-	
 	Empaerior::Timer timy;
-
 	ecs.Init();
 	ecs.register_component<Empaerior::Print_Component>();
-    printy = ecs.register_system<Print_System>();
+	printy = ecs.register_system<Print_System>();
 	ecs.add_component_to_system<Empaerior::Print_Component, Print_System>();
 
-
-	morge.id  = ecs.create_entity_ID();
-	ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{"morge"});
+	//test
 
 	
+	for (int i = 0; i < 6996; i++)
+	{
+		morge.id = ecs.create_entity_ID();
+		ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ std::to_string(i) });
+		//printy->update(ecs);
+		
+
+		ecs.destroy_entity(morge.id);
+
+	}
+	
+	
+
+	
+	
+
 	camera = Camera(0,0, Empaerior::Game::window.get_width(), Empaerior::Game::window.get_heigth());
 
 
@@ -41,7 +51,7 @@ void State::Update(const unsigned int& dt)
 {
 	
 
-	printy->update(ecs);
+
 	
 
 	
