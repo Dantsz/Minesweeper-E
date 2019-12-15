@@ -31,7 +31,12 @@ State::State()
 		morge.id = ecs.create_entity_ID();
 		ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ std::to_string(i) });
 		//printy->update(ecs);
-		
+		auto k = ecs.get_entity_signature(morge.id);
+		for (auto i : k)
+		{
+			std::cout << i << ' ';
+		}
+		std::cout << '\n';
 
 		ecs.destroy_entity(morge.id);
 

@@ -29,8 +29,17 @@ namespace Empaerior
 			entity_manager->delete_entity(id);
 			component_manager->OnEntityDestroyed(id);
 			system_manager->OnEntityDestroy(id);
+			
 
 		}
+		//get entity signature
+		std::vector<bool> get_entity_signature(const uint64_t& entity_id)
+		{
+			return entity_manager->get_signature(entity_id);
+		}
+
+
+
 
 		template<typename T>
 		void register_component()
