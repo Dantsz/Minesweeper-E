@@ -75,6 +75,7 @@ namespace Empaerior {
 			}
 		}
 
+		//gets signature of a system
 		template <typename T>
 		std::vector<bool> get_system_signature()
 		{
@@ -85,7 +86,7 @@ namespace Empaerior {
 				//if the system is not found  //throw
 				if (typetosystem.find(system_type) == typetosystem.end())
 				{
-					throw E_runtime_exception("Unable to set the signature: system does not exist.", __FILE__, __LINE__);
+					throw E_runtime_exception("Unable to fetch the signature: system does not exist.", __FILE__, __LINE__);
 				}
 
 				return typetosignature[system_type];
@@ -94,6 +95,7 @@ namespace Empaerior {
 			}
 			catch (E_runtime_exception & e)
 			{
+				//returns an empty signature
 				std::cout << e.what() << '\n';
 				return {};
 			}

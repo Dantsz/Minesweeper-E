@@ -78,37 +78,45 @@ namespace Empaerior
 			return component_manager->get_component_id<T>();
 		}
 
+
 		template <typename T>
 		std::shared_ptr<T> register_system()
 		{
 			return system_manager->register_system<T>();
 		}
 
-
+		//sets the signature of T
 		template <typename T>
 		void set_system_signature(std::vector<bool>& signature)
 		{
 			system_manager->set_signature<T>(signature);
 		}
 
+		//gets the signature of T
 		template <typename T>
 		std::vector<bool> get_system_signature()
 		{
 			return system_manager->get_system_signature<T>();
 		}
 
+		//add the component <comp> to the system <sys>
+		//this can be done without template, but it's good as is now
 		template<typename comp , typename sys>
 		void add_component_to_system()
 		{
-
+			//get the current signature of sys
 			std::vector<bool> signature = get_system_signature<sys>();
+
+			//get the id of the component
 			uint64_t component_id = get_component_id<comp>();
+			//modify the signature to fit the new component
 			while (signature.size() <= component_id)
 			{
 				signature.emplace_back(0);
 			}
-
+			//mark the component as being a part of the system
 			signature[component_id] = 1;
+			//set the new signature
 			set_system_signature<sys>(signature);
 
 		}
