@@ -75,6 +75,33 @@ namespace Empaerior {
 			}
 		}
 
+		template <typename T>
+		std::vector<bool> get_system_signature()
+		{
+
+			const char* system_type = typeid(T).name();
+			try
+			{
+				//if the system is not found  //throw
+				if (typetosystem.find(system_type) == typetosystem.end())
+				{
+					throw E_runtime_exception("Unable to set the signature: system does not exist.", __FILE__, __LINE__);
+				}
+
+				return typetosignature[system_type];
+
+
+			}
+			catch (E_runtime_exception & e)
+			{
+				std::cout << e.what() << '\n';
+				return {};
+			}
+
+
+		}
+
+
 		//erase entity from all systems
 		void OnEntityDestroy(const uint64_t& entity_id)
 		{

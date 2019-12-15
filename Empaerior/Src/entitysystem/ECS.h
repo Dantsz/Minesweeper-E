@@ -59,8 +59,8 @@ namespace Empaerior
 		template <typename T>
 		void remove_component(const uint64_t& entity_id)
 		{
-			component_manager->remove_component<T>(entity_id);\
-			std::vector<bool> e_signature = entity_manager->get_signature(entity_id);
+			component_manager->remove_component<T>(entity_id); \
+				std::vector<bool> e_signature = entity_manager->get_signature(entity_id);
 			uint64_t component_type = component_manager->get_component_id<T>();
 			e_signature[component_type] = 0;
 			system_manager->OnEntitySignatureChange(entity_id, e_signature);
@@ -84,13 +84,34 @@ namespace Empaerior
 			return system_manager->register_system<T>();
 		}
 
+
 		template <typename T>
 		void set_system_signature(std::vector<bool>& signature)
 		{
 			system_manager->set_signature<T>(signature);
 		}
 
+		template <typename T>
+		std::vector<bool> get_system_signature()
+		{
+			return system_manager->get_system_signature<T>();
+		}
 
+		template<typename comp , typename sys>
+		void add_component_to_system()
+		{
+
+			std::vector<bool> signature = get_system_signature<sys>();
+			uint64_t component_id = get_component_id<comp>();
+			while (signature.size() <= component_id)
+			{
+				signature.emplace_back(0);
+			}
+
+			signature[component_id] = 1;
+			set_system_signature<sys>(signature);
+
+		}
 
 
 
