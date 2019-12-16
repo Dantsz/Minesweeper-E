@@ -84,7 +84,7 @@ namespace Empaerior
 			}
 			catch (E_runtime_exception & e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
 				throw;
 			}
 
@@ -119,7 +119,7 @@ namespace Empaerior
 			}
 			catch (E_runtime_exception & e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
 			}
 
 
@@ -186,7 +186,7 @@ namespace Empaerior
 			}
 			catch (E_runtime_exception & e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
 			}
 
 		}
@@ -229,7 +229,7 @@ namespace Empaerior
 			}
 			catch (E_runtime_exception& e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
 				return -1;
 			}
 

@@ -46,9 +46,9 @@ std::shared_ptr<SDL_Texture> assetManager::load_texture(const std::string& tex_p
 
 
 			}
-			catch (const E_runtime_exception & e) {
+			catch (E_runtime_exception & e) {
 					// do stuff with exception... 
-				    std::cout << e.what() << '\n';
+					e.print_message();
 					//return a nullpointer
 					return nullptr;
 			}
@@ -132,9 +132,9 @@ TTF_Font* assetManager::load_font(const std::string& font_path,const int& size)
 
 		}
 	}
-	catch (const E_runtime_exception & e) {
+	catch (E_runtime_exception & e) {
 		// do stuff with exception... 
-		std::cout << e.what() << '\n';
+		e.print_message();
 		//return a nullpointer
 		return nullptr;
 	}
@@ -167,9 +167,9 @@ void assetManager::play_sound(const std::string& sound_path)
 			Mix_PlayChannel(-1, &(*sound->second), 0);
 		}
 	}
-	catch (const E_runtime_exception & e) {
+	catch (E_runtime_exception & e) {
 		// do stuff with exception... 
-		std::cout << e.what() << '\n';
+		e.print_message();
 	}
 }
 

@@ -25,9 +25,9 @@ namespace Empaerior
 				throw E_runtime_exception("Cannot copy text to clipboard", __FILE__, __LINE__);
 			}
 		}
-		catch (const E_runtime_exception & e) {
+		catch (E_runtime_exception & e) {
 
-			std::cout << e.what() << '\n';
+			e.print_message();
 			return;
 		}
 	}

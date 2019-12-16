@@ -75,7 +75,7 @@ int main(int argc, char** argv)
 	}
 	catch (E_runtime_exception & e)
 	{
-		std::cout << e.what() << '\n';
+		e.print_message();
 	}
 	
 	

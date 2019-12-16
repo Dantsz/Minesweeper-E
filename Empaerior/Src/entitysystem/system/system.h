@@ -44,7 +44,7 @@ namespace Empaerior {
 			}
 			catch (E_runtime_exception & e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
 				return nullptr;
 			}
 			
@@ -71,7 +71,7 @@ namespace Empaerior {
 			}
 			catch (E_runtime_exception & e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
 			}
 		}
 
@@ -96,7 +96,7 @@ namespace Empaerior {
 			catch (E_runtime_exception & e)
 			{
 				//returns an empty signature
-				std::cout << e.what() << '\n';
+				e.print_message();
 				return {};
 			}
 
