@@ -26,7 +26,7 @@ State::State()
 	//test
 
 	
-	for (int i = 0; i < 6996; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		morge.id = ecs.create_entity_ID();
 		ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ std::to_string(i) });
@@ -41,11 +41,7 @@ State::State()
 		ecs.destroy_entity(morge.id);
 
 	}
-	
-	
 
-	
-	
 
 	camera = Camera(0,0, Empaerior::Game::window.get_width(), Empaerior::Game::window.get_heigth());
 

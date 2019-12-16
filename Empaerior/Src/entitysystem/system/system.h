@@ -136,17 +136,18 @@ namespace Empaerior {
 		}
 
 		//compare the signature//return 1  if ther are equal
-		bool compare_signatures(const std::vector<bool>& signature1, const std::vector<bool>& signature2)
+		static bool compare_signatures(const std::vector<bool>& signature1, const std::vector<bool>& signature2)
 		{
 			if (signature1.size() != signature2.size()) return false;
 			for (int i = 0; i < signature1.size(); i++)
 			{
-				if (signature1[i] & signature2[i]) return false;
+				//if a signature  is missing somewhere
+				if (signature1[i] != signature2[i]) return false;
 			}
 			return true;
 		}
 		//compares the signature of an entity to a specific system
-		bool compare_entity_to_system(const std::vector<bool>& entity_s , const std::vector<bool> system_s)
+		static bool compare_entity_to_system(const std::vector<bool>& entity_s , const std::vector<bool> system_s)
 		{
 
 			///if the system signature doesn't match the entity
