@@ -157,7 +157,7 @@ int main(int argc, char** argv)
 				
 			}
 		
-			assetManager::clean_textures();
+			Empaerior::Asset_Loading::clean_textures();
 
 		}
 
@@ -170,7 +170,7 @@ int main(int argc, char** argv)
 	
 	Empaerior::Game::window.reset();
 
-	assetManager::reset_assets();
+	Empaerior::Asset_Loading::reset_assets();
 
 	
 	

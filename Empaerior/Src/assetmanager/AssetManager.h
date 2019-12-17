@@ -13,9 +13,7 @@
 
 
 
-/*Singleton class*/
-
-namespace assetManager
+namespace Empaerior::Asset_Loading
 {
 
 	//texture

@@ -10,7 +10,7 @@ extern std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> Textures;
 extern std::unordered_map<std::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
 extern std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
-namespace assetManager
+namespace Empaerior::Asset_Loading
 {
 
 	std::shared_ptr<SDL_Texture> load_texture(const std::string& tex_path)//returnsnullptr on  exception
@@ -224,14 +224,8 @@ namespace assetManager
 
 		Sounds.clear();
 	}
+	
 
-	void reset_assets()
-	{
-		assetManager::clear_textures();
-		assetManager::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
-		assetManager::clear_sounds();
-
-	}
 
 	void clear_textures()
 	{
@@ -245,4 +239,14 @@ namespace assetManager
 
 		Textures.clear();
 	}
+
+	void reset_assets()
+	{
+		Asset_Loading::clear_textures();
+		Asset_Loading::clear_fonts();//clear all fonts so TTF_Quit doesn't throw an exceptions
+		Asset_Loading::clear_sounds();
+
+	}
+
+	
 }

@@ -8,7 +8,7 @@ int createGlyphs(std::vector <glyph>& glyphs, const std::string& path ,const uns
 	char fontChar[86] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";
 	fontChar[84] = '"'; fontChar[85] = ' ';
 	SDL_Surface* tempSurface;
-	TTF_Font* font = assetManager::load_font(path, size);
+	TTF_Font* font = Empaerior::Asset_Loading::load_font(path, size);
 	if (font == nullptr)  return -1;
 	glyph temp;
 	char shortString[2] = "";

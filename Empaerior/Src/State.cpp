@@ -21,35 +21,25 @@ State::State()
 	ecs.Init();
 	ecs.register_component<Empaerior::Print_Component>();
 	ecs.register_component<Empaerior::Position_Component>();
+	ecs.register_component<Empaerior::Camera_Component>();
 	printy = ecs.register_system<Print_System>();
 	ecs.add_component_to_system<Empaerior::Print_Component, Print_System>();
 
-	//test
-	for (int i = 0; i < 4; i++)
-	{
+
 		morge.id = ecs.create_entity_ID();
 	
 
 
-		ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ "morgeee" });
-		ecs.add_component<Empaerior::Position_Component>(morge.id, Empaerior::Position_Component{ 10,10 });
+	ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ "morgeee" });
+	ecs.add_component<Empaerior::Position_Component>(morge.id, Empaerior::Position_Component{ 10,10 });
+	ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
 
 
+		
+	camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
-		printy->update(ecs);
-		auto k = ecs.get_entity_signature(morge.id);
-		for (auto i : k)
-		{
-			std::cout << i << ' ';
-		}
-		std::cout << '\n';
+	
 
-		ecs.destroy_entity(morge.id);
-
-	}
-
-
-	camera = Camera(0,0, Empaerior::Game::window.get_width(), Empaerior::Game::window.get_heigth());
 
 
 }

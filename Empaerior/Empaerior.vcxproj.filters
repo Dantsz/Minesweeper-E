@@ -68,6 +68,9 @@
     <ClInclude Include="src\entitysystem\system\system.h">
       <Filter>entitysystem\system</Filter>
     </ClInclude>
+    <ClInclude Include="src\entitysystem\system\systems\camera_system.h">
+      <Filter>entitysystem\system\systems</Filter>
+    </ClInclude>
     <ClInclude Include="src\entitysystem\system\systems\print_system.h">
       <Filter>entitysystem\system\systems</Filter>
     </ClInclude>

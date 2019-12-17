@@ -73,7 +73,7 @@ namespace Empaerior {
 
 			//load the texture
 			
-			texture = assetManager::load_texture(tex_path);
+			texture = Asset_Loading::load_texture(tex_path);
 
 		}
 		~Sprite()

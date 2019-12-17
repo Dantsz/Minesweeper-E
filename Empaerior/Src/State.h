@@ -19,11 +19,11 @@ public:
 	void Update(const unsigned int& dt);
 	void Render();//renders the state
 	void set_camera(const SDL_Rect& rect);//sets the camera to the specified sdl rect
-	Camera& get_camera() { return camera; } // return a shared pointer to the camera
+	Empaerior::Camera& get_camera() { return camera; } // return a shared pointer to the camera
 
 	Empaerior::Text_Sprite* norge;
 private:
-	Camera camera;
+	Empaerior::Camera camera;
 	Empaerior::ECS ecs;
 	std::shared_ptr<Print_System> printy;
 	
