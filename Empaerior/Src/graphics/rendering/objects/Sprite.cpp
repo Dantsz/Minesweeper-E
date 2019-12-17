@@ -1,8 +1,10 @@
+#include "pch.h"
 #include "Sprite.h"
 #include "../../../Game.h"
 #include "../../glyphs/Glyphs.h"
 #include <iostream>
 #include "../Window.h"
+
 
 void Empaerior::Sprite::draw(const Camera& camera)
 {

@@ -76,9 +76,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\SDL2\include;..\SDL2_image\include;..\SDL2_mixer\include;..\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\SDL2\include;..\SDL2_image\include;..\SDL2_mixer\include;..\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -93,10 +94,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <AdditionalIncludeDirectories>..\SDL2\include;..\SDL2_image\include;..\SDL2_mixer\include;..\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\SDL2\include;..\SDL2_image\include;..\SDL2_mixer\include;..\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -115,9 +117,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\SDL2\include;..\SDL2_image\include;..\SDL2_mixer\include;..\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\SDL2\include;..\SDL2_image\include;..\SDL2_mixer\include;..\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -136,6 +139,7 @@
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\assetmanager\AssetManager.h" />
+    <ClInclude Include="src\debugging\v_proffiler.h" />
     <ClInclude Include="src\entitysystem\ECS.h" />
     <ClInclude Include="src\entitysystem\Entity.h" />
     <ClInclude Include="src\entitysystem\components\Component.h" />
@@ -150,6 +154,7 @@
     <ClInclude Include="src\graphics\rendering\Camera.h" />
     <ClInclude Include="src\graphics\rendering\Window.h" />
     <ClInclude Include="src\graphics\rendering\objects\Sprite.h" />
+    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\utilities\Timer.h" />
     <ClInclude Include="src\utilities\Utilities.h" />
   </ItemGroup>
@@ -163,6 +168,9 @@
     <ClCompile Include="src\graphics\rendering\Window.cpp" />
     <ClCompile Include="src\graphics\rendering\objects\Sprite.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="src\utilities\Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

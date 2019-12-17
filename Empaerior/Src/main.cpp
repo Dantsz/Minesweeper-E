@@ -1,4 +1,7 @@
- 
+#include "pch.h"
+
+
+
 #ifdef _DEBUG   
 #ifndef DBG_NEW      
 #define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     
@@ -6,11 +9,6 @@
 #endif
 #endif
 
-#include <crtdbg.h>
-
-
-#include <fstream>
-#include <sstream>
 
 //
 
@@ -18,6 +16,11 @@
 
 #include "Game.h"
 
+#include <crtdbg.h>
+
+
+#include <fstream>
+#include <sstream>
 
 
 #include "exceptions/Exceptions.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 
-
+#include "../../../exceptions/Exceptions.h"
 
 #include "../../ECS.h"
 #include "../../system/system.h"
@@ -16,11 +16,37 @@ public:
 
 	//adds a new sprite to the entity
 	//doesn't need to be efficient
-	void add_sprite(Empaerior::ECS& ecs,const uint64_t& id,Empaerior::Sprite& sprite)
+	//it return the indexof the sprite just in case
+	size_t add_sprite(Empaerior::ECS& ecs,const uint64_t& id,Empaerior::Sprite& sprite)
 	{
+		#define SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).sprites
 		//search for the entity
-		 ecs.get_component<Empaerior::Sprite_Component>(id).sprites.emplace_back(sprite);
+		 SPRITES.emplace_back(sprite);
+		 return SPRITES.size() - 1;
+
+		#undef SPRITES
 	}
+
+
+	//removes the sprite at a given index
+	void remove_sprite(Empaerior::ECS& ecs, const uint64_t& id, const size_t& index)
+	{
+		#define SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).sprites
+		try
+		{
+			
+			if (index < SPRITES.size()) { SPRITES.erase(SPRITES.begin() + index); return; }
+			throw E_runtime_exception("Cannot remove sprite: invalid index", __FILE__, __LINE__);
+
+		}
+		catch (E_runtime_exception& e)
+		{
+			e.print_message();
+		}
+		#undef SPRITES
+	}
+
+
 
 
 

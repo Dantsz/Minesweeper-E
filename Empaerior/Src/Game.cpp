@@ -1,5 +1,5 @@
+#include "pch.h"
 #include "Game.h"
-
 
 #define fullscreen 0
 

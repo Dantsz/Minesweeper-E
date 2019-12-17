@@ -14,13 +14,17 @@ project "Empaerior"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "On"
+	staticruntime "on"
 	
 	
 
 	
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+	
+	pchheader "pch.h"
+	pchsource "%{prj.name}/src/pch.cpp"
+	
 	
 	files
 	{
@@ -29,9 +33,9 @@ project "Empaerior"
 	}
 	
 	
-	
 	includedirs
 	{
+	"%{prj.name}/src",
 	"SDL2/include",
 	"SDL2_image/include",
 	"SDL2_mixer/include",

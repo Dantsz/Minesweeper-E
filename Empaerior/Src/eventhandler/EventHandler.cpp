@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "EventHandler.h"
 
 void Empaerior::EventListener::register_event(Uint32 type, EventCallback callback)

@@ -7,6 +7,9 @@
     <Filter Include="assetmanager">
       <UniqueIdentifier>{A08EF851-8CF1-87F6-3577-C0AC21B95379}</UniqueIdentifier>
     </Filter>
+    <Filter Include="debugging">
+      <UniqueIdentifier>{71A3EA38-DD0D-9FAF-264C-505592F57C04}</UniqueIdentifier>
+    </Filter>
     <Filter Include="entitysystem">
       <UniqueIdentifier>{07A77B17-F309-0BBC-9C8F-437288D1D63E}</UniqueIdentifier>
     </Filter>
@@ -53,6 +56,9 @@
     <ClInclude Include="src\assetmanager\AssetManager.h">
       <Filter>assetmanager</Filter>
     </ClInclude>
+    <ClInclude Include="src\debugging\v_proffiler.h">
+      <Filter>debugging</Filter>
+    </ClInclude>
     <ClInclude Include="src\entitysystem\ECS.h">
       <Filter>entitysystem</Filter>
     </ClInclude>
@@ -95,6 +101,7 @@
     <ClInclude Include="src\graphics\rendering\objects\Sprite.h">
       <Filter>graphics\rendering\objects</Filter>
     </ClInclude>
+    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\utilities\Timer.h">
       <Filter>utilities</Filter>
     </ClInclude>
@@ -124,6 +131,7 @@
       <Filter>graphics\rendering\objects</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\utilities\Timer.cpp">
       <Filter>utilities</Filter>
     </ClCompile>
