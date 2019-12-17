@@ -22,17 +22,30 @@ State::State()
 	ecs.register_component<Empaerior::Print_Component>();
 	ecs.register_component<Empaerior::Position_Component>();
 	ecs.register_component<Empaerior::Camera_Component>();
+	ecs.register_component<Empaerior::Sprite_Component>();
+
+
 	printy = ecs.register_system<Print_System>();
+	spr_system = ecs.register_system < Sprite_System >();
+
 	ecs.add_component_to_system<Empaerior::Print_Component, Print_System>();
+	ecs.add_component_to_system<Empaerior::Sprite_Component, Sprite_System>();
 
 
-		morge.id = ecs.create_entity_ID();
+	morge.id = ecs.create_entity_ID();
 	
 
 
 	ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ "morgeee" });
 	ecs.add_component<Empaerior::Position_Component>(morge.id, Empaerior::Position_Component{ 10,10 });
 	ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
+	ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
+
+
+
+	Empaerior::Sprite norge({ 0,0,960,800 }, { 0,0,960,800 }, "assets/img.png", 1);
+
+	spr_system->add_sprite(ecs, morge.id, norge);
 
 
 		
@@ -59,8 +72,8 @@ void State::Render()
 {
 
 	
-
-	if(norge != nullptr) norge->draw(Empaerior::Game::cur_state->camera);
+	spr_system->render(ecs,camera);
+	
 }
 	
 void State::set_camera(const SDL_Rect& rect) 

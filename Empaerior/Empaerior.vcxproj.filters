@@ -74,6 +74,9 @@
     <ClInclude Include="src\entitysystem\system\systems\print_system.h">
       <Filter>entitysystem\system\systems</Filter>
     </ClInclude>
+    <ClInclude Include="src\entitysystem\system\systems\sprite_system.h">
+      <Filter>entitysystem\system\systems</Filter>
+    </ClInclude>
     <ClInclude Include="src\eventhandler\EventHandler.h">
       <Filter>eventhandler</Filter>
     </ClInclude>

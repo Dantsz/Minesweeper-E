@@ -27,7 +27,7 @@ void Empaerior::Game::Init()
 {
 	SDL_Color color = { 255,0 ,255 ,255 };
 	//second_state->norge = new Empaerior::Text_Sprite({0,0,200,200}, "assets/font.ttf", 32, "Aldo adsadshbadsh gbaytu gvasty dvastyadsvtyvdasty ilea   ",color );
-	first_state->norge = new Empaerior::Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32, "Primul morge", color);
+	
 	
 
 

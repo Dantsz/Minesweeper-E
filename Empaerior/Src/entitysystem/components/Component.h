@@ -1,7 +1,9 @@
 #pragma once
-
+#include <vector>
+#include <memory>
 #include <string>
 #include "../../graphics/rendering/Camera.h"
+#include "../../graphics/rendering/objects/Sprite.h"
 namespace Empaerior
 {
 
@@ -22,8 +24,16 @@ namespace Empaerior
 	{
 		Empaerior::Camera camera;
 	};
+	
 
-
+	/*
+	This component hold the sprites of an entity
+	 *all sprites are always updated(as of yet)
+	*/
+	struct Sprite_Component
+	{
+		std::vector<Sprite> sprites;
+	};
 
 
 }
