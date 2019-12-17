@@ -4,7 +4,6 @@
 #include <iostream>
 #include "../Window.h"
 
-
 void Empaerior::Sprite::draw(const Camera& camera)
 {
 	SDL_Rect position_rect = {rect.x - camera.rect.x,rect.y - camera.rect.y,rect.w,rect.h };

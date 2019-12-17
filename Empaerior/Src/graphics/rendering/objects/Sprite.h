@@ -72,6 +72,7 @@ namespace Empaerior {
 		{
 
 			//load the texture
+			
 			texture = assetManager::load_texture(tex_path);
 
 		}

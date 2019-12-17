@@ -20,17 +20,23 @@ State::State()
 	Empaerior::Timer timy;
 	ecs.Init();
 	ecs.register_component<Empaerior::Print_Component>();
+	ecs.register_component<Empaerior::Position_Component>();
 	printy = ecs.register_system<Print_System>();
 	ecs.add_component_to_system<Empaerior::Print_Component, Print_System>();
 
 	//test
-
-	
 	for (int i = 0; i < 4; i++)
 	{
 		morge.id = ecs.create_entity_ID();
-		ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ std::to_string(i) });
-		//printy->update(ecs);
+	
+
+
+		ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ "morgeee" });
+		ecs.add_component<Empaerior::Position_Component>(morge.id, Empaerior::Position_Component{ 10,10 });
+
+
+
+		printy->update(ecs);
 		auto k = ecs.get_entity_signature(morge.id);
 		for (auto i : k)
 		{
@@ -72,3 +78,4 @@ void State::set_camera(const SDL_Rect& rect)
 	camera.set_dimensions(rect.w,rect.h);
 	camera.set_position(rect.x, rect.y);
 }
+ 

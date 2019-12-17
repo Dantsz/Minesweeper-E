@@ -26,6 +26,8 @@ private:
 	Camera camera;
 	Empaerior::ECS ecs;
 	std::shared_ptr<Print_System> printy;
+	
+
 
 	Empaerior::Entity morge;
 	Empaerior::ComponentManager mangy;

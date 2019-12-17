@@ -13,8 +13,8 @@ namespace Empaerior
 
 	struct Position_Component
 	{
-		int x;
-		int y;
+		int x = 12;
+		int y = 10;
 	};
 
 

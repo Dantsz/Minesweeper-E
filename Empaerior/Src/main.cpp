@@ -29,10 +29,12 @@ typedef uint32_t Uint32;
 
 //static objects variables
 #pragma region static objects
-std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> assetManager::Textures;
-std::unordered_map<std::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> assetManager::Fonts;
 
-std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> assetManager::Sounds;
+
+std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> Textures;
+std::unordered_map<std::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
+std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
+
 
 /*SDL_Renderer* Game::renderer;
 SDL_Window* Game::s_window;*/

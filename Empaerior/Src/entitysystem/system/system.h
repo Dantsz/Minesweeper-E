@@ -146,7 +146,7 @@ namespace Empaerior {
 			}
 			return true;
 		}
-		//compares the signature of an entity to a specific system
+		//compares the signature of an entity to a specific system and if they are compatible , aka the entity has all the components the system needs return true
 		static bool compare_entity_to_system(const std::vector<bool>& entity_s , const std::vector<bool> system_s)
 		{
 

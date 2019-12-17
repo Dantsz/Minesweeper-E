@@ -2,6 +2,9 @@
 #include <exception>
 #include <stdexcept>
 #include <string>
+
+#include <iostream>
+
 class E_runtime_exception : public std::exception
 {
 public:
@@ -14,7 +17,13 @@ public:
 		message = "Exception: " + what + " in " + file + " at line " + std::to_string(line);
 	}
 	
-	const char* what() const noexcept override {
+	void print_message()
+	{
+		std::cout << message << '\n';
+	}
+
+	const char* what() const noexcept override 
+	{
 		return message.c_str();
 	}
 

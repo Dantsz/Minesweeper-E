@@ -15,17 +15,17 @@
 
 /*Singleton class*/
 
-class assetManager
+namespace assetManager
 {
-public:
+
 	//texture
-	static std::shared_ptr<SDL_Texture>  load_texture(const std::string& tex_path);
+	 std::shared_ptr<SDL_Texture>  load_texture(const std::string& tex_path);
 	//font
-	static TTF_Font* load_font(const std::string& font_path, const int& size);
+	 TTF_Font* load_font(const std::string& font_path, const int& size);
 
 	//sound   
-	static void play_sound(const std::string& sound_path);
-	static void set_volume(const int n_volume);
+	 void play_sound(const std::string& sound_path);
+	 void set_volume(const int n_volume);
 
 
 
@@ -33,19 +33,17 @@ public:
 
 
 	//clear ununsed
-	static void clean_textures();
+	 void clean_textures();
 	//clear all
-	static void clear_textures();
-	static void clear_fonts();
-	static void clear_sounds();
+	 void clear_textures();
+	 void clear_fonts();
+	 void clear_sounds();
 	
 
 
 
-	static void reset_assets();
+	 void reset_assets();
 
-public:
-static std::unordered_map<std::string,std::shared_ptr<SDL_Texture>> Textures;
-static std::unordered_map<std::string,std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
-static std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
+
+
 };
