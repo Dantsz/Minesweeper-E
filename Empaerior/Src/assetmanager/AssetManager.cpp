@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "AssetManager.h"
 #include "../Game.h"
-#include  <string>
-#include <iostream>
 #include "../SDLwrappers/Ptr_Wrappers.h"
 #include "../Exceptions/Exceptions.h"
 

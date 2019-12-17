@@ -18,11 +18,6 @@
 
 #include <crtdbg.h>
 
-
-#include <fstream>
-#include <sstream>
-
-
 #include "exceptions/Exceptions.h"
 #include "SDLwrappers/SDL_Wrappers.h"
 #include "utilities/Utilities.h"

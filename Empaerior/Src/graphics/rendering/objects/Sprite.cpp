@@ -2,7 +2,6 @@
 #include "Sprite.h"
 #include "../../../Game.h"
 #include "../../glyphs/Glyphs.h"
-#include <iostream>
 #include "../Window.h"
 
 

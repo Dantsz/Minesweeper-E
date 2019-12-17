@@ -2,11 +2,8 @@
 //thanks to GRHmedia  for his glyphs system
 
 
-#include<SDL.h>
-#include<SDL_image.h>
-#include<SDL_ttf.h>
-#include<vector>
-#include <string>
+
+
 #include "../../SDLwrappers/Ptr_Wrappers.h"
 
 

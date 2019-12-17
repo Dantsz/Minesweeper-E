@@ -71,6 +71,7 @@ void Empaerior::Game::Update(const unsigned int& dt )
 	{
 		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x + 10, Game::cur_state->get_camera().rect.y);
 	}
+	/*
 	else if (keys[SDL_SCANCODE_RIGHT])
 	{
 		set_state(second_state);
@@ -78,7 +79,7 @@ void Empaerior::Game::Update(const unsigned int& dt )
 	else if (keys[SDL_SCANCODE_LEFT])
 	{
 		set_state(first_state);
-	}
+	}*/
 
 
 

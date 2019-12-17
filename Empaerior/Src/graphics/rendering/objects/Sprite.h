@@ -1,6 +1,4 @@
 #pragma once
-#include <SDL.h>
-#include <string>
 #include "../../../assetmanager/AssetManager.h"
 #include "../Camera.h"
 namespace Empaerior {

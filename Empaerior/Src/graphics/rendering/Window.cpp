@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Window.h"
 #include "../../Game.h"
-#include <iostream>
+
 
 Empaerior::Window::Window(const std::string& name, const Uint32& width, const Uint32& height)
 : width(width),height(height)
