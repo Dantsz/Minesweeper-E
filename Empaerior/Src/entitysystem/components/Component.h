@@ -4,6 +4,7 @@
 #include <string>
 #include "../../graphics/rendering/Camera.h"
 #include "../../graphics/rendering/objects/Sprite.h"
+#include "../../eventhandler/EventHandler.h"
 namespace Empaerior
 {
 
@@ -34,6 +35,13 @@ namespace Empaerior
 	{
 		std::vector<Sprite> sprites;
 	};
+
+	struct Event_Listener_Component
+	{
+		EventListener event_listener;
+	};
+
+
 
 
 }

@@ -92,6 +92,7 @@ void Empaerior::Game::Update(const unsigned int& dt )
 void Empaerior::Game::handlevents(const SDL_Event & event)
 {
 	Empaerior::Game::window.window_listener.handleEvents(event);
+	cur_state->handleevents(event);
 
 }
 

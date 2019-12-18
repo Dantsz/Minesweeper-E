@@ -128,6 +128,7 @@ public:
 
         m_Stopped = true;
     }
+
 private:
     const char* m_Name;
     std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;

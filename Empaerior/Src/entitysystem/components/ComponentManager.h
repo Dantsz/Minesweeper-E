@@ -74,7 +74,7 @@ namespace Empaerior
 			{
 				if (entitytocomponent.find(entity_id) == entitytocomponent.end())
 				{
-					throw E_runtime_exception("Cannot get component : entity own the specified type of component ", __FILE__, __LINE__);
+					throw E_runtime_exception("Cannot get component : entity doesn't own the specified type of component ", __FILE__, __LINE__);
 				}
 				
 				
@@ -86,6 +86,8 @@ namespace Empaerior
 			{
 				e.print_message();
 				throw;
+			
+				
 			}
 
 		}
