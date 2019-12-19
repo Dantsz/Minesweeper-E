@@ -18,7 +18,10 @@ struct sdl_deleter
 State::State()
 
 {
-	Empaerior::Timer timy;
+	
+	
+	
+
 	ecs.Init();
 	ecs.register_component<Empaerior::Print_Component>();
 	ecs.register_component<Empaerior::Position_Component>();
@@ -59,8 +62,7 @@ State::State()
 	
 	event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) {  std::cout << "You just pressed a button, idiot!" << '\n'; });
 
-
-
+	
 }
 
 void State::Update(const unsigned int& dt)
@@ -77,7 +79,7 @@ void State::Update(const unsigned int& dt)
 void State::Render()
 {
 
-	
+
 	spr_system->render(ecs,camera);
 	
 }
