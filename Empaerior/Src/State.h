@@ -9,6 +9,7 @@
 #include "entitysystem/system/systems/print_system.h"
 #include "entitysystem/system/systems/sprite_system.h"
 #include "entitysystem/system/systems/event_system.h"
+#include "entitysystem/system/systems/mine_sweeper_system.h"
 /*
 	A state of the game engine.
 */
@@ -28,10 +29,10 @@ private:
 	Empaerior::Camera camera;
 	Empaerior::ECS ecs;
 
-	std::shared_ptr<Print_System> printy;
+	
 	std::shared_ptr<Sprite_System> spr_system;
 	std::shared_ptr<Event_System> event_system;
-
-	Empaerior::Entity morge;
+	std::shared_ptr<Mine_sweep_system> mine_system;
+	
 	Empaerior::ComponentManager mangy;
 };

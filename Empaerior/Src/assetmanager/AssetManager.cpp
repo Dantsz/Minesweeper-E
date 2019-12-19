@@ -66,7 +66,7 @@ namespace Empaerior::Asset_Loading
 		{
 
 			//if found 
-			return std::move(tex->second);
+			return tex->second;
 
 		}
 
@@ -228,11 +228,12 @@ namespace Empaerior::Asset_Loading
 
 	void clear_textures()
 	{
+		if (Textures.empty()) return;
 		for (auto i = Textures.begin(); i != Textures.end();)
 		{
 
 			i->second.reset();
-			Textures.erase(i);
+			i = Textures.erase(i);
 			if (Textures.empty()) return;
 		}
 

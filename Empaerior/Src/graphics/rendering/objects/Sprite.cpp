@@ -8,7 +8,9 @@
 void Empaerior::Sprite::draw(const Camera& camera)
 {
 	SDL_Rect position_rect = {rect.x - camera.rect.x,rect.y - camera.rect.y,rect.w,rect.h };
-	if(texture != nullptr)SDL_RenderCopyEx(Game::window.renderer, &(*texture), &tex_rect, &position_rect, angle, NULL, SDL_FLIP_NONE);
+	if (texture != nullptr)SDL_RenderCopyEx(Game::window.renderer, &(*texture), &tex_rect, &position_rect, angle, NULL, SDL_FLIP_NONE);
+
+
 }
 void Empaerior::Text_Sprite::draw(const Camera& camera)
 {

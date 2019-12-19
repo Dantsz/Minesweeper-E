@@ -15,7 +15,7 @@ Empaerior::Game::Game()
 	//second_state = new State();
 
 	set_state(first_state);
-	first_state->get_camera().set_dimensions(960, 800);
+	//first_state->get_camera().set_dimensions(96, 80);
 	set_state(first_state);
 	SDL_RenderSetLogicalSize(Game::window.renderer, Game::cur_state->get_camera().rect.w, Game::cur_state->get_camera().rect.h);
 

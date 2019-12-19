@@ -53,13 +53,16 @@ public:
 	//renders all sprites
 	void render(Empaerior::ECS& ecs, Empaerior::Camera& camera)
 	{
+		;
 		for (auto& e : entities_id)
 		{
 			for (auto& sprs : ecs.get_component<Empaerior::Sprite_Component>(e).sprites )
 			{
+				
 				sprs.draw(camera);
 			}
 		}
+		
 	}
 
 };

@@ -138,5 +138,8 @@
     <ClCompile Include="src\utilities\Timer.cpp">
       <Filter>utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Src\entitysystem\system\systems\mine_sweeper_system.h">
+      <Filter>entitysystem\system\systems</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

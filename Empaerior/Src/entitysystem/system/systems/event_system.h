@@ -24,9 +24,10 @@ public:
 	void handle_events(Empaerior::ECS& ecs ,const SDL_Event& event)
 	{
 		#define EVENTLISTENER  ecs.get_component<Empaerior::Event_Listener_Component>(entity_id).event_listener
-
+		
 		for (auto& entity_id : entities_id)
 		{
+
 			EVENTLISTENER.handleEvents(event);
 		}
 

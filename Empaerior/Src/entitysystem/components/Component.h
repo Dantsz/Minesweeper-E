@@ -45,3 +45,13 @@ namespace Empaerior
 
 
 }
+
+struct Mine_field
+{
+	//the field of entities
+	uint64_t field[16][16];
+
+
+
+};
+
