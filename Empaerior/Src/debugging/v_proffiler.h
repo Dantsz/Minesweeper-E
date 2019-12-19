@@ -68,7 +68,7 @@ public:
 
         std::string name = result.Name;
         std::replace(name.begin(), name.end(), '"', '\'');
-		
+
         m_OutputStream << "{";
         m_OutputStream << "\"cat\":\"function\",";
         m_OutputStream << "\"dur\":" << (result.End - result.Start) << ',';

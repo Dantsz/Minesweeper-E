@@ -17,8 +17,9 @@
 #include "Game.h"
 
 #include <crtdbg.h>
-#include "SDLwrappers/SDL_Wrappers.h"
+
 #include "exceptions/Exceptions.h"
+#include "SDLwrappers/SDL_Wrappers.h"
 #include "utilities/Utilities.h"
 #include  "utilities/Timer.h"
 
@@ -98,12 +99,13 @@ int main(int argc, char** argv)
 	
 	
 
-	
+
+
 	try {
 		while (Empaerior::Game::is_running)
 		{
 
-			
+
 
 
 		
@@ -130,8 +132,6 @@ int main(int argc, char** argv)
 				
 				while (acumulator >= Empaerior::Game::dt)
 				{
-
-					
 					//update 
 
 					game.Update(Empaerior::Game::dt);
@@ -147,7 +147,6 @@ int main(int argc, char** argv)
 			
 
 
-			
 				Empaerior::Game::window.clear();
 				game.render();
 				
@@ -157,17 +156,15 @@ int main(int argc, char** argv)
 			}
 		
 			Empaerior::Asset_Loading::clean_textures();
-			Instrumentor::Get().EndSession();
+
 		}
 
-	
+
 	}
 	catch (std::runtime_error & e)
 	{
 		std::cout <<e.what() << '\n';
 	}
-	
-
 	
 	Empaerior::Game::window.reset();
 

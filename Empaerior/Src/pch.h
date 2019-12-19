@@ -1,4 +1,4 @@
-#pragma once
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -17,4 +17,3 @@
 
 
 #include "debugging/v_proffiler.h"
-#include "SDLwrappers/Ptr_Wrappers.h"
