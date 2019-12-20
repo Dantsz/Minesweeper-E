@@ -2,11 +2,13 @@
 #include "State.h"
 #include "Game.h"
 #include <SDL.h>
+#include "utilities/collisions.h"
+#include <SDL_mouse.h>
 //for testing
 #include<iostream>
 #include <string>
 #include "utilities/Timer.h"
-#include <SDL_mouse.h>
+
 struct sdl_deleter
 {
 	void operator()(SDL_Window* p) const { SDL_DestroyWindow(p); }
@@ -103,11 +105,29 @@ State::State()
 			
 
 			//event handling
-			event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,&mine = mine_system,map = background.id,i,j ](SDL_Event const& event) {
+			event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,&mine = mine_system,map = background.id,i,j,kamera = camera ](SDL_Event const& event) {
 			
 			#define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
+				//mosue coordinates 
+				int m_x = 0;
+				int m_y = 0;
+				SDL_GetMouseState(&m_x, &m_y);
 				
-				if (!Ecs.get_component<cell_component>(l_tile).is_revealed) { mine->Reveal(Ecs, map, i, j); }
+				
+
+				m_x *= kamera.rect.w;
+				m_y *= kamera.rect.h;
+
+				m_x /= 960;
+				m_y /= 800;
+
+				if (!Ecs.get_component<cell_component>(l_tile).is_revealed) 
+				{ 
+					if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].get_dimensions(),m_x,m_y))
+					{
+						mine->Reveal(Ecs, map, i, j);
+					}
+				}
 
 			#undef l_tile
 			});

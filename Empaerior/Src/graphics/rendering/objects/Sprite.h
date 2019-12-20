@@ -118,6 +118,10 @@ namespace Empaerior {
 
 		}
 
+		SDL_Rect get_dimensions()
+		{
+			return rect;
+		}
 
 	private:
 		SDL_Rect tex_rect;// the portion of the texture the sprite represents

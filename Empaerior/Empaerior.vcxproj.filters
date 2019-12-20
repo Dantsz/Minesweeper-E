@@ -114,6 +114,9 @@
     <ClInclude Include="Src\entitysystem\system\systems\mine_sweeper_system.h">
       <Filter>entitysystem\system\systems</Filter>
     </ClInclude>
+    <ClInclude Include="Src\utilities\collisions.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
