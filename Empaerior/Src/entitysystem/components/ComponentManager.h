@@ -74,7 +74,10 @@ namespace Empaerior
 			{
 				if (entitytocomponent.find(entity_id) == entitytocomponent.end())
 				{
-					throw E_runtime_exception("Cannot get component : entity doesn't own the specified type of component ", __FILE__, __LINE__);
+					std::string exception_Desc = "";
+					exception_Desc += "Cannot fetch component id : entity doesn't have component :";
+					exception_Desc += typeid(T).name();
+					throw E_runtime_exception(exception_Desc, __FILE__, __LINE__);
 				}
 				
 				
@@ -224,7 +227,11 @@ namespace Empaerior
 			{
 				if (component_type.find(component_name) == component_type.end())
 				{
-					throw E_runtime_exception("Cannot fetch component id : invalid component", __FILE__, __LINE__);
+					
+						std::string exception_Desc = "";
+						exception_Desc += "Cannot fetch component id : invalid component ";
+						exception_Desc += typeid(T).name();
+						throw E_runtime_exception(typeid(T).name(), __FILE__, __LINE__);
 				}
 				return component_type[component_name];
 

@@ -35,4 +35,9 @@ private:
 	std::shared_ptr<Mine_sweep_system> mine_system;
 	
 	Empaerior::ComponentManager mangy;
+
+	//id -> path to the png of the field (mine,1,2,3,0)
+	std::unordered_map<int, std::string> id_to_field_type;
+	//id -> path to the png of the cell type (flag,normal,?)
+	std::unordered_map<int, std::string> id_to_cell_type;
 };

@@ -111,6 +111,9 @@
     <ClInclude Include="src\utilities\Utilities.h">
       <Filter>utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Src\entitysystem\system\systems\mine_sweeper_system.h">
+      <Filter>entitysystem\system\systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
@@ -137,9 +140,6 @@
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\utilities\Timer.cpp">
       <Filter>utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\entitysystem\system\systems\mine_sweeper_system.h">
-      <Filter>entitysystem\system\systems</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

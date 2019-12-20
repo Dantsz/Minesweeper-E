@@ -51,7 +51,22 @@ struct Mine_field
 	//the field of entities
 	uint64_t field[16][16];
 
-
-
+};
+struct cell_component
+{
+	//0 - normal cell
+	//1 - flag cell
+	//2 - ? cell
+	int cell_type;
+	bool is_revealed;
 };
 
+
+
+struct field_component
+{
+	//-1 bomb
+	//0- empty
+	//n - n field , n <= 8
+	int field_type;
+};
