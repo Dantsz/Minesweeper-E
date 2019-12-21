@@ -175,7 +175,7 @@ State::State()
 			
 
 			//event handling
-			event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,&mine = mine_system,map = background.id,i,j,kamera = camera,&id_to_cell_type_map = id_to_cell_type](SDL_Event const& event) {
+			event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,&mine = mine_system,map = background.id,i,j,&kamera = camera,&id_to_cell_type_map = id_to_cell_type](SDL_Event const& event) {
 			
 			#define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
 				
@@ -189,13 +189,13 @@ State::State()
 					m_x *= kamera.rect.w;
 					m_y *= kamera.rect.h;
 
-					m_x -= kamera.rect.x;
-					m_y -= kamera.rect.y;
+		
 
 					m_x /= 960;
 					m_y /= 800;
 
-				
+					m_x += kamera.rect.x;
+					m_y += kamera.rect.y;
 
 
 					//reveal
