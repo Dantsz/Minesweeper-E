@@ -82,7 +82,7 @@ void Empaerior::Game::Update(const unsigned int& dt )
 	}*/
 
 
-
+	
 
 	cur_state->Update(Game::dt);
 
@@ -104,6 +104,6 @@ void Empaerior::Game::render()
 	cur_state->Render();
 
 	//SDL_RenderPresent(Game::renderer);
-
+	cur_state->mine_system->OnDeath();
 }
 

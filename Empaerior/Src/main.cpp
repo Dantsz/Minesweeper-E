@@ -37,9 +37,11 @@ std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
 /*SDL_Renderer* Game::renderer;
 SDL_Window* Game::s_window;*/
 State* Empaerior::Game::cur_state;
+State* Empaerior::Game::first_state;
 const Uint32 Empaerior::Game::dt = 1000 / 60;
 bool Empaerior::Game::is_paused = 0;
 bool Empaerior::Game::is_running = 1;
+bool Empaerior::Game::touched_mine = 0; 
 Empaerior::Window Empaerior::Game::window;
 
 #pragma endregion
@@ -156,6 +158,10 @@ int main(int argc, char** argv)
 			}
 		
 			Empaerior::Asset_Loading::clean_textures();
+
+		
+
+
 
 		}
 

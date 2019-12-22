@@ -21,6 +21,47 @@ struct sdl_deleter
 State::State()
 
 {
+#pragma region assets
+
+	//insert the path
+	int id = 0;
+	id_to_cell_type.insert({ id,"assets/tex_cell.png" });
+	++id;
+	id_to_cell_type.insert({ id,"assets/tex_flag.png" });
+	++id;
+	id_to_cell_type.insert({ id,"assets/tex_q.png" });
+
+
+	//insert cell texturees
+	id = -1;
+	id_to_field_type.insert({ id,"assets/tex_mine.png" });
+	id++;
+	id_to_field_type.insert({ id,"assets/tex_empty.png" });
+	id++;
+	id_to_field_type.insert({ id,"assets/tex_one.png" });
+	id++;
+	id_to_field_type.insert({ id,"assets/tex_two.png" });
+	id++;
+	id_to_field_type.insert({ id,"assets/tex_three.png" });
+	id++;
+	id_to_field_type.insert({ id ,"assets/tex_four.png" });
+	id++;
+	id_to_field_type.insert({ id , "assets/tex_five.png" });
+	id++;
+	id_to_field_type.insert({ id,"assets/tex_six.png" });
+	id++;
+	id_to_field_type.insert({ id,"assets/tex_seven.png" });
+	id++;
+	id_to_field_type.insert({ id,"assets/tex_eight.png" });
+
+
+
+
+#pragma endregion
+
+	
+
+
 
 
 	//mine distributing
@@ -48,12 +89,13 @@ State::State()
 		--mines;
 	}
 
+	//make the number tiles
 	for (int i = 0; i < 16; i++)
 	{
 		for (int j = 0; j < 16; j++)
 		{
 			int mines_around = 0;
-			if (field_matrix[i][j] == -1) { std::cout << field_matrix[i][j] << " "; continue; }
+			if (field_matrix[i][j] == -1) {  continue; }
 			if (j + 1 < 16 && field_matrix[i][j + 1] == -1) mines_around++;
 			if (i + 1 < 16 && field_matrix[i+1][j] == -1) mines_around++;
 			if (j - 1 >= 0 && field_matrix[i][j - 1] == -1 ) mines_around++;
@@ -63,9 +105,9 @@ State::State()
 			if (i - 1 >= 0 && j - 1 >= 0 && field_matrix[i - 1][j - 1] == -1) mines_around++;
 			if (i - 1 >= 0 && j + 1 < 16 && field_matrix[i - 1][j + 1] == -1)  mines_around++;
 			field_matrix[i][j] = mines_around;	
-			std::cout << field_matrix[i][j] << " ";
+		
 		}
-		std::cout << '\n';
+
 	}
 
 
@@ -97,51 +139,113 @@ State::State()
 
 
 
-	camera = Empaerior::Camera({ -10,-10,116,100 });
+	camera = Empaerior::Camera({ 0,0,120,100 });
 	
 	
+	
+
+
+
+
+
+
 	Empaerior::Entity background = { ecs.create_entity_ID() };
-
-
-
-	//insert the path
-	 int id = 0;
-	 id_to_cell_type.insert({ id,"assets/tex_cell.png" });
-	 ++id;
-	 id_to_cell_type.insert({ id,"assets/tex_flag.png" });
-	 ++id;
-	 id_to_cell_type.insert({ id,"assets/tex_q.png" });
-
-
-	 //insert cell texturees
-	 id = -1;	
-	 id_to_field_type.insert({id,"assets/tex_mine.png"});
-	 id++;
-	 id_to_field_type.insert({ id,"assets/tex_empty.png" });
-	 id++;
-	 id_to_field_type.insert({ id,"assets/tex_one.png" });
-	 id++;
-	 id_to_field_type.insert({ id,"assets/tex_two.png" });
-	 id++;
-	 id_to_field_type.insert({ id,"assets/tex_three.png" });
-	 id++;
-	 id_to_field_type.insert({ id ,"assets/tex_four.png"});
-	 id++;
-	 id_to_field_type.insert({ id , "assets/tex_five.png"});
-	 id++;
-	 id_to_field_type.insert({ id,"assets/tex_six.png" });
-	 id++;
-	 id_to_field_type.insert({ id,"assets/tex_seven.png" });
-	 id++;
-	 id_to_field_type.insert({ id,"assets/tex_eight.png" });
-
-
-
-
 	//creates the whole backgorund from one single pixel (weird)
-	Empaerior::Sprite sprt ({0,0,96,80}, {0,0,1,1}, "assets/background.png", 1);
+	Empaerior::Sprite sprt ({0,0,120,100 }, {0,0,1,1}, "assets/background.png", 1);
 	ecs.add_component<Empaerior::Sprite_Component>(background.id, { {sprt} });
 	ecs.add_component<Mine_field>(background.id, { {0} });
+
+	Empaerior::Entity face_boi = { ecs.create_entity_ID() };
+	
+	Empaerior::Sprite facwe({ 55,0,9,9 }, { 0,0,26,26 }, "assets/tex_face.png", 1);
+	ecs.add_component<Empaerior::Sprite_Component>(face_boi.id, { {facwe} });
+	ecs.add_component<Empaerior::Event_Listener_Component>(face_boi.id, { {} });
+
+	//on release, restart
+#pragma region face_boi_release
+
+
+
+	event_system->add_event_to_entity(ecs, face_boi.id, SDL_MOUSEBUTTONUP,
+		[&Ecs = ecs ,&kamera = camera, face_boi_id = face_boi.id](SDL_Event const& event)
+		{
+
+			//mouse coordinates 
+			int m_x = 0;
+			int m_y = 0;
+			SDL_GetMouseState(&m_x, &m_y);
+
+
+
+			m_x *= kamera.rect.w;
+			m_y *= kamera.rect.h;
+
+
+
+			m_x /= 960;
+			m_y /= 800;
+
+			m_x += kamera.rect.x;
+			m_y += kamera.rect.y;
+
+			if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_dimensions(), m_x, m_y))
+			{
+				Empaerior::Game::touched_mine = true;
+			}
+			else
+			{
+				Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].set_texture("assets/tex_face.png");
+			}
+
+			
+		}
+
+
+	
+	
+	);
+#pragma endregion
+
+
+#pragma region face_boi_down
+	//on down .change his texture
+	event_system->add_event_to_entity(ecs, face_boi.id, SDL_MOUSEBUTTONUP,
+		[&Ecs = ecs, &kamera = camera, face_boi_id = face_boi.id](SDL_Event const& event)
+	{
+
+		//mouse coordinates 
+		int m_x = 0;
+		int m_y = 0;
+		SDL_GetMouseState(&m_x, &m_y);
+
+
+
+		m_x *= kamera.rect.w;
+		m_y *= kamera.rect.h;
+
+
+
+		m_x /= 960;
+		m_y /= 800;
+
+		m_x += kamera.rect.x;
+		m_y += kamera.rect.y;
+
+		if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_dimensions(), m_x, m_y))
+		{
+			Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].set_texture("assets/face_boi_click.png");
+		}
+
+
+
+	}
+
+
+
+
+	);
+#pragma endregion
+
 
 
 	//initialize the field
@@ -160,14 +264,14 @@ State::State()
 			ecs.add_component<Empaerior::Event_Listener_Component>(tile, { {} });
 
 			//adds what at the bottom
-			Empaerior::Sprite spr_tile({ 6 * j ,5 * i ,6,5 }, { 0,0,16,16 }, id_to_field_type[field_matrix[i][j]], 1);
+			Empaerior::Sprite spr_tile({ 6 * j + 12 ,5 * i + 10 ,6,5 }, { 0,0,16,16 }, id_to_field_type[field_matrix[i][j]], 1);
 
 
 
 			//
 
 			//adds what's in the front
-			Empaerior::Sprite spr_cell({ 6 * j ,5 * i ,6,5 }, { 0,0,16,16 }, id_to_cell_type[0], 1);
+			Empaerior::Sprite spr_cell({ 6 * j +12 ,5 * i + 10 ,6,5 }, { 0,0,16,16 }, id_to_cell_type[0], 1);
 		
 			ecs.add_component<Empaerior::Sprite_Component>(tile, { {spr_tile,spr_cell} });
 			
@@ -203,15 +307,14 @@ State::State()
 					{
 						if (!Ecs.get_component<cell_component>(l_tile).is_revealed)
 						{
-							if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].get_dimensions(), m_x, m_y)
-								&&
-								Ecs.get_component<cell_component>(l_tile).cell_type == 0)
+							if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_dimensions(), m_x, m_y))
 							{
 								
 								mine->Reveal(Ecs, map, i, j);
 								
 								
 							}
+							
 						}
 					}
 					//change cell type
@@ -219,7 +322,7 @@ State::State()
 					{
 						if (!Ecs.get_component<cell_component>(l_tile).is_revealed)
 						{
-							if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].get_dimensions(), m_x, m_y))
+							if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_dimensions(), m_x, m_y))
 							{
 #define CELL_TYPE Ecs.get_component<cell_component>(l_tile).cell_type
 

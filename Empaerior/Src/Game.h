@@ -33,7 +33,7 @@ private:
 public:
 	static State* cur_state;//current state
 
-	State* first_state;
+	static State* first_state;
 	State* second_state;
 
 
@@ -42,12 +42,14 @@ public:
 	
 	static Empaerior::Window window;
 
+
+
 	static const Uint32 dt;
 	
 	static bool is_paused;
 	static bool is_running;
 
-
+	static bool touched_mine;
 private:
 
 

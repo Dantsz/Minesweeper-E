@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\entitysystem\system\systems\mine_sweeper_system.h" />
+    <ClCompile Include="Src\entitysystem\system\systems\mine_sweeper_system.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\assetmanager\AssetManager.cpp" />
