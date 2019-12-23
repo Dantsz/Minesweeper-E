@@ -209,7 +209,7 @@ State::State()
 
 #pragma region face_boi_down
 	//on down .change his texture
-	event_system->add_event_to_entity(ecs, face_boi.id, SDL_MOUSEBUTTONUP,
+	event_system->add_event_to_entity(ecs, face_boi.id, SDL_MOUSEBUTTONDOWN,
 		[&Ecs = ecs, &kamera = camera, face_boi_id = face_boi.id](SDL_Event const& event)
 	{
 
@@ -230,7 +230,7 @@ State::State()
 
 		m_x += kamera.rect.x;
 		m_y += kamera.rect.y;
-
+		
 		if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_dimensions(), m_x, m_y))
 		{
 			Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].set_texture("assets/face_boi_click.png");
