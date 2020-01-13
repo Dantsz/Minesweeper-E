@@ -1,5 +1,5 @@
 workspace "Empaerior"
-	architecture "x64"
+	architecture "x86"
 	 
 	configurations
 	{
@@ -43,10 +43,10 @@ project "Empaerior"
 	}
 	libdirs 
 	{ 
-	"SDL2/lib/x64",
-	"SDL2_image/lib/x64",
-	"SDL2_mixer/lib/x64",
-	"SDL2_ttf/lib/x64"
+	"SDL2/lib/x86",
+	"SDL2_image/lib/x86",
+	"SDL2_mixer/lib/x86",
+	"SDL2_ttf/lib/x86"
 	}
 	links 
 	{ 

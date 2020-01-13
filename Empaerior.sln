@@ -5,17 +5,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Empaerior", "Empaerior\Empa
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Dist|x64 = Dist|x64
-		Release|x64 = Release|x64
+		Debug|Win32 = Debug|Win32
+		Dist|Win32 = Dist|Win32
+		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Debug|x64.ActiveCfg = Debug|x64
-		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Debug|x64.Build.0 = Debug|x64
-		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Dist|x64.ActiveCfg = Dist|x64
-		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Dist|x64.Build.0 = Dist|x64
-		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Release|x64.ActiveCfg = Release|x64
-		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Release|x64.Build.0 = Release|x64
+		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Debug|Win32.Build.0 = Debug|Win32
+		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Dist|Win32.ActiveCfg = Dist|Win32
+		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Dist|Win32.Build.0 = Dist|Win32
+		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Release|Win32.ActiveCfg = Release|Win32
+		{A998D186-1503-86FD-5E41-37A3CAEA6352}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

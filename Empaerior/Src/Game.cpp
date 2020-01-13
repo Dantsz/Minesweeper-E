@@ -25,7 +25,7 @@ Empaerior::Game::Game()
 
 void Empaerior::Game::Init()
 {
-	SDL_Color color = { 255,0 ,255 ,255 };
+	
 	//second_state->norge = new Empaerior::Text_Sprite({0,0,200,200}, "assets/font.ttf", 32, "Aldo adsadshbadsh gbaytu gvasty dvastyadsvtyvdasty ilea   ",color );
 	
 	
@@ -46,31 +46,7 @@ void Empaerior::Game::Update(const unsigned int& dt )
 {
 	//move camera
 
-	unsigned char const* keys = SDL_GetKeyboardState(nullptr);
-	if (keys[SDL_SCANCODE_UP])
-	{
-		Game::cur_state->get_camera().set_dimensions(Game::cur_state->get_camera().rect.w + 12, Game::cur_state->get_camera().rect.h + 10);
-	}
-	else if (keys[SDL_SCANCODE_DOWN])
-	{
-		Game::cur_state->get_camera().set_dimensions(Game::cur_state->get_camera().rect.w - 12, Game::cur_state->get_camera().rect.h - 10);
-	}
-	else if (keys[SDL_SCANCODE_W])
-	{
-		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x, Game::cur_state->get_camera().rect.y - 10);
-	}
-	else if (keys[SDL_SCANCODE_S])
-	{
-		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x , Game::cur_state->get_camera().rect.y + 10);
-	}
-	else if (keys[SDL_SCANCODE_A])
-	{
-		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x - 10, Game::cur_state->get_camera().rect.y);
-	}
-	else if (keys[SDL_SCANCODE_D])
-	{
-		Game::cur_state->get_camera().set_position(Game::cur_state->get_camera().rect.x + 10, Game::cur_state->get_camera().rect.y);
-	}
+	
 	/*
 	else if (keys[SDL_SCANCODE_RIGHT])
 	{

@@ -59,8 +59,14 @@ State::State()
 
 #pragma endregion
 
-	
+	int lower_bound = 20;
+	int upper_bound = 50;
 
+	std::ifstream out("config.json");
+	cereal::JSONInputArchive archive(out);
+
+	archive(cereal::make_nvp("lower_bound",lower_bound));
+	archive(cereal::make_nvp("upper_bound", upper_bound));
 
 
 
@@ -76,13 +82,14 @@ State::State()
 	}
 
 	//total mines
-	int mines = 39;
+	
 	std::random_device rd;
 	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> xDist(0, 15);
 	std::uniform_int_distribution<int> yDist(0, 15);
-	
-
+	std::uniform_int_distribution<int> mines_rng(lower_bound, upper_bound);
+	int mines = mines_rng(rng);
+	std::cout << "mines: " << mines << '\n';
 	while (mines != 0)
 	{
 		field_matrix[xDist( rng)][yDist( rng)] = -1;
@@ -188,6 +195,15 @@ State::State()
 			m_x += kamera.rect.x;
 			m_y += kamera.rect.y;
 
+
+			SDL_Rect renderer_viewport;
+			SDL_RenderGetViewport(Empaerior::Game::window.renderer, &renderer_viewport);
+
+
+			m_x += renderer_viewport.x;
+			m_y += renderer_viewport.y;
+
+
 			if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_dimensions(), m_x, m_y))
 			{
 				Empaerior::Game::touched_mine = true;
@@ -230,6 +246,13 @@ State::State()
 
 		m_x += kamera.rect.x;
 		m_y += kamera.rect.y;
+
+		SDL_Rect renderer_viewport;
+		SDL_RenderGetViewport(Empaerior::Game::window.renderer, &renderer_viewport);
+
+
+		m_x += renderer_viewport.x;
+		m_y += renderer_viewport.y;
 		
 		if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_dimensions(), m_x, m_y))
 		{
@@ -301,6 +324,14 @@ State::State()
 					m_x += kamera.rect.x;
 					m_y += kamera.rect.y;
 
+					SDL_Rect renderer_viewport;
+					SDL_RenderGetViewport(Empaerior::Game::window.renderer, &renderer_viewport);
+
+
+					m_x -= renderer_viewport.x;
+					m_y -= renderer_viewport.y;
+
+					
 
 					//reveal
 					if (event.button.button == SDL_BUTTON_LEFT)
@@ -309,7 +340,7 @@ State::State()
 						{
 							if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_dimensions(), m_x, m_y))
 							{
-								
+								std::cout << m_x << " "  << m_y << '\n';
 								mine->Reveal(Ecs, map, i, j);
 								
 								
@@ -346,7 +377,17 @@ State::State()
 	
 	}
 	
+	//margins
+	
+	Empaerior::Sprite right_margin({ 108,10,1,80 }, { 0,0,1,1 }, "assets/margin.png", 1);
+	Empaerior::Sprite left_margin({ 11,10,1,80 }, { 0,0,1,1 }, "assets/margin.png", 1);
+	Empaerior::Sprite bottom_margin({ 11,9,98,1 }, { 0,0,1,1 }, "assets/margin.png", 1);
+	Empaerior::Sprite top_margin({ 11,90,98,1 }, { 0,0,1,1 }, "assets/margin.png", 1);
 
+	spr_system->add_sprite(ecs, background.id, right_margin);
+	spr_system->add_sprite(ecs, background.id, left_margin);
+	spr_system->add_sprite(ecs, background.id, bottom_margin);
+	spr_system->add_sprite(ecs, background.id, top_margin);
 	#undef tile
 
 	//test
