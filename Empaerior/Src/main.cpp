@@ -1,6 +1,8 @@
+
 #include "pch.h"
 
 
+#include <Windows.h>
 
 #ifdef _DEBUG   
 #ifndef DBG_NEW      
@@ -13,7 +15,7 @@
 //
 
 
-
+#include "SDL_Main.h"
 #include "Game.h"
 
 #include <crtdbg.h>
@@ -49,8 +51,11 @@ Empaerior::Window Empaerior::Game::window;
 
 
 
-int main(int argc, char** argv)
+int SDL_main(int argc, char* argv[])
 {
+	HWND hWnd = GetConsoleWindow();
+	ShowWindow(hWnd, SW_HIDE);
+
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
 	#pragma region SDL_Inititalization

@@ -1,4 +1,5 @@
 workspace "Empaerior"
+
 	architecture "x86"
 	 
 	configurations

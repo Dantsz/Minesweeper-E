@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <SDL.h>
 #include "utilities/collisions.h"
+#include "utilities/Utilities.h"
 #include <SDL_mouse.h>
 #include <random>
 //for testing
@@ -89,7 +90,7 @@ State::State()
 	std::uniform_int_distribution<int> yDist(0, 15);
 	std::uniform_int_distribution<int> mines_rng(lower_bound, upper_bound);
 	int mines = mines_rng(rng);
-	std::cout << "mines: " << mines << '\n';
+	
 	while (mines != 0)
 	{
 		field_matrix[xDist( rng)][yDist( rng)] = -1;
@@ -178,30 +179,11 @@ State::State()
 		{
 
 			//mouse coordinates 
-			int m_x = 0;
-			int m_y = 0;
-			SDL_GetMouseState(&m_x, &m_y);
-
-
-
-			m_x *= kamera.rect.w;
-			m_y *= kamera.rect.h;
-
-
-
-			m_x /= 960;
-			m_y /= 800;
-
-			m_x += kamera.rect.x;
-			m_y += kamera.rect.y;
-
-
-			SDL_Rect renderer_viewport;
-			SDL_RenderGetViewport(Empaerior::Game::window.renderer, &renderer_viewport);
-
-
-			m_x += renderer_viewport.x;
-			m_y += renderer_viewport.y;
+			auto f_m = Empaerior::get_world_mouse_coords(kamera);
+			
+			int m_x = int(f_m.first);
+			int m_y = int(f_m.second);
+			
 
 
 			if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_dimensions(), m_x, m_y))
@@ -230,29 +212,11 @@ State::State()
 	{
 
 		//mouse coordinates 
-		int m_x = 0;
-		int m_y = 0;
-		SDL_GetMouseState(&m_x, &m_y);
+		
+		auto f_m = Empaerior::get_world_mouse_coords(kamera);
 
-
-
-		m_x *= kamera.rect.w;
-		m_y *= kamera.rect.h;
-
-
-
-		m_x /= 960;
-		m_y /= 800;
-
-		m_x += kamera.rect.x;
-		m_y += kamera.rect.y;
-
-		SDL_Rect renderer_viewport;
-		SDL_RenderGetViewport(Empaerior::Game::window.renderer, &renderer_viewport);
-
-
-		m_x += renderer_viewport.x;
-		m_y += renderer_viewport.y;
+		int m_x = int(f_m.first);
+		int m_y = int(f_m.second);
 		
 		if (rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_dimensions(), m_x, m_y))
 		{
@@ -307,29 +271,11 @@ State::State()
 			#define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
 				
 					//mouse coordinates 
-					int m_x = 0;
-					int m_y = 0;
-					SDL_GetMouseState(&m_x, &m_y);
+					
+					auto f_m = Empaerior::get_world_mouse_coords(kamera);
 
-				
-
-					m_x *= kamera.rect.w;
-					m_y *= kamera.rect.h;
-
-		
-
-					m_x /= 960;
-					m_y /= 800;
-
-					m_x += kamera.rect.x;
-					m_y += kamera.rect.y;
-
-					SDL_Rect renderer_viewport;
-					SDL_RenderGetViewport(Empaerior::Game::window.renderer, &renderer_viewport);
-
-
-					m_x -= renderer_viewport.x;
-					m_y -= renderer_viewport.y;
+					int m_x = int(f_m.first);
+					int m_y = int(f_m.second);
 
 					
 

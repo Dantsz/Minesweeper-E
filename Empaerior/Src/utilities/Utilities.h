@@ -2,10 +2,12 @@
 #include <SDL.h>
 #include <string>
 #include <iostream>
+#include "graphics/rendering/Camera.h"
+#include "Exceptions/Exceptions.h"
 namespace Empaerior
 {
 	//clipboard functions
-	std::string get_clipboard_text()
+	inline std::string get_clipboard_text()
 	{
 		if (SDL_HasClipboardText())//if there's text
 		{
@@ -16,7 +18,7 @@ namespace Empaerior
 		}
 		return "";
 	}
-	void set_clipboard_text(const char* text)
+	inline void set_clipboard_text(const char* text)
 	{
 		try
 		{
@@ -35,7 +37,7 @@ namespace Empaerior
 
 
 	//system functions
-	std::string get_platform()//gets the current platform
+	inline std::string get_platform()//gets the current platform
 	{
 		const char* sdl_platform = SDL_GetPlatform();
 		std::string e_platform = sdl_platform;
@@ -44,22 +46,22 @@ namespace Empaerior
 
 	}
 
-	int cpu_cache_size()//returns the size of the cpu  cache in bytes
+	inline	int cpu_cache_size()//returns the size of the cpu  cache in bytes
 	{
 		return SDL_GetCPUCacheLineSize();
 	}
 
-	int get_core_number()// get the number of CPU cores available
+	inline	int get_core_number()// get the number of CPU cores available
 	{
 		return SDL_GetCPUCount();
 	}
 
-	int get_system_ram()//get the amount of RAM configured in the system.
+	inline	int get_system_ram()//get the amount of RAM configured in the system.
 	{
 		return SDL_GetSystemRAM();
 	}
 
-	
+	std::pair<float,float> get_world_mouse_coords(const Empaerior::Camera& camera);
 
 
 }
