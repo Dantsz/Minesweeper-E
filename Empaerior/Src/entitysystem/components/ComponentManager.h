@@ -34,7 +34,7 @@ namespace Empaerior
 				//if the entity does have this type of component throw exception
 				if (componenttoentity.find(entity_id) != componenttoentity.end())
 				{
-					throw E_runtime_exception("Cannot add component: the entity already has this type of component",__FILE__,__LINE__);
+					throw E_runtime_exception("Cannot add component: the entity already has this type of component: " + Empaerior::string(typeid(T).name()),__FILE__,__LINE__, __FUNCTION__);
 				}
 
 
@@ -59,7 +59,8 @@ namespace Empaerior
 			}
 			catch(E_runtime_exception & e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
+
 			}
 
 
@@ -74,10 +75,7 @@ namespace Empaerior
 			{
 				if (entitytocomponent.find(entity_id) == entitytocomponent.end())
 				{
-					std::string exception_Desc = "";
-					exception_Desc += "Cannot fetch component id : entity doesn't have component :";
-					exception_Desc += typeid(T).name();
-					throw E_runtime_exception(exception_Desc, __FILE__, __LINE__);
+					throw E_runtime_exception("Cannot get component : entity doesn't own the specified type of component: " + Empaerior::string(typeid(T).name()), __FILE__, __LINE__, __FUNCTION__);
 				}
 				
 				
@@ -88,6 +86,7 @@ namespace Empaerior
 			catch (E_runtime_exception & e)
 			{
 				e.print_message();
+				//something else should happen here, but I can't think what
 				throw;
 			
 				
@@ -103,8 +102,8 @@ namespace Empaerior
 				//if the entity doesn't have this type of component throw exception
 				if (componenttoentity.find(entity_id) == componenttoentity.end())
 				{
-					//I don't know why it's giving a warning, oly here
-					E_runtime_exception("Cannot delete component: the entity doesn't have this type of component", __FILE__, __LINE__);
+					//I don't know why it's giving a warning, only here as I have multiple blocks like this, not a big deal
+					E_runtime_exception("Cannot delete component: the entity doesn't have this type of component : " + Empaerior::string(typeid(T).name()), __FILE__, __LINE__, __FUNCTION__);
 				}
 				
 				//get the index of the removed entity
@@ -164,6 +163,7 @@ namespace Empaerior
 	
 	//handles all components
 	class ComponentManager {
+
 	public:
 		//register a component
 		//Note: add_component already registers a coponentthat has not been use before
@@ -186,7 +186,7 @@ namespace Empaerior
 				}
 				else
 				{
-					throw E_runtime_exception("Component already registered", __FILE__, __LINE__);
+					throw E_runtime_exception("Component " + Empaerior::string(componentid) + " already registered", __FILE__, __LINE__, __FUNCTION__);
 				}
 			}
 			catch (E_runtime_exception & e)
@@ -227,11 +227,7 @@ namespace Empaerior
 			{
 				if (component_type.find(component_name) == component_type.end())
 				{
-					
-						std::string exception_Desc = "";
-						exception_Desc += "Cannot fetch component id : invalid component ";
-						exception_Desc += typeid(T).name();
-						throw E_runtime_exception(typeid(T).name(), __FILE__, __LINE__);
+					throw E_runtime_exception("Cannot fetch component id" + Empaerior::string(component_name) + " : invalid component", __FILE__, __LINE__, __FUNCTION__);
 				}
 				return component_type[component_name];
 

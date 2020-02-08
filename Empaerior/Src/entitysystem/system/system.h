@@ -11,8 +11,14 @@ namespace Empaerior {
 	class System
 	{
 	public:
-		//the id od the entities the systemworks on
-		std::set<uint64_t> entities_id;
+
+		virtual ~System()
+		{
+
+		}
+
+		//the id of the entities the system works on
+		std::set<Empaerior::u_inter> entities_id;
 
 	};
 
@@ -33,7 +39,7 @@ namespace Empaerior {
 				if (typetosystem.find(system_type) != typetosystem.end())
 				{
 
-					throw E_runtime_exception("Unable to register system: system is already registered.", __FILE__, __LINE__);
+					throw E_runtime_exception("Unable to register system: system is already registered.", __FILE__, __LINE__, __FUNCTION__);
 
 				}
 				std::shared_ptr<T> system = std::make_shared<T>();
@@ -62,10 +68,10 @@ namespace Empaerior {
 				//if the system is not found  //throw
 				if (typetosystem.find(system_type) == typetosystem.end())
 				{
-					throw E_runtime_exception("Unable to set the signature: system does not exist.", __FILE__, __LINE__);
+					throw E_runtime_exception("Unable to set the signature: system does not exist.", __FILE__, __LINE__, __FUNCTION__);
 				}
 				
-				typetosignature[system_type] = std::move(signature);
+				typetosignature[system_type] = signature;
 
 
 			}
@@ -86,7 +92,7 @@ namespace Empaerior {
 				//if the system is not found  //throw
 				if (typetosystem.find(system_type) == typetosystem.end())
 				{
-					throw E_runtime_exception("Unable to fetch the signature: system does not exist.", __FILE__, __LINE__);
+					throw E_runtime_exception("Unable to fetch the signature: system does not exist.", __FILE__, __LINE__, __FUNCTION__);
 				}
 
 				return typetosignature[system_type];
@@ -105,7 +111,7 @@ namespace Empaerior {
 
 
 		//erase entity from all systems
-		void OnEntityDestroy(const uint64_t& entity_id)
+		void OnEntityDestroy(const Empaerior::u_inter& entity_id)
 		{
 			for (auto const& it : typetosystem)
 			{
@@ -115,7 +121,7 @@ namespace Empaerior {
 		}
 
 		// Notify each system that an entity's signature changed
-		void OnEntitySignatureChange(const uint64_t& entity_id,std::vector<bool>& signature)
+		void OnEntitySignatureChange(const Empaerior::u_inter& entity_id,std::vector<bool>& signature)
 		{
 			for (auto const& it : typetosystem)
 			{

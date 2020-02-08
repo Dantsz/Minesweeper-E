@@ -6,7 +6,7 @@ namespace Empaerior {
 	class Graphic_element
 	{
 	public:
-		Graphic_element(const SDL_Rect& rect)
+		Graphic_element(const Float_Rect & rect)
 			:rect(rect)
 			// the size of the rect is only for one frame of the sprite
 			// so the length of the texture should be frames * tex_rect.w
@@ -14,33 +14,32 @@ namespace Empaerior {
 
 		}
 
+		Graphic_element()
+		{
 
+		}
 
 		virtual ~Graphic_element()
 		{
 
 		}
-
-
-
-		virtual void draw(const Camera& camera) {};
-
-
-		virtual void update(const Uint32& dt) {};
-
-		void set_angle(const double& newAngle)
+		virtual void draw(const Camera& camera) { };
+		virtual void update(const Empaerior::u_int& dt) {
+		
+		};
+		
+		void set_angle(const Empaerior::fl_point& newAngle)
 		{
-			angle = newAngle;
+			rect.angle = newAngle;
 		}
-
-
-
-		void set_position(const int& x, const int& y)
+		void set_position(const Empaerior::fl_point& x, const Empaerior::fl_point& y)
 		{
-			rect.x = x;
-			rect.y = y;
+			rect.dimensions.x = x;
+			rect.dimensions.y = y;
 			return;
 		}
+		
+
 
 
 	protected:
@@ -51,12 +50,9 @@ namespace Empaerior {
 
 	protected:
 
-		SDL_Rect rect; // the sprite
+		Empaerior::Float_Rect rect; // the sprite
 
-
-
-
-		double angle = 0; // rotation fo the element
+		 // rotation fo the element
 
 
 	};
@@ -64,23 +60,64 @@ namespace Empaerior {
 	class Sprite : public Graphic_element
 	{
 	public:
-		Sprite(const SDL_Rect& rect, const SDL_Rect& tex_rect, const std::string& tex_path, const unsigned int& frames)
-			:Graphic_element(rect), tex_rect(tex_rect), anim_x(tex_rect.x), anim_y(tex_rect.y)
-
-		{
-
-			//load the texture
-			
-			texture = Asset_Loading::load_texture(tex_path);
-
-		}
+		
+		
 		~Sprite()
 		{
 
 		}
 
+		// the size of the rect is only for one frame of the sprite
+		// so the length of the texture should be frames * tex_rect.w
+		void Init(const Empaerior::Float_Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const Empaerior::byte& m_frames);
+		//sets a new texture instead of the old one
+		//rect , animation  and position doesn't change
+	    void set_texture(const Empaerior::string& tex_path)
+		{
+			texture = Asset_Loading::load_texture(tex_path);
+			path = tex_path;
+
+		}
+		//changes the color of the texture to the rgb value provided
+		//255,255,255 - 
+		void set_color_blend(Empaerior::byte p_r, Empaerior::byte p_g, Empaerior::byte p_b)
+		{
+			r = p_r;
+			g = p_g;
+			b = p_b;
+		}
+		//sets the number of frames the sprite should rotate through, 
+		void set_frames(const Empaerior::byte m_frames)
+		{
+			frames = m_frames;
+		}
+		//
+
+		void draw(const Camera& camera) override;
+
+		void update(const Empaerior::u_int& dt)
+		{
+			time += dt; // add the time passed
+
+			while (time >= holdTime)// check if the necesarry time passed
+			{
+				time -= holdTime;
+				next_frame(); // advance
+			}
+			
+
+
+		}
+		//gets the dimesnions of the sprite
+		Empaerior::Float_Rect& get_rect();
+		
+		
+
+	std::shared_ptr<SDL_Texture> texture;
+	private:
 		void next_frame()// goes to the next frame in the animation 
 		{
+			
 			// get next frame in animation
 			if (cur_frame >= frames - 1)
 			{
@@ -93,81 +130,73 @@ namespace Empaerior {
 			//set the frame
 			tex_rect.x = anim_x + cur_frame * tex_rect.w;
 			tex_rect.y = anim_y + cur_frame * tex_rect.h;
-
-		}
-
-		void set_texture(const std::string& tex_path)
-		{
-			texture = Asset_Loading::load_texture(tex_path);
+			
 		}
 
 
-		void draw(const Camera& camera);
+		Empaerior::string path;// the path
 
-		void update(const Uint32& dt)
-		{
+		Empaerior::Int_Rect tex_rect;// the portion of the texture the sprite represents
+		Empaerior::u_int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
+		
+		Empaerior::u_int time = 0;
+		static constexpr Empaerior::u_int holdTime = 250; //time between animations currently 0.25 seconds
 
-			time += dt; // add the time passed
+		Empaerior::byte frames = 1; //each animation must have at least one frame
+		Empaerior::byte cur_frame = 0;
 
-			while (time >= holdTime)// check if the necesarry time passed
-			{
-				time -= holdTime;
-				next_frame(); // advance
-			}
+		//color values
+		Empaerior::byte r = 255;
+		Empaerior::byte g = 255;
+		Empaerior::byte b = 255;
 
 
-		}
 
-		SDL_Rect get_dimensions()
-		{
-			return rect;
-		}
 
-	private:
-		SDL_Rect tex_rect;// the portion of the texture the sprite represents
-		unsigned int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
-		std::shared_ptr<SDL_Texture> texture;
-		Uint32 time = 0;
-		static constexpr Uint32 holdTime = 250; //time between animations currently 0.25 seconds
-
-		unsigned int frames = 1; //each animation must have at least one frame
-		unsigned int cur_frame = 0;
 
 	};
 
-
+	//TODO : ANGLE THE WHOLE TEXTURE
 	class Text_Sprite : public Graphic_element
 	{
 	public:
-		Text_Sprite(const SDL_Rect& rect, const std::string& font_path, const unsigned int& size, const std::string& message, SDL_Color& color);
+		
 
 
-		// the size of the rect is only for one frame of the sprite
-	   // so the length of the texture should be frames * tex_rect.w
+		void Init(const Empaerior::Float_Rect& rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, Empaerior::Color& color);
+		
 		// load the font and load the texture
 
 		~Text_Sprite()
 		{
-			//destroyer the glyphs, becuase unlike 6the normal sprite, the texture  is unique for all texts and alocatted bu the assetmanager
-			unsigned int i;
+			for (int i = 0; i < glyphs.size(); i++)
+			{
+				glyphs[i].clean();
+			}
+		}
+
+
+
+		//to be used when text_function is destroyed
+		void clean()
+		{
+			//destroy the glyphs, becuase unlike the normal sprite, the texture  is unique for all texts and alocatted bu the assetmanager
+			Empaerior::u_inter i;
 			for (i = 0; i < glyphs.size(); i++)
 			{
 				glyphs[i].clean();
 			}
-
-
 		}
+
+
+
 		void draw(const Camera& camera);
-		void update(const Uint32& dt)
-		{
+		void update(const Empaerior::u_int& dt) {};
 
-
-
-		}
 
 	public:
-		std::vector<glyph> glyphs; // texts have glyphs instead of texture (the same thing but not 
-		std::vector<int> text_values;
+		std::vector<glyph> glyphs; // texts have glyphs instead of texture (the same thing but not )
+		std::vector<Empaerior::byte> text_values;
 
 	};
 }

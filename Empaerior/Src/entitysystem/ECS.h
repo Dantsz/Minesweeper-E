@@ -18,6 +18,15 @@ namespace Empaerior
 			system_manager = std::make_unique<Empaerior::SystemManager>();
 
 		}
+		void Destroy()
+		{
+			component_manager.reset();
+			entity_manager.reset();
+			system_manager.reset();
+		}
+
+
+
 		//assigns a new id for an entity
 		uint64_t create_entity_ID()
 		{
@@ -57,8 +66,7 @@ namespace Empaerior
 			//modify the signature to match the new addition
 			std::vector<bool> e_signature = entity_manager->get_signature(entity_id);
 			uint64_t component_type = component_manager->get_component_id<T>();
-			//while the vector of signature doesn't have elements until the currenjt component we want do add
-			//add 0 
+			//while the vector of signature doesn't have elements until the current component add 0 to the signature
 			while (e_signature.size() <= component_type)
 			{
 				e_signature.emplace_back(0);
@@ -68,6 +76,7 @@ namespace Empaerior
 			entity_manager->set_signature(entity_id, e_signature);
 			system_manager->OnEntitySignatureChange(entity_id, e_signature);
 		}
+
 		template <typename T>
 		void remove_component(const uint64_t& entity_id)
 		{

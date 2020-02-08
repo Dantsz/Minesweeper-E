@@ -7,29 +7,17 @@
     <Filter Include="SDLwrappers">
       <UniqueIdentifier>{3CECAFD4-A8A1-28CA-3196-22A19D4A1FCE}</UniqueIdentifier>
     </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{E6391E0E-524E-46BF-1BD0-E91E87A342F0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="assetmanager">
       <UniqueIdentifier>{A08EF851-8CF1-87F6-3577-C0AC21B95379}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cereal">
-      <UniqueIdentifier>{B1A331F6-9D45-5CCC-8600-70207241E31C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cereal\external">
-      <UniqueIdentifier>{230920C7-8F94-8D8B-98A5-108004B0E98B}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cereal\external\rapidjson">
-      <UniqueIdentifier>{9C9A2E79-085D-6203-510D-F18FBD0E3BE1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cereal\external\rapidjson\error">
-      <UniqueIdentifier>{F5B6BD09-619A-CC49-6A9D-FA85D6FF929A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cereal\external\rapidjson\internal">
-      <UniqueIdentifier>{68EC05F2-5428-095C-BD3A-2153A995B176}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="cereal\external\rapidjson\msinttypes">
-      <UniqueIdentifier>{EB48E774-D72F-A96C-8080-0F8A6C4622D3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="debugging">
       <UniqueIdentifier>{71A3EA38-DD0D-9FAF-264C-505592F57C04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="defines">
+      <UniqueIdentifier>{E3988908-4F78-08A4-5890-937AC4EE6E05}</UniqueIdentifier>
     </Filter>
     <Filter Include="entitysystem">
       <UniqueIdentifier>{07A77B17-F309-0BBC-9C8F-437288D1D63E}</UniqueIdentifier>
@@ -63,130 +51,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Empaerior.h" />
     <ClInclude Include="src\Exceptions\Exceptions.h">
       <Filter>Exceptions</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h">
+      <Filter>SDLwrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDLwrappers\Rendering_Wrappers.h">
       <Filter>SDLwrappers</Filter>
     </ClInclude>
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h">
       <Filter>SDLwrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\State\State.h">
+      <Filter>State</Filter>
+    </ClInclude>
     <ClInclude Include="src\assetmanager\AssetManager.h">
       <Filter>assetmanager</Filter>
     </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\allocators.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\cursorstreamwrapper.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\document.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\encodedstream.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\encodings.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\error\en.h">
-      <Filter>cereal\external\rapidjson\error</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\error\error.h">
-      <Filter>cereal\external\rapidjson\error</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\filereadstream.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\filewritestream.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\fwd.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\biginteger.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\diyfp.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\dtoa.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\ieee754.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\itoa.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\meta.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\pow10.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\regex.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\stack.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\strfunc.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\strtod.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\internal\swap.h">
-      <Filter>cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\istreamwrapper.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\memorybuffer.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\memorystream.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\msinttypes\inttypes.h">
-      <Filter>cereal\external\rapidjson\msinttypes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\msinttypes\stdint.h">
-      <Filter>cereal\external\rapidjson\msinttypes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\ostreamwrapper.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\pointer.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\prettywriter.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\rapidjson.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\reader.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\schema.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\stream.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\stringbuffer.h">
-      <Filter>cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cereal\external\rapidjson\writer.h">
-      <Filter>cereal\external\rapidjson</Filter>
+    <ClInclude Include="src\debugging\Log.h">
+      <Filter>debugging</Filter>
     </ClInclude>
     <ClInclude Include="src\debugging\v_proffiler.h">
       <Filter>debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defines\Defines.h">
+      <Filter>defines</Filter>
     </ClInclude>
     <ClInclude Include="src\entitysystem\ECS.h">
       <Filter>entitysystem</Filter>
@@ -203,19 +95,7 @@
     <ClInclude Include="src\entitysystem\system\system.h">
       <Filter>entitysystem\system</Filter>
     </ClInclude>
-    <ClInclude Include="src\entitysystem\system\systems\camera_system.h">
-      <Filter>entitysystem\system\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\system\systems\event_system.h">
-      <Filter>entitysystem\system\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\system\systems\mine_sweeper_system.h">
-      <Filter>entitysystem\system\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\system\systems\print_system.h">
-      <Filter>entitysystem\system\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\system\systems\sprite_system.h">
+    <ClInclude Include="src\entitysystem\system\systems\Systems.h">
       <Filter>entitysystem\system\systems</Filter>
     </ClInclude>
     <ClInclude Include="src\eventhandler\EventHandler.h">
@@ -233,8 +113,12 @@
     <ClInclude Include="src\graphics\rendering\objects\Sprite.h">
       <Filter>graphics\rendering\objects</Filter>
     </ClInclude>
+    <ClInclude Include="src\main.h" />
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\utilities\Minesweeper_Utilities.h">
+    <ClInclude Include="src\utilities\Math.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\Rect.h">
       <Filter>utilities</Filter>
     </ClInclude>
     <ClInclude Include="src\utilities\Timer.h">
@@ -243,18 +127,20 @@
     <ClInclude Include="src\utilities\Utilities.h">
       <Filter>utilities</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\collisions.h">
+    <ClInclude Include="src\utilities\Vector2.h">
       <Filter>utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\State.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\State\State.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
     <ClCompile Include="src\assetmanager\AssetManager.cpp">
       <Filter>assetmanager</Filter>
     </ClCompile>
-    <ClCompile Include="src\entitysystem\system\systems\mine_sweeper_system.cpp">
-      <Filter>entitysystem\system\systems</Filter>
+    <ClCompile Include="src\debugging\Log.cpp">
+      <Filter>debugging</Filter>
     </ClCompile>
     <ClCompile Include="src\eventhandler\EventHandler.cpp">
       <Filter>eventhandler</Filter>
@@ -271,16 +157,21 @@
     <ClCompile Include="src\graphics\rendering\objects\Sprite.cpp">
       <Filter>graphics\rendering\objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\utilities\Math.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\Rect.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
     <ClCompile Include="src\utilities\Timer.cpp">
       <Filter>utilities</Filter>
     </ClCompile>
     <ClCompile Include="src\utilities\Utilities.cpp">
       <Filter>utilities</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="icon.rc" />
+    <ClCompile Include="src\utilities\Vector2.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
