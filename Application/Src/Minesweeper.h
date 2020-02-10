@@ -8,6 +8,9 @@ struct Mine_field
 	//the field of entities
 	Empaerior::u_inter field[16][16];
 	Empaerior::boole mine_encountered = 0;
+	Empaerior::u_inter free_spaces = 0;
+	//spaces that need to be equlaed in order to win
+	Empaerior::u_inter all_spaces = 0;
 };
 
 struct cell_component
@@ -36,6 +39,23 @@ class Mine_sweep_system : public Empaerior::System
 public:
 	//reveal a cell
 	void Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, int x, int y);
+	Empaerior::u_inter get_nr_cell(Empaerior::ECS& ecs, const uint64_t& entity_id)
+	{
+		Empaerior::u_inter nr = 0;
+		for (int i = 0; i < 16; i++)
+		{
+			for (int j = 0; j < 16; j++)
+			{
+#define tile ecs.get_component<Mine_field>(entity_id).field[i][j]
+				if (ecs.get_component<field_component>(tile).field_type >= 0 && ecs.get_component<cell_component>(tile).is_revealed)
+				{
+					nr++;
+#undef tile
+				}
 
-
+			}
+		}
+		return nr;
+	}
+	
 };

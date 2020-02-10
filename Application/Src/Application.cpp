@@ -3,7 +3,7 @@
 #include <random>
 #include "Minesweeper.h"
 //An example of what a application might look like
-
+#define board_size 16
 //a user defined state
 bool touched_mine = false;
 class APP_State1 : public Empaerior::State
@@ -81,7 +81,7 @@ public:
 
 		int lower_bound = 20;
 		int upper_bound = 50;
-		Empaerior::u_inter field_matrix[16][16];
+		field_matrix[16][16];
 		/*
 				std::ifstream out("config.json");
 				cereal::JSONInputArchive archive(out);
@@ -103,20 +103,29 @@ public:
 		}
 
 		//total mines
-
+		
 		std::random_device rd;
 		std::mt19937 rng(rd());
 		std::uniform_int_distribution<int> xDist(0, 15);
 		std::uniform_int_distribution<int> yDist(0, 15);
 		std::uniform_int_distribution<int> mines_rng(lower_bound, upper_bound);
 		int mines = mines_rng(rng);
-		nr_mines = mines;
+	
+	
+
+		int x = 0; 
+		int y = 0;
 		while (mines != 0)
 		{
-			field_matrix[xDist(rng)][yDist(rng)] = -1;
-			--mines;
-		}
+			x = xDist(rng);
+			y = yDist(rng);
+			field_matrix[x][y] = -1;
 
+			--mines; 
+	
+		}
+	
+	
 		//make the number tiles
 		for (int i = 0; i < 16; i++)
 		{
@@ -137,7 +146,7 @@ public:
 			}
 
 		}
-
+		nr_mines = get_bombs();
 #pragma endregion
 
 
@@ -153,9 +162,9 @@ public:
 		ecs.add_component<Empaerior::Sprite_Component>(face_boi.id, {});
 		spr_system->add_sprite(ecs, face_boi.id, { 220,0,36,36 }, { 0,0,26,26 }, "assets/tex_face.png", 1);
 		ecs.add_component<Empaerior::Event_Listener_Component>(face_boi.id, {});
-
-
-
+		
+		ecs.get_component<Mine_field>(background.id).all_spaces = board_size * board_size - nr_mines;
+	
 
 
 #pragma region face_boi_release
@@ -255,7 +264,7 @@ public:
 
 				//event handling
 
-				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONUP, [&Ecs = ecs, &Spr_system = spr_system, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type, Face_boi = face_boi](Empaerior::Event& event) {
+				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONUP, [&Ecs = ecs, &Spr_system = spr_system, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type, Face_boi = face_boi, &Nr_mines = nr_mines](Empaerior::Event& event) {
 
 #define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
 					if (Empaerior::is_event_handled(event)) return; 
@@ -273,14 +282,18 @@ public:
 							{
 
 								mine->Reveal(Ecs, map, i, j);
+							
 								Empaerior::event_handled(event);
 								if (Ecs.get_component<Mine_field>(map).mine_encountered == 1)
 								{
 									//Change face_boi to dead_boi
-									ENGINE_INFO("FACE BOI");
-								
+							
 									Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/dead_boi.png");
 									
+								}
+								else if (mine->get_nr_cell(Ecs, map) + Nr_mines == board_size  * board_size)
+								{
+									Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/happy_boi.png");
 								}
 							}
 
@@ -353,7 +366,7 @@ public:
 
 #pragma endregion
 
-
+		
 	}
 
 
@@ -367,8 +380,6 @@ public:
 		//DEBUG CODE, LETS YOU MOVE AROUND THE MAP
 
 
-
-		
 		//UPDATE
 		spr_system->update(ecs, dt);
 	}
@@ -388,14 +399,26 @@ public:
 		event_system->handle_events(ecs, event);
 	}
 
-
+	Empaerior::u_inter get_bombs()
+	{
+		Empaerior::u_inter z = 0;
+		for (int i = 0; i < board_size; i++)
+		{
+			for (int j = 0; j < board_size; j++)
+			{
+				if (field_matrix[i][j] == -1) z++;
+			}
+		}
+		return z;
+	}
+	
 	std::shared_ptr<Empaerior::Sprite_System> spr_system;
 	std::shared_ptr<Empaerior::Event_System> event_system;
 	std::shared_ptr<Mine_sweep_system> mine_system;
 
 	Empaerior::u_inter nr_mines = 0;
 
-
+	Empaerior::u_inter field_matrix[16][16];
 private:
 
 
