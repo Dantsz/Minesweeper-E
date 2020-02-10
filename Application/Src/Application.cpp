@@ -255,17 +255,15 @@ public:
 
 				//event handling
 
-				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONUP, [&Ecs = ecs, &Spr_system = spr_system, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type, Face_boi = face_boi](Empaerior::Event const& event) {
+				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONUP, [&Ecs = ecs, &Spr_system = spr_system, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type, Face_boi = face_boi](Empaerior::Event& event) {
 
 #define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
-
+					if (Empaerior::is_event_handled(event)) return; 
 					//mouse coordinates
-
+				
 					auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
 
-
-
-
+					Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/tex_face.png");
 					//reveal
 					if (event.event.button.button == SDL_BUTTON_LEFT)
 					{
@@ -275,14 +273,14 @@ public:
 							{
 
 								mine->Reveal(Ecs, map, i, j);
-
+								Empaerior::event_handled(event);
 								if (Ecs.get_component<Mine_field>(map).mine_encountered == 1)
 								{
 									//Change face_boi to dead_boi
 									ENGINE_INFO("FACE BOI");
 								
-									Ecs.get_component<Empaerior::Sprite_Component>(1).sprites[0].set_texture("assets/dead_boi.png");
-								
+									Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/dead_boi.png");
+									
 								}
 							}
 
@@ -325,7 +323,7 @@ public:
 				});
 
 				//WHEN A CELL A CLICKED
-				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type](Empaerior::Event const& event) {
+				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs, &mine = mine_system, map = background.id, i, j,Face_boi = face_boi ,  &kamera = camera, &id_to_cell_type_map = id_to_cell_type](Empaerior::Event const& event) {
 
 #define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
 					//mouse coordinates
@@ -334,8 +332,9 @@ public:
 					{
 						if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_rect(), f_m.first, f_m.second) && Ecs.get_component<cell_component>(l_tile).cell_type == 0)
 						{
-							Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].set_texture("assets/tex_empty.png");
+							if(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites.size() > 1)	Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].set_texture("assets/tex_empty.png");
 							Ecs.get_component<cell_component>(l_tile).is_clicked = 1;
+							Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/shock_boi.png");
 						}
 
 					}
