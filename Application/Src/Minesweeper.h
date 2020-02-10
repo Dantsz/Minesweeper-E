@@ -7,8 +7,8 @@ struct Mine_field
 {
 	//the field of entities
 	Empaerior::u_inter field[16][16];
-
-}; 
+	Empaerior::boole mine_encountered = 0;
+};
 
 struct cell_component
 {
@@ -17,6 +17,7 @@ struct cell_component
 	//2 - ? cell
 	Empaerior::u_inter cell_type;
 	Empaerior::boole is_revealed;
+	Empaerior::boole is_clicked;
 };
 
 
@@ -35,4 +36,6 @@ class Mine_sweep_system : public Empaerior::System
 public:
 	//reveal a cell
 	void Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, int x, int y);
+
+
 };

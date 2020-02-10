@@ -111,7 +111,8 @@ namespace Empaerior {
 		//gets the dimesnions of the sprite
 		Empaerior::Float_Rect& get_rect();
 		
-		
+
+		Empaerior::string path;// the path
 
 	std::shared_ptr<SDL_Texture> texture;
 	private:
@@ -134,7 +135,6 @@ namespace Empaerior {
 		}
 
 
-		Empaerior::string path;// the path
 
 		Empaerior::Int_Rect tex_rect;// the portion of the texture the sprite represents
 		Empaerior::u_int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
@@ -186,6 +186,14 @@ namespace Empaerior {
 			{
 				glyphs[i].clean();
 			}
+		}
+
+
+		void set_message(const Empaerior::string& message)
+		{
+
+			text_values = load_glyph_values(message);//translate the message to glyph values
+
 		}
 
 

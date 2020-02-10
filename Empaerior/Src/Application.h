@@ -30,7 +30,7 @@ public:
 
 
 	virtual void handlevents(Empaerior::Event& event);
-    virtual void Update(const unsigned int& dt);
+    virtual void Update(const Empaerior::u_inter& dt);
 	
 
 #pragma region	STATE EDITING

@@ -1,6 +1,6 @@
 #include <Empaerior.h>
 #include <main.h>
-#include <random> 
+#include <random>
 #include "Minesweeper.h"
 //An example of what a application might look like
 
@@ -10,11 +10,11 @@ class APP_State1 : public Empaerior::State
 {
 
 public:
-	
+
 	APP_State1()
 	{
 
-	
+
 
 		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Testing stuff");
 
@@ -82,18 +82,18 @@ public:
 		int lower_bound = 20;
 		int upper_bound = 50;
 		Empaerior::u_inter field_matrix[16][16];
-/*
-		std::ifstream out("config.json");
-		cereal::JSONInputArchive archive(out);
+		/*
+				std::ifstream out("config.json");
+				cereal::JSONInputArchive archive(out);
 
-		archive(cereal::make_nvp("lower_bound", lower_bound));
-		archive(cereal::make_nvp("upper_bound", upper_bound));
+				archive(cereal::make_nvp("lower_bound", lower_bound));
+				archive(cereal::make_nvp("upper_bound", upper_bound));
 
-		*/
+				*/
 
-		//mine distributing
-		//thanks Chilli Tomato Noodle
-		
+				//mine distributing
+				//thanks Chilli Tomato Noodle
+
 		for (int i = 0; i < 16; i++)
 		{
 			for (int j = 0; j < 16; j++)
@@ -110,7 +110,7 @@ public:
 		std::uniform_int_distribution<int> yDist(0, 15);
 		std::uniform_int_distribution<int> mines_rng(lower_bound, upper_bound);
 		int mines = mines_rng(rng);
-
+		nr_mines = mines;
 		while (mines != 0)
 		{
 			field_matrix[xDist(rng)][yDist(rng)] = -1;
@@ -140,24 +140,24 @@ public:
 
 #pragma endregion
 
-		
+
 #pragma region Background
 		//Put the backgorund in
-		Empaerior::Entity background = {ecs.create_entity_ID() };
+		Empaerior::Entity background = { ecs.create_entity_ID() };
 		ecs.add_component<Empaerior::Sprite_Component>(background.id, {});
 		spr_system->add_sprite(ecs, background.id, { 0,0,480,400 }, { 0,0,1,1 }, "assets/background.png", 1);
 		ecs.add_component<Mine_field>(background.id, { {0} });
+		spr_system->add_text_sprite(ecs, background.id, { 258,12,1000,100 }, "assets/font.ttf", 32, "Mines: " + std::to_string(nr_mines), { 0,0,0,255 });
 		//Add faceboi
 		Empaerior::Entity face_boi = { ecs.create_entity_ID() };
 		ecs.add_component<Empaerior::Sprite_Component>(face_boi.id, {});
 		spr_system->add_sprite(ecs, face_boi.id, { 220,0,36,36 }, { 0,0,26,26 }, "assets/tex_face.png", 1);
 		ecs.add_component<Empaerior::Event_Listener_Component>(face_boi.id, {});
 
-		
 
 
 
-			
+
 #pragma region face_boi_release
 
 
@@ -165,7 +165,7 @@ public:
 			[&Ecs = ecs, &kamera = camera, face_boi_id = face_boi.id](Empaerior::Event& event)
 		{
 
-			//mouse coordinates 
+			//mouse coordinates
 
 			auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
 			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_rect(), f_m.first, f_m.second))
@@ -176,14 +176,14 @@ public:
 			}
 			else
 			{
-				Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].set_texture("assets/tex_face.png");
+				//Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].set_texture("assets/tex_face.png");
 			}
 
 			Empaerior::event_handled(event);
 		}
 
 		);
-			
+
 #pragma endregion
 
 
@@ -194,7 +194,7 @@ public:
 			[&Ecs = ecs, &kamera = camera, face_boi_id = face_boi.id](Empaerior::Event& event)
 		{
 
-			//mouse coordinates 
+			//mouse coordinates
 
 			auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
 			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_rect(), f_m.first, f_m.second))
@@ -238,27 +238,28 @@ public:
 				ecs.add_component<Empaerior::Event_Listener_Component>(tile, { {} });
 
 				//adds what at the bottom
-			
 
-				spr_system->add_sprite(ecs, tile,  { Empaerior::fl_point( 24 * j + 48) ,Empaerior::fl_point(20 * i + 40 ),24,20 } , { 0,0,64,64 }, id_to_field_type[field_matrix[i][j]], 1);
+
+				spr_system->add_sprite(ecs, tile, { Empaerior::fl_point(24 * j + 48) ,Empaerior::fl_point(20 * i + 40),24,20 }, { 0,0,64,64 }, id_to_field_type[field_matrix[i][j]], 1);
 
 
 				//
 
 				//adds what's in the front
-			
-				spr_system->add_sprite(ecs, tile,  {Empaerior::fl_point( 24 * j + 48) ,Empaerior::fl_point(20 * i + 40) ,24,20 }, { 0, 0, 64, 64 }, id_to_cell_type[0], 1);
+
+				spr_system->add_sprite(ecs, tile, { Empaerior::fl_point(24 * j + 48) ,Empaerior::fl_point(20 * i + 40) ,24,20 }, { 0, 0, 64, 64 }, id_to_cell_type[0], 1);
 
 
 				//notice I didn't register this component as it is not necessary
 
 
 				//event handling
-				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type](Empaerior::Event const& event) {
+
+				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONUP, [&Ecs = ecs, &Spr_system = spr_system, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type, Face_boi = face_boi](Empaerior::Event const& event) {
 
 #define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
 
-					//mouse coordinates 
+					//mouse coordinates
 
 					auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
 
@@ -268,14 +269,21 @@ public:
 					//reveal
 					if (event.event.button.button == SDL_BUTTON_LEFT)
 					{
-						if (!Ecs.get_component<cell_component>(l_tile).is_revealed)
+						if (!Ecs.get_component<cell_component>(l_tile).is_revealed&& Ecs.get_component<cell_component>(l_tile).is_clicked == 1)
 						{
 							if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_rect(), f_m.first, f_m.second))
 							{
-							
+
 								mine->Reveal(Ecs, map, i, j);
 
-
+								if (Ecs.get_component<Mine_field>(map).mine_encountered == 1)
+								{
+									//Change face_boi to dead_boi
+									ENGINE_INFO("FACE BOI");
+								
+									Ecs.get_component<Empaerior::Sprite_Component>(1).sprites[0].set_texture("assets/dead_boi.png");
+								
+								}
 							}
 
 						}
@@ -300,8 +308,43 @@ public:
 
 					}
 
+
+
+					if (!Ecs.get_component<cell_component>(l_tile).is_revealed&& Ecs.get_component<cell_component>(l_tile).is_clicked)
+					{
+
+						Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].set_texture("assets/tex_cell.png");
+						Ecs.get_component<cell_component>(l_tile).is_clicked = 0;
+
+					}
+
+
+
+
 #undef l_tile
 				});
+
+				//WHEN A CELL A CLICKED
+				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type](Empaerior::Event const& event) {
+
+#define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
+					//mouse coordinates
+					auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
+					if (!Ecs.get_component<cell_component>(l_tile).is_revealed&& event.event.button.button == SDL_BUTTON_LEFT)
+					{
+						if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_rect(), f_m.first, f_m.second) && Ecs.get_component<cell_component>(l_tile).cell_type == 0)
+						{
+							Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].set_texture("assets/tex_empty.png");
+							Ecs.get_component<cell_component>(l_tile).is_clicked = 1;
+						}
+
+					}
+
+
+
+#undef l_tile
+				});
+
 
 
 
@@ -314,7 +357,7 @@ public:
 
 	}
 
-	
+
 	~APP_State1()
 	{
 		ecs.Destroy();
@@ -326,19 +369,19 @@ public:
 
 
 
-
-		//UPDATE 
+		
+		//UPDATE
 		spr_system->update(ecs, dt);
 	}
-	
+
 	virtual void Render() override//renders the state
 	{
-	
+
 		SDL_RenderSetLogicalSize(Empaerior::Application::window.renderer, camera.rect.w, camera.rect.h);
 		//RENDER
-		spr_system->render(ecs,camera);
-		
-	
+		spr_system->render(ecs, camera);
+
+
 	}
 	virtual void handleevents(Empaerior::Event& event) override
 	{
@@ -351,11 +394,11 @@ public:
 	std::shared_ptr<Empaerior::Event_System> event_system;
 	std::shared_ptr<Mine_sweep_system> mine_system;
 
-	
+	Empaerior::u_inter nr_mines = 0;
 
 
 private:
-	
+
 
 	//id -> path to the png of the field (mine,1,2,3,0)
 	std::unordered_map<Empaerior::u_inter, std::string> id_to_field_type;
@@ -376,32 +419,32 @@ public:
 		window.Init("test", 960, 800);
 		//CREATE A NEW STATE
 		main_state = push_state(new APP_State1());
-		
 
-	
+
+
 		//make the state active
 
 
 		activate_state(main_state);
-		
 
 
-	
-		
+
+
+
 
 
 		//SET THE DIMENSIONS OF THE CAMERA
 		SDL_RenderSetLogicalSize(Application::window.renderer, states[active_states[0]]->get_camera().rect.w, states[active_states[0]]->get_camera().rect.h);
 		//ADD AN OVERLAY STATE
-		
-	//	pause_state(main_state);
 
-		
+	//  pause_state(main_state);
 
-	
-		
-	
-	
+
+
+
+
+
+
 
 	}
 
@@ -450,8 +493,8 @@ public:
 				while (acumulator >= Empaerior::Application::dt)
 				{
 
-					
-					//update 
+
+					//update
 
 					Update(Empaerior::Application::dt);
 
@@ -469,17 +512,17 @@ public:
 				render();
 
 				Empaerior::Application::window.render();
-					
 
-				//CReating and deleting a state every update to test for bugs 
 
-			
+				//CReating and deleting a state every update to test for bugs
+
+
 				//refresh the application
 				refresh();
-	
 
 
-			
+
+
 			}
 
 			Empaerior::Asset_Loading::clean_textures();
@@ -490,18 +533,18 @@ public:
 
 	void handlevents(Empaerior::Event& event) override
 	{
-	
+
 		Empaerior::Application::window.window_listener.handleEvents(event);
 
-		for(Empaerior::u_inter i = active_states.size() - 1; active_states.size() > i; --i)
+		for (Empaerior::u_inter i = active_states.size() - 1; active_states.size() > i; --i)
 		{
 			states[active_states[i]]->handleevents(event);
 		}
-		
+
 	}
-	void Update(const unsigned int& dt)override
+	void Update(const Empaerior::u_inter& dt)override
 	{
-		
+
 		for (Empaerior::u_inter i = 0; i < active_states.size(); i++)
 		{
 			states[active_states[i]]->Update(dt);
@@ -526,7 +569,7 @@ public:
 		{
 			ENGINE_INFO("RESTARTING THE GAME");
 
-	
+
 
 			delete_state(main_state);
 

@@ -22,7 +22,7 @@ void Empaerior::Application::Init()
 
 
 
-void Empaerior::Application::Update(const unsigned int& dt )
+void Empaerior::Application::Update(const Empaerior::u_inter& dt)
 {
 
 

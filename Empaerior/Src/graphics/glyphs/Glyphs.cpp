@@ -88,11 +88,13 @@ namespace Empaerior {
 
 			if (lValue == 85) {
 				lastSpace = cnt; wX = x + glyphs[85].w;
+				
 				//need to read ahead make sure room for next word if not then skip to next line
 				for (Empaerior::u_inter t = lastSpace + 1; t < text.size(); t++) {
 					int m_lValue = text[t];
 					wX = wX + glyphs[m_lValue].w;
-					if (wX >= screenWidth - margin) {
+					
+					if (wX >= screenWidth + margin) {
 						safe = false;
 						break;
 					}
@@ -111,7 +113,7 @@ namespace Empaerior {
 			}
 			else { cnt = lastSpace; x = margin; y = y + glyphs[lValue].h; safe = true; }
 		}
-
+	
 		
 	}
 	//faster,but you need to preload the vector
