@@ -25,15 +25,15 @@ public:
 		camera = { 0,0,480,400 };
 
 		//REGISTER SOME COMPONENTS
-		ecs.register_component<Empaerior::Sprite_Component>();
+		ecs.register_component<Empaerior::Spr_Component>();
 		ecs.register_component<Empaerior::Event_Listener_Component>();
 
 		//CREATE SOME SYSTEMS TO USE THE COMPONENTS
-		spr_system = ecs.register_system <Empaerior::Sprite_System>();
+		spr_system = ecs.register_system <Empaerior::Spr_System>();
 		event_system = ecs.register_system<Empaerior::Event_System>();
 		mine_system = ecs.register_system<Mine_sweep_system>();
 		//SPECIFIY WHAT TYPES OF COMPONENT EACH SYSTEM NEEDS
-		ecs.add_component_to_system<Empaerior::Sprite_Component, Empaerior::Sprite_System>();
+		ecs.add_component_to_system<Empaerior::Spr_Component, Empaerior::Spr_System>();
 		ecs.add_component_to_system<Empaerior::Event_Listener_Component, Empaerior::Event_System>();
 
 
@@ -153,14 +153,14 @@ public:
 #pragma region Background
 		//Put the backgorund in
 		Empaerior::Entity background = { ecs.create_entity_ID() };
-		ecs.add_component<Empaerior::Sprite_Component>(background.id, {});
-		spr_system->add_sprite(ecs, background.id, { 0,0,480,400 }, { 0,0,1,1 }, "assets/background.png", 1);
+		ecs.add_component<Empaerior::Spr_Component>(background.id, {});
+		spr_system->emplace_sprite(ecs, background.id, { 0,0,480,400 }, { 0,0,1,1 }, "assets/background.png", 1);
 		ecs.add_component<Mine_field>(background.id, { {0} });
-		spr_system->add_text_sprite(ecs, background.id, { 258,12,1000,100 }, "assets/font.ttf", 32, "Mines: " + std::to_string(nr_mines), { 0,0,0,255 });
+		spr_system->emplace_textsprite(ecs, background.id, { 258,12,1000,100 }, "assets/font.ttf", 32, "Mines: " + std::to_string(nr_mines), { 0,0,0,255 });
 		//Add faceboi
 		Empaerior::Entity face_boi = { ecs.create_entity_ID() };
-		ecs.add_component<Empaerior::Sprite_Component>(face_boi.id, {});
-		spr_system->add_sprite(ecs, face_boi.id, { 220,0,36,36 }, { 0,0,26,26 }, "assets/tex_face.png", 1);
+		ecs.add_component<Empaerior::Spr_Component>(face_boi.id, {});
+		spr_system->emplace_sprite(ecs, face_boi.id, { 220,0,36,36 }, { 0,0,26,26 }, "assets/tex_face.png", 1);
 		ecs.add_component<Empaerior::Event_Listener_Component>(face_boi.id, {});
 		
 		ecs.get_component<Mine_field>(background.id).all_spaces = board_size * board_size - nr_mines;
@@ -177,11 +177,11 @@ public:
 			//mouse coordinates
 
 			auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
-			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_rect(), f_m.first, f_m.second))
+			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(face_boi_id).sprites[0].get_rect(), f_m.x, f_m.y))
 			{
 				//RESTART GAME
 				touched_mine = true;
-				Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].set_texture("assets/tex_face.png");
+				Ecs.get_component<Empaerior::Spr_Component>(face_boi_id).sprites[0].set_texture("assets/tex_face.png");
 			}
 			else
 			{
@@ -206,9 +206,9 @@ public:
 			//mouse coordinates
 
 			auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
-			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].get_rect(), f_m.first, f_m.second))
+			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(face_boi_id).sprites[0].get_rect(), f_m.x, f_m.y))
 			{
-				Ecs.get_component<Empaerior::Sprite_Component>(face_boi_id).sprites[0].set_texture("assets/face_boi_click.png");
+				Ecs.get_component<Empaerior::Spr_Component>(face_boi_id).sprites[0].set_texture("assets/face_boi_click.png");
 
 			}
 
@@ -220,10 +220,10 @@ public:
 
 #pragma region margins
 
-		spr_system->add_sprite(ecs, background.id, { 432,40,4,320 }, { 0,0,1,1 }, "assets/margin.png", 1);
-		spr_system->add_sprite(ecs, background.id, { 44,40,4,320 }, { 0,0,1,1 }, "assets/margin.png", 1);
-		spr_system->add_sprite(ecs, background.id, { 44,36,392,4 }, { 0,0,1,1 }, "assets/margin.png", 1);
-		spr_system->add_sprite(ecs, background.id, { 44,360,392,4 }, { 0,0,1,1 }, "assets/margin.png", 1);
+		spr_system->emplace_sprite(ecs, background.id, { 432,40,4,320 }, { 0,0,1,1 }, "assets/margin.png", 1);
+		spr_system->emplace_sprite(ecs, background.id, { 44,40,4,320 }, { 0,0,1,1 }, "assets/margin.png", 1);
+		spr_system->emplace_sprite(ecs, background.id, { 44,36,392,4 }, { 0,0,1,1 }, "assets/margin.png", 1);
+		spr_system->emplace_sprite(ecs, background.id, { 44,360,392,4 }, { 0,0,1,1 }, "assets/margin.png", 1);
 
 
 #pragma endregion
@@ -240,7 +240,7 @@ public:
 
 				tile = ecs.create_entity_ID();
 				//add the random generation here
-				ecs.add_component<Empaerior::Sprite_Component>(tile, {});
+				ecs.add_component<Empaerior::Spr_Component>(tile, {});
 				ecs.add_component<field_component>(tile, { field_matrix[i][j] });
 				ecs.add_component<cell_component>(tile, { 0,false });
 
@@ -249,14 +249,14 @@ public:
 				//adds what at the bottom
 
 
-				spr_system->add_sprite(ecs, tile, { Empaerior::fl_point(24 * j + 48) ,Empaerior::fl_point(20 * i + 40),24,20 }, { 0,0,64,64 }, id_to_field_type[field_matrix[i][j]], 1);
+				spr_system->emplace_sprite(ecs, tile, { Empaerior::fl_point(24 * j + 48) ,Empaerior::fl_point(20 * i + 40),24,20 }, { 0,0,64,64 }, id_to_field_type[field_matrix[i][j]], 1);
 
 
 				//
 
 				//adds what's in the front
 
-				spr_system->add_sprite(ecs, tile, { Empaerior::fl_point(24 * j + 48) ,Empaerior::fl_point(20 * i + 40) ,24,20 }, { 0, 0, 64, 64 }, id_to_cell_type[0], 1);
+				spr_system->emplace_sprite(ecs, tile, { Empaerior::fl_point(24 * j + 48) ,Empaerior::fl_point(20 * i + 40) ,24,20 }, { 0, 0, 64, 64 }, id_to_cell_type[0], 1);
 
 
 				//notice I didn't register this component as it is not necessary
@@ -272,13 +272,13 @@ public:
 				
 					auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
 
-					Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/tex_face.png");
+					Ecs.get_component<Empaerior::Spr_Component>(Face_boi.id).sprites[0].set_texture("assets/tex_face.png");
 					//reveal
 					if (event.event.button.button == SDL_BUTTON_LEFT)
 					{
 						if (!Ecs.get_component<cell_component>(l_tile).is_revealed&& Ecs.get_component<cell_component>(l_tile).is_clicked == 1)
 						{
-							if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_rect(), f_m.first, f_m.second))
+							if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[0].get_rect(), f_m.x, f_m.y))
 							{
 
 								mine->Reveal(Ecs, map, i, j);
@@ -288,12 +288,12 @@ public:
 								{
 									//Change face_boi to dead_boi
 							
-									Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/dead_boi.png");
+									Ecs.get_component<Empaerior::Spr_Component>(Face_boi.id).sprites[0].set_texture("assets/dead_boi.png");
 									
 								}
 								else if (mine->get_nr_cell(Ecs, map) + Nr_mines == board_size  * board_size)
 								{
-									Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/happy_boi.png");
+									Ecs.get_component<Empaerior::Spr_Component>(Face_boi.id).sprites[0].set_texture("assets/happy_boi.png");
 								}
 							}
 
@@ -304,14 +304,14 @@ public:
 					{
 						if (!Ecs.get_component<cell_component>(l_tile).is_revealed)
 						{
-							if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_rect(), f_m.first, f_m.second))
+							if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[0].get_rect(), f_m.x, f_m.y))
 							{
 #define CELL_TYPE Ecs.get_component<cell_component>(l_tile).cell_type
 
 								CELL_TYPE++;
 								if (CELL_TYPE == 3) CELL_TYPE = 0;
 
-								Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].set_texture(id_to_cell_type_map[CELL_TYPE]);
+								Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[1].set_texture(id_to_cell_type_map[CELL_TYPE]);
 #undef CELL_TYPE
 							}
 						}
@@ -324,7 +324,7 @@ public:
 					if (!Ecs.get_component<cell_component>(l_tile).is_revealed&& Ecs.get_component<cell_component>(l_tile).is_clicked)
 					{
 
-						Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].set_texture("assets/tex_cell.png");
+						Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[1].set_texture("assets/tex_cell.png");
 						Ecs.get_component<cell_component>(l_tile).is_clicked = 0;
 
 					}
@@ -343,11 +343,11 @@ public:
 					auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
 					if (!Ecs.get_component<cell_component>(l_tile).is_revealed&& event.event.button.button == SDL_BUTTON_LEFT)
 					{
-						if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[0].get_rect(), f_m.first, f_m.second) && Ecs.get_component<cell_component>(l_tile).cell_type == 0)
+						if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[0].get_rect(), f_m.x, f_m.y) && Ecs.get_component<cell_component>(l_tile).cell_type == 0)
 						{
-							if(Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites.size() > 1)	Ecs.get_component<Empaerior::Sprite_Component>(l_tile).sprites[1].set_texture("assets/tex_empty.png");
+							if(Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites.size() > 1)	Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[1].set_texture("assets/tex_empty.png");
 							Ecs.get_component<cell_component>(l_tile).is_clicked = 1;
-							Ecs.get_component<Empaerior::Sprite_Component>(Face_boi.id).sprites[0].set_texture("assets/shock_boi.png");
+							Ecs.get_component<Empaerior::Spr_Component>(Face_boi.id).sprites[0].set_texture("assets/shock_boi.png");
 						}
 
 					}
@@ -375,7 +375,7 @@ public:
 		ecs.Destroy();
 	}
 
-	void Update(const Empaerior::u_int& dt)override
+	void Update(const Empaerior::u_int dt)override
 	{
 		//DEBUG CODE, LETS YOU MOVE AROUND THE MAP
 
@@ -386,11 +386,11 @@ public:
 
 	virtual void Render() override//renders the state
 	{
-
+		
 		SDL_RenderSetLogicalSize(Empaerior::Application::window.renderer, camera.rect.w, camera.rect.h);
 		//RENDER
 		spr_system->render(ecs, camera);
-
+		
 
 	}
 	virtual void handleevents(Empaerior::Event& event) override
@@ -412,7 +412,7 @@ public:
 		return z;
 	}
 	
-	std::shared_ptr<Empaerior::Sprite_System> spr_system;
+	std::shared_ptr<Empaerior::Spr_System> spr_system;
 	std::shared_ptr<Empaerior::Event_System> event_system;
 	std::shared_ptr<Mine_sweep_system> mine_system;
 
@@ -489,7 +489,6 @@ public:
 		{
 
 
-
 			//poll what event is registered
 			while (SDL_PollEvent(&Empaerior::Application::event.event)) {
 				//make it not handled yet
@@ -543,7 +542,7 @@ public:
 				refresh();
 
 
-
+				
 
 			}
 
@@ -564,7 +563,7 @@ public:
 		}
 
 	}
-	void Update(const Empaerior::u_inter& dt)override
+	void Update(const Empaerior::u_int dt)override
 	{
 
 		for (Empaerior::u_inter i = 0; i < active_states.size(); i++)

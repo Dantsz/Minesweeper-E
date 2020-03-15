@@ -3,17 +3,22 @@
 #include <sstream>
 #include <iostream>
 
-#include "defines/Defines.h"
-#include "utilities/Vector2.h"
-#include "utilities/Rect.h"
-
 
 #include <string>
-
-
 #include <vector>
 #include <unordered_map>
 #include <map>
+
+#include "defines/Defines.h"
+
+
+#include "core/Point2.h"
+#include "core/Vector2.h"
+#include "core/Rect.h"
+#include "core/utilities/Math.h"
+#include "core/utilities/Timer.h"
+
+#include "core/ecs/ECS.h"
 
 
 #include <memory>
@@ -21,6 +26,6 @@
 #include <algorithm>
 
 
-#include "debugging/v_proffiler.h"
-#include "SDLwrappers/Ptr_Wrappers.h"
-#include "Utilities/Math.h"
+#include "core/debugging/v_proffiler.h"
+#include "rendering/SDLwrappers/Ptr_Wrappers.h"
+

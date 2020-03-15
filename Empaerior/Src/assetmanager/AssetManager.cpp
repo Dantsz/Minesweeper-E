@@ -1,14 +1,16 @@
 #include "pch.h"
 #include "AssetManager.h"
 #include "../Application.h"
-#include "../SDLwrappers/Ptr_Wrappers.h"
-#include "../Exceptions/Exceptions.h"
+#include "rendering/SDLwrappers/Ptr_Wrappers.h"
+#include "core/Exceptions/Exceptions.h"
 
 
-extern std::unordered_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
-extern std::unordered_map<Empaerior::string, std::unordered_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
-extern std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
+
+extern Empaerior::hash_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
+extern Empaerior::hash_map<Empaerior::string, Empaerior::hash_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
+extern Empaerior::hash_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
+extern Empaerior::hash_map<Empaerior::v_pair<Empaerior::string, Empaerior::s_int>,std::shared_ptr<Empaerior::vector<Empaerior::surface_glyph>>,pair_hash> dim_to_glyphs;
 namespace Empaerior::Asset_Loading
 {
 
@@ -85,7 +87,7 @@ namespace Empaerior::Asset_Loading
 			{
 
 				//create font ( and font) map and put in the font
-				Fonts.insert({ font_path,std::move(std::unordered_map<int,std::unique_ptr<TTF_Font>>()) });
+				Fonts.insert({ font_path,std::move(Empaerior::hash_map<int,std::unique_ptr<TTF_Font>>()) });
 
 
 				SDL_RWops* rwop = SDL_RWFromFile(font_path.c_str(), "rb");
@@ -144,6 +146,28 @@ namespace Empaerior::Asset_Loading
 			//return a nullpointer
 			return nullptr;
 		}
+
+	}
+
+	std::shared_ptr<Empaerior::vector<surface_glyph>> load_glyph_vector(const Empaerior::string& font_path, const Empaerior::s_int& size)
+	{
+		//search for the glyphs
+		auto glyphs = dim_to_glyphs.find({font_path,size});
+		//if they haven't been found create them
+		if (glyphs == dim_to_glyphs.end())
+		{
+			std::shared_ptr<Empaerior::vector<surface_glyph>> vec = std::make_shared<Empaerior::vector<surface_glyph>>();
+			//all s_glyphs are white
+			Empaerior::Color c = { 255,255,255,255 };
+			createGlyphs(*vec, font_path, size,c );
+			dim_to_glyphs.insert({ {font_path,size},vec });
+			return vec;
+		}
+		else
+		{
+			return glyphs->second;
+		}
+
 
 	}
 
@@ -207,7 +231,6 @@ namespace Empaerior::Asset_Loading
 
 	void clear_fonts()
 	{
-
 		Fonts.clear();
 	}
 
@@ -224,8 +247,6 @@ namespace Empaerior::Asset_Loading
 		Sounds.clear();
 	}
 	
-
-
 	void clear_textures()
 	{
 		for (auto i = Textures.begin(); i != Textures.end();)

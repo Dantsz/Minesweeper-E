@@ -3,13 +3,17 @@
 
 
 #include "assetmanager/AssetManager.h"
-#include "graphics/rendering/objects/Sprite.h"
-#include "graphics/glyphs/Glyphs.h"
+
+
+#include "rendering/objects/Sprite.h"
 
 #include "State/State.h"
-#include "graphics/rendering/Window.h"
+
+#include "rendering/Window.h"
+
 #include "eventhandler/EventHandler.h"
 
+#include "core/exceptions/Exceptions.h"
 
 
 namespace  Empaerior{
@@ -30,7 +34,7 @@ public:
 
 
 	virtual void handlevents(Empaerior::Event& event);
-    virtual void Update(const Empaerior::u_inter& dt);
+    virtual void Update(const Empaerior::u_int dt);
 	
 
 #pragma region	STATE EDITING
@@ -46,7 +50,7 @@ public:
 			if(n_state == nullptr) throw E_runtime_exception("Tried to add a null state to the application", __FILE__, __LINE__, __FUNCTION__);
 			
 			//check if the state is already in the application
-			std::vector<Empaerior::State*>::iterator itr = std::find(states.begin(), states.end(), n_state);
+			Empaerior::vector<Empaerior::State*>::iterator itr = std::find(states.begin(), states.end(), n_state);
 			if (itr != states.cend()) throw E_runtime_exception("State is already present in the application", __FILE__, __LINE__, __FUNCTION__);
 		
 			
@@ -88,7 +92,7 @@ public:
 			//because the index is signed, check if it's negative
 			if (index >= states.size()) throw E_runtime_exception("Invalid Index ", __FILE__, __LINE__,__FUNCTION__);
 
-			std::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
+			Empaerior::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
 
 			if (itr != active_states.cend()) throw E_runtime_exception("State at the provided index is already active ", __FILE__, __LINE__, __FUNCTION__);
 
@@ -115,7 +119,7 @@ public:
 			if (index >= states.size() || index < 0) throw E_runtime_exception("Invalid Index ", __FILE__, __LINE__, __FUNCTION__);
 			
 			//check if the state is active by searching  for the index
-			std::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
+			Empaerior::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
 
 			if (itr == active_states.cend()) throw E_runtime_exception("State at the provided index is not active ", __FILE__, __LINE__, __FUNCTION__);
 
@@ -146,13 +150,13 @@ public:
 		try {
 			//if it active remove it in order to make sure it's not active when it's deleted
 			if (index >= states.size() || index < 0) throw E_runtime_exception("Invalid Index ", __FILE__, __LINE__, __FUNCTION__);
-			std::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
+			Empaerior::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
 			//put it in to be pause
 			if (itr != active_states.cend()) 	to_be_paused.emplace_back(std::distance(active_states.begin(), itr));
 			//put it to_be_deleted
 			to_be_deleted.emplace_back(index);
 		
-	
+
 
 		}
 		catch (E_runtime_exception & e)
@@ -171,25 +175,25 @@ public:
 		{
 			//removed paused states
 
-		
+
 			for (Empaerior::u_inter i = to_be_paused.size() - 1; to_be_paused.size() > i; --i)
 			{
 				//erase from active
-				active_states.erase(active_states.begin() +i);
+				active_states.erase(active_states.begin() + i);
 				//remove the paused
-			
+
 			}
 			to_be_paused.clear();
 		}
 
 		if (to_be_deleted.empty()) return;
-		
-		
+
+
 		for (Empaerior::u_inter i = to_be_deleted.size() - 1; to_be_deleted.size() > i; --i)
 		{
 			//delete 
-			
-			
+
+
 			//delete the state
 			delete states[to_be_deleted[i]];
 			states[to_be_deleted[i]] = nullptr;
@@ -197,9 +201,9 @@ public:
 			//add it the freed queue
 			freed_indexes.emplace_back(to_be_deleted[i]);
 			ENGINE_INFO("DELETED STATE" + std::to_string(to_be_deleted[i]));
-			
+
 		}
-		
+
 		to_be_deleted.clear();
 
 
@@ -215,7 +219,7 @@ public:
 		try
 		{
 			if (index >= states.size() || index < 0) throw E_runtime_exception("Invalid Index ", __FILE__, __LINE__, __FUNCTION__);
-			std::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
+			Empaerior::vector<Empaerior::u_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
 			if (itr == active_states.cend())
 			{
 				return -1;
@@ -254,7 +258,7 @@ public:
 
 			}
 	
-			//TODO: SWAPP EACH CONSECUTIVE ELEMENT CORRECTLY
+	
 			//swap the element with the n-th element
 			for (Empaerior::u_inter i = 0; i < n ; i++)
 			{
@@ -362,9 +366,9 @@ public:
 
 	//the index of the states that will be updated
 	//
-	static std::vector<Empaerior::u_inter> active_states;
+	static Empaerior::vector<Empaerior::u_inter> active_states;
 
-	static std::vector<Empaerior::State*> states;
+	static Empaerior::vector<Empaerior::State*> states;
 	
 	static Empaerior::Window window;
 
@@ -383,11 +387,11 @@ private:
 
 	//this is used by make_pause
 	//it puts the index if the states which it want paused in this vector and it is removed from active_states when refresh is called
-	static std::vector<Empaerior::u_inter> to_be_paused;
+	static Empaerior::vector<Empaerior::u_inter> to_be_paused;
 	//the same ,but for state-deleteion
-	static std::vector<Empaerior::u_inter> to_be_deleted;
+	static Empaerior::vector<Empaerior::u_inter> to_be_deleted;
 	//indexes freed to be replaces by new states
-	static std::vector<Empaerior::u_inter> freed_indexes;
+	static Empaerior::vector<Empaerior::u_inter> freed_indexes;
 
 };
 	//defined in the application *Thanks to cherno* , 

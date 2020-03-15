@@ -31,12 +31,12 @@ namespace Empaerior {
 		~Event_Listener() {};
 
 
-		void register_event(Empaerior::u_int type, EventCallback callback); //put a callback in the lisener
+		void register_event(Empaerior::u_int type, EventCallback callback,Empaerior::s_inter call_times =-1); //put a callback in the lisener
 		
 		void handleEvents(Empaerior::Event& cur_event); //execute commands
 		
-	private:
-		std::unordered_map<uint64_t, std::vector<EventCallback>> _registeredCallbacks;//type of the event and function
+
+		Empaerior::hash_map<Empaerior::u_inter , Empaerior::vector<Empaerior::v_pair<EventCallback,Empaerior::s_inter>>> _registeredCallbacks;//type of the event and function
 	};
 }
 

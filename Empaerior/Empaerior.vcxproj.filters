@@ -1,177 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Exceptions">
-      <UniqueIdentifier>{479CBBB0-3354-FDFD-9C5B-D659883298EE}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SDLwrappers">
-      <UniqueIdentifier>{3CECAFD4-A8A1-28CA-3196-22A19D4A1FCE}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="State">
-      <UniqueIdentifier>{E6391E0E-524E-46BF-1BD0-E91E87A342F0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="assetmanager">
       <UniqueIdentifier>{A08EF851-8CF1-87F6-3577-C0AC21B95379}</UniqueIdentifier>
     </Filter>
-    <Filter Include="debugging">
-      <UniqueIdentifier>{71A3EA38-DD0D-9FAF-264C-505592F57C04}</UniqueIdentifier>
+    <Filter Include="core">
+      <UniqueIdentifier>{4E40957C-3A77-960D-E363-7C10CF79120F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\debugging">
+      <UniqueIdentifier>{A93723CF-9505-17D5-7E99-87FB6A06F339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\ecs">
+      <UniqueIdentifier>{F837D44A-E404-2F56-0D1E-1DFEF94964E4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\ecs\components">
+      <UniqueIdentifier>{2D56A5F1-99B7-82FF-2225-C9B18E85B9BE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\ecs\system">
+      <UniqueIdentifier>{2C98D78F-9823-4554-A134-C8480D3FA154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\exceptions">
+      <UniqueIdentifier>{9FDB588F-0B67-C653-1478-494880822254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\utilities">
+      <UniqueIdentifier>{59BE4669-458C-3A6F-2E20-AB951A8D16D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="defines">
       <UniqueIdentifier>{E3988908-4F78-08A4-5890-937AC4EE6E05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="entitysystem">
-      <UniqueIdentifier>{07A77B17-F309-0BBC-9C8F-437288D1D63E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="entitysystem\components">
-      <UniqueIdentifier>{DCDDAB8B-4815-F422-511F-5846BDD51A1C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="entitysystem\system">
-      <UniqueIdentifier>{5BA0C71D-C701-A52B-506F-EBDDBCCFDBEA}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="entitysystem\system\systems">
-      <UniqueIdentifier>{82B9C53A-EEC6-F320-77AD-EF0BE3B9BFD7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="eventhandler">
       <UniqueIdentifier>{C5B7C604-B11A-56A9-5AA0-8E5F46E2212C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics">
-      <UniqueIdentifier>{36EF08BC-22BC-63C7-4BD5-516F37019955}</UniqueIdentifier>
+    <Filter Include="rendering">
+      <UniqueIdentifier>{03CFAD0B-6F39-6282-B877-1328242140D7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\glyphs">
-      <UniqueIdentifier>{3C11C448-A89C-310D-B1AD-B4011DB88D0D}</UniqueIdentifier>
+    <Filter Include="rendering\SDLwrappers">
+      <UniqueIdentifier>{A9B4EDA3-1521-A99E-DE14-41FC4A40CB06}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\rendering">
-      <UniqueIdentifier>{23D44FEC-0FB8-1042-7818-0B95641BFBC3}</UniqueIdentifier>
+    <Filter Include="rendering\glyphs">
+      <UniqueIdentifier>{69880FA1-5581-2EF3-7EB3-13786A0B0EFF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\rendering\objects">
-      <UniqueIdentifier>{FC7DCE72-E88D-7A43-5147-DF613D7669DC}</UniqueIdentifier>
+    <Filter Include="rendering\objects">
+      <UniqueIdentifier>{DC586912-486F-67A8-91E6-F2C9FD3B3830}</UniqueIdentifier>
     </Filter>
-    <Filter Include="utilities">
-      <UniqueIdentifier>{212A0ED3-8D94-C249-D6D2-73EF427CA09E}</UniqueIdentifier>
+    <Filter Include="state">
+      <UniqueIdentifier>{064A6110-725E-89C1-3BE0-2C21A7B385F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="systems">
+      <UniqueIdentifier>{3D76CBBA-A955-4A56-B26D-D52C1ECCB0B7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Empaerior.h" />
-    <ClInclude Include="src\Exceptions\Exceptions.h">
-      <Filter>Exceptions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h">
-      <Filter>SDLwrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SDLwrappers\Rendering_Wrappers.h">
-      <Filter>SDLwrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h">
-      <Filter>SDLwrappers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\State\State.h">
-      <Filter>State</Filter>
-    </ClInclude>
     <ClInclude Include="src\assetmanager\AssetManager.h">
       <Filter>assetmanager</Filter>
     </ClInclude>
-    <ClInclude Include="src\debugging\Log.h">
-      <Filter>debugging</Filter>
+    <ClInclude Include="src\core\Point2.h">
+      <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="src\debugging\v_proffiler.h">
-      <Filter>debugging</Filter>
+    <ClInclude Include="src\core\Rect.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Vector2.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\debugging\Log.h">
+      <Filter>core\debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\debugging\get_data_info.h">
+      <Filter>core\debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\debugging\v_proffiler.h">
+      <Filter>core\debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\ecs\ECS.h">
+      <Filter>core\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\ecs\Entity.h">
+      <Filter>core\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\ecs\components\ComponentManager.h">
+      <Filter>core\ecs\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\ecs\system\system.h">
+      <Filter>core\ecs\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\exceptions\Exceptions.h">
+      <Filter>core\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utilities\Math.h">
+      <Filter>core\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utilities\Timer.h">
+      <Filter>core\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utilities\Utilities.h">
+      <Filter>core\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\defines\Basic_Defines.h">
+      <Filter>defines</Filter>
     </ClInclude>
     <ClInclude Include="src\defines\Defines.h">
       <Filter>defines</Filter>
     </ClInclude>
-    <ClInclude Include="src\entitysystem\ECS.h">
-      <Filter>entitysystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\Entity.h">
-      <Filter>entitysystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\components\Component.h">
-      <Filter>entitysystem\components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\components\ComponentManager.h">
-      <Filter>entitysystem\components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\system\system.h">
-      <Filter>entitysystem\system</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entitysystem\system\systems\Systems.h">
-      <Filter>entitysystem\system\systems</Filter>
+    <ClInclude Include="src\defines\Struct_Defines.h">
+      <Filter>defines</Filter>
     </ClInclude>
     <ClInclude Include="src\eventhandler\EventHandler.h">
       <Filter>eventhandler</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\glyphs\Glyphs.h">
-      <Filter>graphics\glyphs</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\rendering\Camera.h">
-      <Filter>graphics\rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\rendering\Window.h">
-      <Filter>graphics\rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\rendering\objects\Sprite.h">
-      <Filter>graphics\rendering\objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\utilities\Math.h">
-      <Filter>utilities</Filter>
+    <ClInclude Include="src\rendering\Camera.h">
+      <Filter>rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\Rect.h">
-      <Filter>utilities</Filter>
+    <ClInclude Include="src\rendering\SDLwrappers\Ptr_Wrappers.h">
+      <Filter>rendering\SDLwrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\Timer.h">
-      <Filter>utilities</Filter>
+    <ClInclude Include="src\rendering\SDLwrappers\Rendering_Wrappers.h">
+      <Filter>rendering\SDLwrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\Utilities.h">
-      <Filter>utilities</Filter>
+    <ClInclude Include="src\rendering\SDLwrappers\SDL_Wrappers.h">
+      <Filter>rendering\SDLwrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\Vector2.h">
-      <Filter>utilities</Filter>
+    <ClInclude Include="src\rendering\Window.h">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rendering\glyphs\Glyphs.h">
+      <Filter>rendering\glyphs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rendering\objects\Sprite.h">
+      <Filter>rendering\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\state\State.h">
+      <Filter>state</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\Component.h">
+      <Filter>systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\Systems.h">
+      <Filter>systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\State\State.cpp">
-      <Filter>State</Filter>
-    </ClCompile>
     <ClCompile Include="src\assetmanager\AssetManager.cpp">
       <Filter>assetmanager</Filter>
     </ClCompile>
-    <ClCompile Include="src\debugging\Log.cpp">
-      <Filter>debugging</Filter>
+    <ClCompile Include="src\core\debugging\Log.cpp">
+      <Filter>core\debugging</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utilities\Timer.cpp">
+      <Filter>core\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utilities\Utilities.cpp">
+      <Filter>core\utilities</Filter>
     </ClCompile>
     <ClCompile Include="src\eventhandler\EventHandler.cpp">
       <Filter>eventhandler</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\glyphs\Glyphs.cpp">
-      <Filter>graphics\glyphs</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\rendering\Camera.cpp">
-      <Filter>graphics\rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\rendering\Window.cpp">
-      <Filter>graphics\rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\rendering\objects\Sprite.cpp">
-      <Filter>graphics\rendering\objects</Filter>
-    </ClCompile>
     <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\utilities\Math.cpp">
-      <Filter>utilities</Filter>
+    <ClCompile Include="src\rendering\Camera.cpp">
+      <Filter>rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\Rect.cpp">
-      <Filter>utilities</Filter>
+    <ClCompile Include="src\rendering\Window.cpp">
+      <Filter>rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\Timer.cpp">
-      <Filter>utilities</Filter>
+    <ClCompile Include="src\rendering\glyphs\Glyphs.cpp">
+      <Filter>rendering\glyphs</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\Utilities.cpp">
-      <Filter>utilities</Filter>
+    <ClCompile Include="src\rendering\objects\Sprite.cpp">
+      <Filter>rendering\objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\Vector2.cpp">
-      <Filter>utilities</Filter>
+    <ClCompile Include="src\state\State.cpp">
+      <Filter>state</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

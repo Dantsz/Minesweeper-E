@@ -1,11 +1,10 @@
 #pragma once
 
-#include <string>
-#include <SDL.h>
+
+#include "Basic_Defines.h"
+#include "Struct_Defines.h"
 
 
-#include "utilities/Vector2.h"
-#include "utilities/Rect.h"
 //Platform detection
 #ifdef _WIN32
 	#ifdef _WIN64//if 64 bit 
@@ -31,7 +30,7 @@
 #if defined(EMPAERIOR_DEBUG) || defined(EMPAERIOR_RELEASE)
 
 #define EMP_USE_LOGS
-
+#define EMP_USE_DATA_DUMPS
 #else
 
 #define ENGINE_TRACE(...) 	
@@ -50,40 +49,5 @@
 #endif
 
 
-namespace Empaerior
-{
-	//BASIC TYPES
-	//one byte interger
-	using byte = uint8_t;
-	//type compatible with SDL
-	using u_int = uint32_t;
-	using s_int = int32_t;
-	//the type the engine works with 
-	using u_inter = uint64_t;
-	using s_inter = int64_t;
-	using boole = bool;
-	using ch = char;
-	using fl_point = float;
 
 
-	//OTHER TYPES
-	//value tuple // fore small types
-	template <typename T, typename Y>
-	using v_pair = std::pair<T, Y>;
-	//string definition
-	using string = std::string;
-	//Dimensions Rectangle (without rotation)
-
-	//TODO: Switch to floating points
-	using Int_Rect = SDL_Rect;
-
-
-	using Float_Rect_S = Empaerior::S_Rect<Empaerior::fl_point>;
-
-	using Float_Rect = Empaerior::T_Rect<Empaerior::fl_point, Empaerior::fl_point>;
-
-	using Vector2f = Vector2<fl_point>;
-
-
-	using Color = SDL_Color;
-}

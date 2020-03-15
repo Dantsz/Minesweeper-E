@@ -7,27 +7,31 @@
 #include "Empaerior.h"
 
 
-#include "SDLwrappers/SDL_Wrappers.h"
-#include "exceptions/Exceptions.h"
-#include "utilities/Utilities.h"
-#include  "utilities/Timer.h"
+#include "rendering/SDLwrappers/SDL_Wrappers.h"
+#include "core/exceptions/Exceptions.h"
+#include "core/Utilities/Utilities.h"
+#include  "core/utilities/Timer.h"
+#include "rendering/glyphs/Glyphs.h"
+
+
 
 
 //static objects variables
 #pragma region static objects
 
 #pragma region asset_managing
-std::unordered_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
-std::unordered_map<Empaerior::string, std::unordered_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
-std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
+Empaerior::hash_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
+Empaerior::hash_map<Empaerior::string, Empaerior::hash_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
+Empaerior::hash_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
+Empaerior::hash_map<Empaerior::v_pair<Empaerior::string, Empaerior::s_int>, std::shared_ptr<Empaerior::vector<Empaerior::surface_glyph>>, pair_hash> dim_to_glyphs;
 #pragma endregion
 
 #pragma region app_statics
-std::vector <Empaerior::State*> Empaerior::Application::states;
-std::vector <Empaerior::u_inter> Empaerior::Application::active_states;
-std::vector <Empaerior::u_inter> Empaerior::Application::to_be_paused;
-std::vector <Empaerior::u_inter> Empaerior::Application::to_be_deleted;
-std::vector <Empaerior::u_inter> Empaerior::Application::freed_indexes;
+Empaerior::vector <Empaerior::State*> Empaerior::Application::states;
+Empaerior::vector <Empaerior::u_inter> Empaerior::Application::active_states;
+Empaerior::vector <Empaerior::u_inter> Empaerior::Application::to_be_paused;
+Empaerior::vector <Empaerior::u_inter> Empaerior::Application::to_be_deleted;
+Empaerior::vector <Empaerior::u_inter> Empaerior::Application::freed_indexes;
 //time between frames
 Empaerior::u_int Empaerior::Application::dt = 1000 / 60;
 Empaerior::boole Empaerior::Application::is_paused = 0;
@@ -125,7 +129,7 @@ int main(int argc, char** argv)
 #ifdef EMP_USE_LOGS
 	ENGINE_INFO("Stoping Application");
 	
-	ENGINE_INFO("Application runned for " +std::to_string(timer.getTicks()) + " ms");
+	ENGINE_INFO("Application ran for " +std::to_string(timer.getTicks()) + " ms");
 	timer.stop();
 #endif // EMPAERIOR_DEBUG
 	Empaerior::Application::window.reset();

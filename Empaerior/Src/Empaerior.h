@@ -11,27 +11,32 @@
 #include <SDL_ttf.h> 
 
 
+#include "core/Point2.h"
+#include "core/Vector2.h"
+#include "core/Rect.h"
 
 #include "assetmanager/AssetManager.h"
 
 
-#include "graphics/glyphs/Glyphs.h"
-#include "SDLwrappers/Ptr_Wrappers.h"
-#include "SDLwrappers/SDL_Wrappers.h"
+#include "rendering/glyphs/Glyphs.h"
+#include "rendering/SDLwrappers/Ptr_Wrappers.h"
+#include "rendering/SDLwrappers/SDL_Wrappers.h"
 
-#include "entitysystem/ECS.h"
-#include "entitysystem/system/systems/Systems.h"
-#include "entitysystem/components/Component.h"
+#include "core/ecs/ECS.h"
+#include "systems/Systems.h"
+#include "systems/Component.h"
 
-#include "graphics/rendering/Window.h"
-#include "graphics/rendering/Camera.h"
-#include "graphics/rendering/objects/Sprite.h"
+#include "rendering/Window.h"
+#include "rendering/Camera.h"
+#include "rendering/objects/Sprite.h"
 
 #include "eventhandler/EventHandler.h"
 
+
+
 #ifdef EMP_USE_LOGS
 
-#include "debugging/Log.h"
-
+#include "core/debugging/Log.h"
+#include "core/debugging/get_data_info.h"
 	
 #endif

@@ -16,7 +16,8 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 			{
 			
 				ecs.get_component<cell_component>(tile).is_revealed = true;
-				ecs.get_component<Empaerior::Sprite_Component>(tile).sprites.pop_back();
+				ecs.get_component<Empaerior::Spr_Component>(tile).sprites.pop_back();
+				ecs.get_component<Empaerior::Spr_Component>(tile).spr_index.pop_back();
 				if (x + 1 < 16) Reveal(ecs, entity_id, x + 1, y);
 				if (y + 1 < 16) Reveal(ecs, entity_id, x, y + 1);
 				if (x - 1 >= 0) Reveal(ecs, entity_id, x - 1, y);
@@ -36,7 +37,7 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 
 			ecs.get_component<cell_component>(tile).is_revealed = true;
 			//change the texture of touched mine
-			ecs.get_component<Empaerior::Sprite_Component>(tile).sprites[0].set_texture("assets/tex_mine_cross.png");
+			ecs.get_component<Empaerior::Spr_Component>(tile).sprites[0].set_texture("assets/tex_mine_cross.png");
 			ecs.get_component<Mine_field>(entity_id).mine_encountered = 1;
 
 			//reveal ALL  mines
@@ -48,11 +49,12 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 					if (ecs.get_component<field_component>(it_tile).field_type == -1)
 					{
 
-						if (ecs.get_component<Empaerior::Sprite_Component>(it_tile).sprites.size() == 2 && ecs.get_component<cell_component>(it_tile).cell_type == 0)
+						if (ecs.get_component<Empaerior::Spr_Component>(it_tile).sprites.size() == 2 && ecs.get_component<cell_component>(it_tile).cell_type == 0)
 						{
 						
 							ecs.get_component<cell_component>(it_tile).is_revealed = 1;
-							ecs.get_component<Empaerior::Sprite_Component>(it_tile).sprites.pop_back();
+							ecs.get_component<Empaerior::Spr_Component>(it_tile).sprites.pop_back();
+							ecs.get_component<Empaerior::Spr_Component>(it_tile).spr_index.pop_back();
 
 						}
 					}
@@ -66,7 +68,8 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 			{
 		
 				ecs.get_component<cell_component>(tile).is_revealed = true;
-				ecs.get_component<Empaerior::Sprite_Component>(tile).sprites.pop_back();
+				ecs.get_component<Empaerior::Spr_Component>(tile).sprites.pop_back();
+				ecs.get_component<Empaerior::Spr_Component>(tile).spr_index.pop_back();
 			}
 		}
 		

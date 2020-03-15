@@ -4,9 +4,7 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 #include <SDL_image.h>
-
-#include "../graphics/glyphs/Glyphs.h"
-
+#include "rendering/glyphs/Glyphs.h"
 
 
 
@@ -16,17 +14,15 @@ namespace Empaerior::Asset_Loading
 {
 
 	//texture
-	 std::shared_ptr<SDL_Texture>  load_texture(const Empaerior::string& tex_path);
+	std::shared_ptr<SDL_Texture>  load_texture(const Empaerior::string& tex_path);
 	//font
-	 TTF_Font* load_font(const Empaerior::string& font_path, const Empaerior::s_int& size);
+	TTF_Font* load_font(const Empaerior::string& font_path, const Empaerior::s_int& size);
+
+	std::shared_ptr<Empaerior::vector<surface_glyph>> load_glyph_vector(const Empaerior::string& font_path, const Empaerior::s_int& size);
 
 	//sound   
 	 void play_sound(const Empaerior::string& sound_path);
 	 void set_volume(const Empaerior::s_int n_volume);
-
-
-
-
 
 
 	//clear ununsed

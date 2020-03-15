@@ -1,12 +1,13 @@
 #pragma once
 
-#include "graphics/rendering/objects/Sprite.h"
-#include "graphics/rendering/Camera.h"
+
+#include "rendering/objects/Sprite.h"
+#include "rendering/Camera.h"
 
 //entity tests
 
-#include "entitysystem/ECS.h"
-#include "entitysystem/system/systems/Systems.h"
+#include "core/ecs/ECS.h"
+#include "systems/systems.h"
 
 
 #include "defines/Defines.h"
@@ -23,7 +24,7 @@ namespace Empaerior {
 
 		};
 
-		virtual void Update(const Empaerior::u_int& dt) = 0;
+		virtual void Update(const Empaerior::u_int dt) = 0;
 		virtual void Render() = 0 ;//renders the state
 		virtual void handleevents(Empaerior::Event& event) = 0;
 
