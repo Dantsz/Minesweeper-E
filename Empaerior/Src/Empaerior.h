@@ -30,7 +30,8 @@
 #include "rendering/Camera.h"
 #include "rendering/objects/Sprite.h"
 
-#include "eventhandler/EventHandler.h"
+
+#include "input/input.h"
 
 
 

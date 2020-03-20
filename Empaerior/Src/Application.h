@@ -1,5 +1,5 @@
 #pragma once
-#include "defines/Defines.h"
+#include "core/defines/Defines.h"
 
 
 #include "assetmanager/AssetManager.h"
@@ -11,8 +11,8 @@
 
 #include "rendering/Window.h"
 
-#include "eventhandler/EventHandler.h"
 
+#include "input/eventhandler/EventHandler.h"
 #include "core/exceptions/Exceptions.h"
 
 
@@ -214,7 +214,7 @@ public:
 	
 	//check to see if the state is active
 	//returns the index in active_states if true or -1 if it's inactive or doesn't exist
-	static inline Empaerior::u_inter is_active(const Empaerior::u_inter index)
+	static EMP_FORCEINLINE Empaerior::u_inter is_active(const Empaerior::u_inter index)
 	{
 		try
 		{
@@ -226,15 +226,11 @@ public:
 			}
 			return Empaerior::u_inter(std::distance(active_states.begin(), itr));
 		}
-		catch (E_runtime_exception & e)
+		catch (E_runtime_exception& e)
 		{
 			e.print_message();
 			return -1;
 		}
-
-
-
-
 	}
 
 	//moves the state in the front by n 
@@ -376,6 +372,7 @@ public:
 	
 	static Empaerior::boole is_paused;
 	static Empaerior::boole is_running;
+
 	static Empaerior::Event event;
 
 

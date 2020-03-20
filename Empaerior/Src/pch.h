@@ -9,17 +9,8 @@
 #include <unordered_map>
 #include <map>
 
-#include "defines/Defines.h"
 
-
-#include "core/Point2.h"
-#include "core/Vector2.h"
-#include "core/Rect.h"
-#include "core/utilities/Math.h"
-#include "core/utilities/Timer.h"
-
-#include "core/ecs/ECS.h"
-
+#include "Empaerior.h"
 
 #include <memory>
 #include <functional>

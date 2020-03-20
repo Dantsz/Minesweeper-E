@@ -12,7 +12,7 @@
 
 namespace SDLW {
 
-	inline uint16_t Init()
+	EMP_FORCEINLINE uint16_t Init()
 	{
 		uint16_t flags = 0;
 		
@@ -36,7 +36,7 @@ namespace SDLW {
 
 		return flags;
 	}
-	inline void Quit()
+	EMP_FORCEINLINE void Quit()
 	{
 
 		Mix_Quit();

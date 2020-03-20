@@ -1,7 +1,7 @@
 #pragma once
 //Wrappes library functions
 #include <SDL.h>
-#include "defines/Defines.h"
+#include "core/defines/Defines.h"
 
 namespace Empaerior
 {
@@ -9,7 +9,7 @@ namespace Empaerior
 	{
 
 		//TODO: USe SDL_RenderCopyFEx instead of SDL_RenderCopyEx
-		inline void RenderEx(SDL_Renderer* renderer,
+			EMP_FORCEINLINE void RenderEx(SDL_Renderer* renderer,
 			SDL_Texture* texture,
 			const SDL_RendererFlip flip,
 			const double& angle,

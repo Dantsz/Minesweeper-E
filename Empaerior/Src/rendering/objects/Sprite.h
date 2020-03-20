@@ -92,7 +92,7 @@ namespace Empaerior {
 		
 
 	private:
-		inline void next_frame()// goes to the next frame in the animation 
+		EMP_FORCEINLINE void next_frame()// goes to the next frame in the animation 
 		{
 			// get next frame in animation
 			//if cur_frames has been all frames, go to the frame 0
@@ -133,25 +133,25 @@ namespace Empaerior {
 
 	namespace SpriteFunctions
 	{
-		inline void set_angle(Empaerior::Graphic_element& spr,const Empaerior::fl_point& newAngle)
+		EMP_FORCEINLINE void set_angle(Empaerior::Graphic_element& spr,const Empaerior::fl_point& newAngle)
 		{
 			spr.rect.angle = newAngle;
 		}
 
-		inline void set_position(Empaerior::Graphic_element& spr,const Empaerior::fl_point& x, const Empaerior::fl_point& y)
+		EMP_FORCEINLINE void set_position(Empaerior::Graphic_element& spr,const Empaerior::fl_point& x, const Empaerior::fl_point& y)
 		{
 			spr.rect.dimensions.x = x;
 			spr.rect.dimensions.y = y;
 			return;
 		}
-		inline void set_position(Empaerior::Graphic_element& spr,const Empaerior::Point2f& point)
+		EMP_FORCEINLINE void set_position(Empaerior::Graphic_element& spr,const Empaerior::Point2f& point)
 		{
 			spr.rect.dimensions.x = point.x;
 			spr.rect.dimensions.y = point.y;
 			return;
 		}
 		//Initialize as a normal sprite 
-		inline void InitSprite(Empaerior::Graphic_element& spr,const Empaerior::Float_Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const Empaerior::byte& m_frames)
+		EMP_FORCEINLINE void InitSprite(Empaerior::Graphic_element& spr,const Empaerior::Float_Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const Empaerior::byte& m_frames)
 		{
 			spr.path = tex_path;
 			spr.rect = m_rect;
@@ -162,13 +162,13 @@ namespace Empaerior {
 		}
 
 		//Initialize as a Text_Sprite
-		void InitTextSprite(Empaerior::Graphic_element& spr, const Empaerior::Float_Rect& rect, const Empaerior::string& font_path, const  Empaerior::u_inter& size, const Empaerior::string& message, Empaerior::Color& color);
+		void InitTextSprite(Empaerior::Graphic_element& spr, const Empaerior::Float_Rect& rect, const Empaerior::string& font_path, const  Empaerior::u_int& size, const Empaerior::string& message, Empaerior::Color& color);
 	
 		//SETS THE MESSAGE
 		void set_message(Empaerior::Graphic_element& spr, const Empaerior::string& message, const Empaerior::s_int& size);
 		
 		//Completely resets every component of the sprite
-		inline void resetSPR(Empaerior::Graphic_element& spr)
+		EMP_FORCEINLINE void resetSPR(Empaerior::Graphic_element& spr)
 		{
 			spr.texture.reset();
 			spr.path = "";

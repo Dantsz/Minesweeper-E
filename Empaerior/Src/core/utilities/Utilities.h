@@ -4,7 +4,7 @@
 #include <iostream>
 #include <Empaerior.h>
 #include <cmath>
-#include "defines/Defines.h"
+#include "core/defines/Defines.h"
 namespace Empaerior
 {
 	namespace Utilities {
@@ -18,7 +18,7 @@ namespace Empaerior
 
 
 		//system functions
-		inline Empaerior::string get_platform()//gets the current platform
+		 EMP_FORCEINLINE Empaerior::string get_platform()//gets the current platform
 		{
 			const char* sdl_platform = SDL_GetPlatform();
 			Empaerior::string e_platform = sdl_platform;
@@ -27,44 +27,19 @@ namespace Empaerior
 
 		}
 
-		inline int cpu_cache_size()// returns the size of the cpu  cache in bytes
+		 EMP_FORCEINLINE int cpu_cache_size()// returns the size of the cpu  cache in bytes
 		{
 			return SDL_GetCPUCacheLineSize();
 		}
 		
-		inline int get_core_number()// get the number of CPU cores available
+		 EMP_FORCEINLINE int get_core_number()// get the number of CPU cores available
 		{
 			return SDL_GetCPUCount();
 		}
-		inline int get_system_ram()//get the amount of RAM configured in the system.
+		 EMP_FORCEINLINE int get_system_ram()//get the amount of RAM configured in the system.
 		{
 			return SDL_GetSystemRAM();
 		}
-
-
-
-		//Toggle the cursor
-		//0 - no
-		//1 - yes
-		inline void show_cursor(Empaerior::boole toogle)
-		{
-			SDL_ShowCursor(toogle);
-		}
-
-
-	
-
-	
-
-
-
-		//returns the coordinates of the mouse relative to the screen
-		Empaerior::Point2f get_screen_mouse_coords();
-
-
-		//gets the coordinates of the mouse based on where the camera is
-		Empaerior::Point2f get_world_mouse_coords(const Empaerior::Camera& camera);
-
 
 
 

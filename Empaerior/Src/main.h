@@ -118,9 +118,9 @@ int main(int argc, char** argv)
 	}
 	catch (std::runtime_error & e)
 	{
-#ifdef EMP_USE_LOGS
+
 		ENGINE_CRITICAL(e.what() + '\n');
-#endif // EMPAERIOR_DEBUG
+
 	}
 	
 

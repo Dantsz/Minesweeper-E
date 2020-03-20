@@ -17,7 +17,7 @@ void Empaerior::Graphic_element::draw(const Camera& camera)
 
 }
 
-void Empaerior::SpriteFunctions::InitTextSprite(Empaerior::Graphic_element& spr, const Empaerior::Float_Rect& rect, const Empaerior::string& font_path, const Empaerior::u_inter& size, const Empaerior::string& message, Empaerior::Color& color)
+void Empaerior::SpriteFunctions::InitTextSprite(Empaerior::Graphic_element& spr, const Empaerior::Float_Rect& rect, const Empaerior::string& font_path, const Empaerior::u_int& size, const Empaerior::string& message, Empaerior::Color& color)
 {
 	spr.rect = rect;
 	spr.r = color.r;

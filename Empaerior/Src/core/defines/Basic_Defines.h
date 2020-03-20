@@ -53,6 +53,9 @@ struct pair_hash
 	template <class T1, class T2>
 	std::size_t operator() (const Empaerior::v_pair<T1, T2>& pair) const
 	{
-		return std::hash<T1>()(pair.first) << 1 + std::hash<T1>()(pair.first) + std::hash<T2>()(pair.second);
+		return (std::hash<T1>()(pair.first) << 1) + std::hash<T1>()(pair.first) + std::hash<T2>()(pair.second);
 	}
 };
+
+//INLINE DEFINE
+#define EMP_FORCEINLINE SDL_FORCE_INLINE

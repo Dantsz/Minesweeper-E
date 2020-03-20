@@ -6,7 +6,7 @@
 #include "rendering/Camera.h"
 #include "rendering/objects/Sprite.h"
 
-#include "eventhandler/EventHandler.h"
+#include "input/eventhandler/EventHandler.h"
 
 namespace Empaerior
 {
@@ -18,6 +18,9 @@ namespace Empaerior
 	*/
 	struct Spr_Component
 	{
+
+		Empaerior::Graphic_element test_spr;
+
 		//the order in which sprites are drawn
 		Empaerior::vector<size_t> spr_index;
 		Empaerior::vector<Empaerior::Graphic_element> sprites;

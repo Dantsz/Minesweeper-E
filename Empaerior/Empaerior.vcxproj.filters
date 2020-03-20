@@ -10,6 +10,9 @@
     <Filter Include="core\debugging">
       <UniqueIdentifier>{A93723CF-9505-17D5-7E99-87FB6A06F339}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\defines">
+      <UniqueIdentifier>{1BBF9F40-0722-2FE5-B0A7-679B9CE9FA67}</UniqueIdentifier>
+    </Filter>
     <Filter Include="core\ecs">
       <UniqueIdentifier>{F837D44A-E404-2F56-0D1E-1DFEF94964E4}</UniqueIdentifier>
     </Filter>
@@ -25,11 +28,11 @@
     <Filter Include="core\utilities">
       <UniqueIdentifier>{59BE4669-458C-3A6F-2E20-AB951A8D16D4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="defines">
-      <UniqueIdentifier>{E3988908-4F78-08A4-5890-937AC4EE6E05}</UniqueIdentifier>
+    <Filter Include="input">
+      <UniqueIdentifier>{B54AA90F-215F-D1C0-EAE0-742056B4CDF1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="eventhandler">
-      <UniqueIdentifier>{C5B7C604-B11A-56A9-5AA0-8E5F46E2212C}</UniqueIdentifier>
+    <Filter Include="input\eventhandler">
+      <UniqueIdentifier>{C4FAF02D-B0DE-B183-193F-ACD605429C05}</UniqueIdentifier>
     </Filter>
     <Filter Include="rendering">
       <UniqueIdentifier>{03CFAD0B-6F39-6282-B877-1328242140D7}</UniqueIdentifier>
@@ -74,6 +77,15 @@
     <ClInclude Include="src\core\debugging\v_proffiler.h">
       <Filter>core\debugging</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\defines\Basic_Defines.h">
+      <Filter>core\defines</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\defines\Defines.h">
+      <Filter>core\defines</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\defines\Struct_Defines.h">
+      <Filter>core\defines</Filter>
+    </ClInclude>
     <ClInclude Include="src\core\ecs\ECS.h">
       <Filter>core\ecs</Filter>
     </ClInclude>
@@ -98,17 +110,17 @@
     <ClInclude Include="src\core\utilities\Utilities.h">
       <Filter>core\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="src\defines\Basic_Defines.h">
-      <Filter>defines</Filter>
+    <ClInclude Include="src\input\eventhandler\EventHandler.h">
+      <Filter>input\eventhandler</Filter>
     </ClInclude>
-    <ClInclude Include="src\defines\Defines.h">
-      <Filter>defines</Filter>
+    <ClInclude Include="src\input\input.h">
+      <Filter>input</Filter>
     </ClInclude>
-    <ClInclude Include="src\defines\Struct_Defines.h">
-      <Filter>defines</Filter>
+    <ClInclude Include="src\input\keyboard.h">
+      <Filter>input</Filter>
     </ClInclude>
-    <ClInclude Include="src\eventhandler\EventHandler.h">
-      <Filter>eventhandler</Filter>
+    <ClInclude Include="src\input\mouse.h">
+      <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\pch.h" />
@@ -157,8 +169,11 @@
     <ClCompile Include="src\core\utilities\Utilities.cpp">
       <Filter>core\utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\eventhandler\EventHandler.cpp">
-      <Filter>eventhandler</Filter>
+    <ClCompile Include="src\input\eventhandler\EventHandler.cpp">
+      <Filter>input\eventhandler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\mouse.cpp">
+      <Filter>input</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\rendering\Camera.cpp">

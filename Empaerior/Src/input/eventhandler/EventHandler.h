@@ -2,7 +2,7 @@
 #include <SDL.h>
 #include<SDL_events.h>
 #include <functional>
-#include "defines/Defines.h"
+#include "core/defines/Defines.h"
 
 namespace Empaerior {
 

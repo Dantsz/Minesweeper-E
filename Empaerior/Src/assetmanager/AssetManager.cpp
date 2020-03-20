@@ -15,7 +15,7 @@ namespace Empaerior::Asset_Loading
 {
 
 
-	std::shared_ptr<SDL_Texture> load_texture(const Empaerior::string& tex_path)//returnsnullptr on  exception
+	[[nodiscard]] std::shared_ptr<SDL_Texture> load_texture(const Empaerior::string& tex_path)//returnsnullptr on  exception
 	{
 		//I Had to rewrite this whole fucking things so please don't have leaks....
 		//search for texture
@@ -76,7 +76,7 @@ namespace Empaerior::Asset_Loading
 
 	}
 
-	TTF_Font* load_font(const Empaerior::string& font_path, const Empaerior::s_int& size)
+	[[nodiscard]] TTF_Font* load_font(const Empaerior::string& font_path, const Empaerior::s_int& size)
 	{
 		//this was a fucking rollercoaster
 		//I hope I never have to do this ever again
@@ -149,7 +149,7 @@ namespace Empaerior::Asset_Loading
 
 	}
 
-	std::shared_ptr<Empaerior::vector<surface_glyph>> load_glyph_vector(const Empaerior::string& font_path, const Empaerior::s_int& size)
+	[[nodiscard]] std::shared_ptr<Empaerior::vector<surface_glyph>> load_glyph_vector(const Empaerior::string& font_path, const Empaerior::s_int& size)
 	{
 		//search for the glyphs
 		auto glyphs = dim_to_glyphs.find({font_path,size});

@@ -27,6 +27,9 @@ namespace Empaerior::Asset_Loading
 
 	//clear ununsed
 	 void clean_textures();
+
+
+
 	//clear all
 	 void clear_textures();
 	 void clear_fonts();

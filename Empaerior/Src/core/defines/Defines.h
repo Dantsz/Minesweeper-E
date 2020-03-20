@@ -5,6 +5,8 @@
 #include "Struct_Defines.h"
 
 
+
+
 //Platform detection
 #ifdef _WIN32
 	#ifdef _WIN64//if 64 bit 
@@ -24,6 +26,10 @@
 	#error "platform not supported yet"
 
 #endif 
+
+
+
+
 
 //Log usage
 
@@ -47,7 +53,4 @@
 
 
 #endif
-
-
-
 

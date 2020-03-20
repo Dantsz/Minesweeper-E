@@ -7,7 +7,9 @@
 
 #include "Component.h"
 #include "rendering/objects/Sprite.h"
-#include "eventhandler/EventHandler.h"
+
+#include "input/eventhandler/EventHandler.h"
+
 
 
 namespace Empaerior
@@ -97,7 +99,7 @@ namespace Empaerior
 		//Creates a text sprite
 		//Returns the index
 		size_t emplace_textsprite(Empaerior::ECS& ecs, const Empaerior::u_inter& id,
-			const Empaerior::Float_Rect& m_rect, const Empaerior::string& font_path, const  Empaerior::u_inter& m_size, const Empaerior::string& message, Empaerior::Color m_color)
+			const Empaerior::Float_Rect& m_rect, const Empaerior::string& font_path, const  Empaerior::u_int& m_size, const Empaerior::string& message, Empaerior::Color m_color)
 		{
 			//the implementation is the same as for the normal sprite
 			if (COMPONENT.freed_indexes.empty())

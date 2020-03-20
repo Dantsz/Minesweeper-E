@@ -1,6 +1,7 @@
 #pragma once
-#include "eventhandler/EventHandler.h"
-#include "defines/Defines.h"
+
+#include "input/eventhandler/EventHandler.h"
+#include "core/defines/Defines.h"
 namespace Empaerior
 {
 
@@ -28,18 +29,18 @@ namespace Empaerior
 		void reset();
 		
 
-		inline Empaerior::u_int get_width()
+		EMP_FORCEINLINE Empaerior::u_int get_width()
 		{
 			return width;
 		}
 
-		inline Empaerior::u_int get_heigth()
+		EMP_FORCEINLINE Empaerior::u_int get_heigth()
 		{
 			return height;
 		}
 
 
-		inline void set_render_dimensions(const Empaerior::Int_Rect& rect)
+		EMP_FORCEINLINE void set_render_dimensions(const Empaerior::Int_Rect& rect)
 		{
 			SDL_RenderSetLogicalSize(renderer, rect.w, rect.h);
 		}
@@ -61,13 +62,13 @@ namespace Empaerior
 
 
 		//Changes the name of the window
-		inline void change_window_name(const Empaerior::Window& window,const Empaerior::string& new_name)
+		EMP_FORCEINLINE void change_window_name(const Empaerior::Window& window,const Empaerior::string& new_name)
 		{
 			SDL_SetWindowTitle(window.window, new_name.c_str());
 		}
 
 		//Toggles fullscreen
-		inline void toggle_fullscreen(const Empaerior::Window& window)
+		EMP_FORCEINLINE void toggle_fullscreen(const Empaerior::Window& window)
 		{
 			Empaerior::u_int FullscreenFlag = SDL_WINDOW_FULLSCREEN;
 			bool IsFullscreen = SDL_GetWindowFlags(window.window) & FullscreenFlag;

@@ -282,6 +282,9 @@
     <ClInclude Include="src\core\debugging\Log.h" />
     <ClInclude Include="src\core\debugging\get_data_info.h" />
     <ClInclude Include="src\core\debugging\v_proffiler.h" />
+    <ClInclude Include="src\core\defines\Basic_Defines.h" />
+    <ClInclude Include="src\core\defines\Defines.h" />
+    <ClInclude Include="src\core\defines\Struct_Defines.h" />
     <ClInclude Include="src\core\ecs\ECS.h" />
     <ClInclude Include="src\core\ecs\Entity.h" />
     <ClInclude Include="src\core\ecs\components\ComponentManager.h" />
@@ -290,10 +293,10 @@
     <ClInclude Include="src\core\utilities\Math.h" />
     <ClInclude Include="src\core\utilities\Timer.h" />
     <ClInclude Include="src\core\utilities\Utilities.h" />
-    <ClInclude Include="src\defines\Basic_Defines.h" />
-    <ClInclude Include="src\defines\Defines.h" />
-    <ClInclude Include="src\defines\Struct_Defines.h" />
-    <ClInclude Include="src\eventhandler\EventHandler.h" />
+    <ClInclude Include="src\input\eventhandler\EventHandler.h" />
+    <ClInclude Include="src\input\input.h" />
+    <ClInclude Include="src\input\keyboard.h" />
+    <ClInclude Include="src\input\mouse.h" />
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\rendering\Camera.h" />
@@ -313,7 +316,8 @@
     <ClCompile Include="src\core\debugging\Log.cpp" />
     <ClCompile Include="src\core\utilities\Timer.cpp" />
     <ClCompile Include="src\core\utilities\Utilities.cpp" />
-    <ClCompile Include="src\eventhandler\EventHandler.cpp" />
+    <ClCompile Include="src\input\eventhandler\EventHandler.cpp" />
+    <ClCompile Include="src\input\mouse.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

@@ -68,11 +68,11 @@ namespace  Empaerior
 		}
 	
 	
-		inline Empaerior::boole is_Paused()
+		EMP_FORCEINLINE Empaerior::boole is_Paused()
 		{
 			return mStopped;
 		}
-		inline Empaerior::boole is_Started()
+		EMP_FORCEINLINE Empaerior::boole is_Started()
 		{
 			return mStarted;
 		}

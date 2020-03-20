@@ -3,7 +3,7 @@
 #include <random>
 #include "Minesweeper.h"
 //An example of what a application might look like
-#define board_size 16
+
 //a user defined state
 bool touched_mine = false;
 class APP_State1 : public Empaerior::State
@@ -16,7 +16,7 @@ public:
 
 
 
-		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Testing stuff");
+		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Minesweeper");
 
 		//INITIALIZE THE ECS
 		ecs.Init();
@@ -81,7 +81,7 @@ public:
 
 		int lower_bound = 20;
 		int upper_bound = 50;
-		field_matrix[16][16];
+		field_matrix[board_size][board_size];
 		/*
 				std::ifstream out("config.json");
 				cereal::JSONInputArchive archive(out);
@@ -94,9 +94,9 @@ public:
 				//mine distributing
 				//thanks Chilli Tomato Noodle
 
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < board_size; i++)
 		{
-			for (int j = 0; j < 16; j++)
+			for (int j = 0; j < board_size; j++)
 			{
 				field_matrix[i][j] = 0;
 			}
@@ -106,8 +106,8 @@ public:
 		
 		std::random_device rd;
 		std::mt19937 rng(rd());
-		std::uniform_int_distribution<int> xDist(0, 15);
-		std::uniform_int_distribution<int> yDist(0, 15);
+		std::uniform_int_distribution<int> xDist(0, board_size  - 1);
+		std::uniform_int_distribution<int> yDist(0, board_size - 1);
 		std::uniform_int_distribution<int> mines_rng(lower_bound, upper_bound);
 		int mines = mines_rng(rng);
 	
@@ -127,20 +127,20 @@ public:
 	
 	
 		//make the number tiles
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < board_size; i++)
 		{
-			for (int j = 0; j < 16; j++)
+			for (int j = 0; j < board_size; j++)
 			{
 				int mines_around = 0;
 				if (field_matrix[i][j] == -1) { continue; }
-				if (j + 1 < 16 && field_matrix[i][j + 1] == -1) mines_around++;
-				if (i + 1 < 16 && field_matrix[i + 1][j] == -1) mines_around++;
+				if (j + 1 < board_size && field_matrix[i][j + 1] == -1) mines_around++;
+				if (i + 1 < board_size && field_matrix[i + 1][j] == -1) mines_around++;
 				if (j - 1 >= 0 && field_matrix[i][j - 1] == -1) mines_around++;
 				if (i - 1 >= 0 && field_matrix[i - 1][j] == -1) mines_around++;
-				if (i + 1 < 16 && j + 1 < 16 && field_matrix[i + 1][j + 1] == -1)  mines_around++;
-				if (i + 1 < 16 && j - 1 >= 0 && field_matrix[i + 1][j - 1] == -1)  mines_around++;
+				if (i + 1 < board_size && j + 1 < board_size && field_matrix[i + 1][j + 1] == -1)  mines_around++;
+				if (i + 1 < board_size && j - 1 >= 0 && field_matrix[i + 1][j - 1] == -1)  mines_around++;
 				if (i - 1 >= 0 && j - 1 >= 0 && field_matrix[i - 1][j - 1] == -1) mines_around++;
-				if (i - 1 >= 0 && j + 1 < 16 && field_matrix[i - 1][j + 1] == -1)  mines_around++;
+				if (i - 1 >= 0 && j + 1 < board_size && field_matrix[i - 1][j + 1] == -1)  mines_around++;
 				field_matrix[i][j] = mines_around;
 
 			}
@@ -156,13 +156,20 @@ public:
 		ecs.add_component<Empaerior::Spr_Component>(background.id, {});
 		spr_system->emplace_sprite(ecs, background.id, { 0,0,480,400 }, { 0,0,1,1 }, "assets/background.png", 1);
 		ecs.add_component<Mine_field>(background.id, { {0} });
-		spr_system->emplace_textsprite(ecs, background.id, { 258,12,1000,100 }, "assets/font.ttf", 32, "Mines: " + std::to_string(nr_mines), { 0,0,0,255 });
+		spr_system->emplace_textsprite(ecs, background.id, { 258,5,1000,100 }, "assets/font.ttf", 32, "Mines: " + std::to_string(nr_mines), { 0,0,0,255 });
 		//Add faceboi
 		Empaerior::Entity face_boi = { ecs.create_entity_ID() };
+		Empaerior::Entity flagspr = { ecs.create_entity_ID() };
+
 		ecs.add_component<Empaerior::Spr_Component>(face_boi.id, {});
 		spr_system->emplace_sprite(ecs, face_boi.id, { 220,0,36,36 }, { 0,0,26,26 }, "assets/tex_face.png", 1);
 		ecs.add_component<Empaerior::Event_Listener_Component>(face_boi.id, {});
 		
+
+		ecs.add_component<Empaerior::Spr_Component>(flagspr.id, {});
+		spr_system->emplace_textsprite(ecs, flagspr.id, { 44,5,220,100 }, "assets/font.ttf", 32, "Flags : 0 ", { 0,0,0,255 });
+
+
 		ecs.get_component<Mine_field>(background.id).all_spaces = board_size * board_size - nr_mines;
 	
 
@@ -176,7 +183,7 @@ public:
 
 			//mouse coordinates
 
-			auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
+			auto f_m = Empaerior::Input::Mouse::get_world_mouse_coords(kamera);
 			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(face_boi_id).sprites[0].get_rect(), f_m.x, f_m.y))
 			{
 				//RESTART GAME
@@ -205,7 +212,7 @@ public:
 
 			//mouse coordinates
 
-			auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
+			auto f_m = Empaerior::Input::Mouse::get_world_mouse_coords(kamera);
 			if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(face_boi_id).sprites[0].get_rect(), f_m.x, f_m.y))
 			{
 				Ecs.get_component<Empaerior::Spr_Component>(face_boi_id).sprites[0].set_texture("assets/face_boi_click.png");
@@ -233,9 +240,9 @@ public:
 #pragma region PlayArea
 
 #define tile ecs.get_component<Mine_field>(background.id).field[i][j]
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < board_size; i++)
 		{
-			for (int j = 0; j < 16; j++)
+			for (int j = 0; j < board_size; j++)
 			{
 
 				tile = ecs.create_entity_ID();
@@ -264,13 +271,13 @@ public:
 
 				//event handling
 
-				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONUP, [&Ecs = ecs, &Spr_system = spr_system, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type, Face_boi = face_boi, &Nr_mines = nr_mines](Empaerior::Event& event) {
+				event_system->add_event_to_entity(ecs, tile, SDL_MOUSEBUTTONUP, [&Ecs = ecs, &Spr_system = spr_system, &mine = mine_system, map = background.id, i, j, &kamera = camera, &id_to_cell_type_map = id_to_cell_type, Face_boi = face_boi,FlagSpr = flagspr, &Nr_mines = nr_mines](Empaerior::Event& event) {
 
 #define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
 					if (Empaerior::is_event_handled(event)) return; 
 					//mouse coordinates
 				
-					auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
+					auto f_m = Empaerior::Input::Mouse::get_world_mouse_coords(kamera);
 
 					Ecs.get_component<Empaerior::Spr_Component>(Face_boi.id).sprites[0].set_texture("assets/tex_face.png");
 					//reveal
@@ -308,9 +315,11 @@ public:
 							{
 #define CELL_TYPE Ecs.get_component<cell_component>(l_tile).cell_type
 
+								if (CELL_TYPE == 1) Ecs.get_component<Mine_field>(map).flags--;//remove flag
 								CELL_TYPE++;
 								if (CELL_TYPE == 3) CELL_TYPE = 0;
-
+								if (CELL_TYPE == 1) Ecs.get_component<Mine_field>(map).flags++;//if lfag
+								Empaerior::SpriteFunctions::set_message(Ecs.get_component<Empaerior::Spr_Component>(FlagSpr.id).sprites[0], "Flags : " + std::to_string(Ecs.get_component<Mine_field>(map).flags), 32);
 								Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[1].set_texture(id_to_cell_type_map[CELL_TYPE]);
 #undef CELL_TYPE
 							}
@@ -340,7 +349,7 @@ public:
 
 #define l_tile Ecs.get_component<Mine_field>(map).field[i][j]
 					//mouse coordinates
-					auto f_m = Empaerior::Utilities::get_world_mouse_coords(kamera);
+					auto f_m = Empaerior::Input::Mouse::get_world_mouse_coords(kamera);
 					if (!Ecs.get_component<cell_component>(l_tile).is_revealed&& event.event.button.button == SDL_BUTTON_LEFT)
 					{
 						if (Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Spr_Component>(l_tile).sprites[0].get_rect(), f_m.x, f_m.y) && Ecs.get_component<cell_component>(l_tile).cell_type == 0)
@@ -418,7 +427,7 @@ public:
 
 	Empaerior::u_inter nr_mines = 0;
 
-	Empaerior::u_inter field_matrix[16][16];
+	Empaerior::u_inter field_matrix[board_size][board_size];
 private:
 
 

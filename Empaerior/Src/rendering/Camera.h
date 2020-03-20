@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include "defines/Defines.h"
+#include "core/defines/Defines.h"
 namespace Empaerior
 {
 

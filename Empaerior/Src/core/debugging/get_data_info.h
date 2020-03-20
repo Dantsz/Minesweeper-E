@@ -1,19 +1,21 @@
 #pragma once
 #include "Empaerior.h"
-#include "defines/Defines.h"
+#include "core/defines/Defines.h"
 #ifdef EMP_USE_DATA_DUMPS
 
 namespace Empaerior {
 	//Theese are debug functions so efficienty is not a pritority
 	template <typename T>
-	inline Empaerior::string get_data(Empaerior::string name, const T&)
+	EMP_FORCEINLINE Empaerior::string get_data(Empaerior::string name, const T&)
 	{
 		return "There's no implementation for the specified data type"
 	}
 
+	
+
 
 	template <>
-	inline Empaerior::string get_data<Empaerior::Event_Listener>(Empaerior::string name, const Empaerior::Event_Listener& listener)
+	EMP_FORCEINLINE Empaerior::string get_data<Empaerior::Event_Listener>(Empaerior::string name, const Empaerior::Event_Listener& listener)
 	{
 		Empaerior::string string = " \nEvent_Listener : " + name + '\n';
 		string += "There are " + std::to_string(listener._registeredCallbacks.size()) + " events registered: " + '\n';
@@ -24,7 +26,7 @@ namespace Empaerior {
 	}
 
 	template<>
-	inline Empaerior::string get_data<Empaerior::T_E_Component>(Empaerior::string name, const Empaerior::T_E_Component& t_e)
+	EMP_FORCEINLINE Empaerior::string get_data<Empaerior::T_E_Component>(Empaerior::string name, const Empaerior::T_E_Component& t_e)
 	{
 		Empaerior::string string = "\nT_E_Component: " + name + '\n';
 		string += "There are " + std::to_string(t_e.functions.size()) + " functions registered :";
@@ -38,7 +40,7 @@ namespace Empaerior {
 
 
 	template <>
-	inline Empaerior::string get_data<Empaerior::Point2f>(Empaerior::string name, const Empaerior::Point2f& point)
+	EMP_FORCEINLINE Empaerior::string get_data<Empaerior::Point2f>(Empaerior::string name, const Empaerior::Point2f& point)
 	{
 		Empaerior::string string = "\nPoint2 : " + name + '\n';
 		string += "x: " + std::to_string(point.x) + " y: " + std::to_string(point.y) + '\n';
@@ -47,7 +49,7 @@ namespace Empaerior {
 
 
 	template<>
-	inline Empaerior::string get_data<Empaerior::Float_Rect>(Empaerior::string name, const Empaerior::Float_Rect& rect)
+	EMP_FORCEINLINE Empaerior::string get_data<Empaerior::Float_Rect>(Empaerior::string name, const Empaerior::Float_Rect& rect)
 	{
 		Empaerior::string string = "\nTransform Rect: " + name + '\n';
 		string += "x: " + std::to_string(rect.dimensions.x) + " y: " + std::to_string(rect.dimensions.y) + " w: " + std::to_string(rect.dimensions.w) + " h: " + std::to_string(rect.dimensions.h) + " Angle: " + std::to_string(rect.angle) + '\n';
@@ -55,7 +57,7 @@ namespace Empaerior {
 	}
 
 	template<>	
-	inline Empaerior::string get_data<Empaerior::Camera>(Empaerior::string name, const Empaerior::Camera& cam)
+	EMP_FORCEINLINE Empaerior::string get_data<Empaerior::Camera>(Empaerior::string name, const Empaerior::Camera& cam)
 	{
 		Empaerior::string string = "\nCamera : " + name + '\n';
 		string += "x: " + std::to_string(cam.rect.x) + " y: " + std::to_string(cam.rect.y) + " w: " + std::to_string(cam.rect.w) + " h: " + std::to_string(cam.rect.h) + '\n';
@@ -63,7 +65,7 @@ namespace Empaerior {
 	}
 
 	template<>
-	inline Empaerior::string get_data<Empaerior::ECS>(Empaerior::string name, const Empaerior::ECS& ecs)
+	EMP_FORCEINLINE Empaerior::string get_data<Empaerior::ECS>(Empaerior::string name, const Empaerior::ECS& ecs)
 	{
 		Empaerior::string string = "\nECS : " + name + '\n';
 		//Entities
@@ -92,7 +94,42 @@ namespace Empaerior {
 	}
 
 	
-	
+	template<>
+	EMP_FORCEINLINE Empaerior::string get_data(Empaerior::string name, const Empaerior::Graphic_element& spr)
+	{
+		Empaerior::string string = "\nGraphic_element: " + name + '\n';
+		//get the extensions to deternmine what type of sp;rite it is
+		//if the ending is ttf , it's most likely a text_sprite
+		if (spr.path.size() > 4)
+		{
+			Empaerior::string extension = spr.path.substr(spr.path.size() - 3, 3);
+
+			if (extension == "ttf")
+			{
+				string += "Text Sprite\n";
+				string += "Font path : " + spr.path + '\n';
+				string += "Texture rectangle :  x : " + std::to_string(spr.tex_rect.x) + " y : " + std::to_string(spr.tex_rect.y) + " w : " + std::to_string(spr.tex_rect.w) + " h: " + std::to_string(spr.tex_rect.h) + '\n';
+				string += "Color : r: " + std::to_string(spr.r) + " g : " + std::to_string(spr.g) + " b : " + std::to_string(spr.b) + '\n';
+				string += get_data("Position", spr.rect);
+			}
+			else
+			{
+				string += "Sprite\n";
+				string += "Texture path : " + spr.path + '\n';
+				string += "Texture rectangle :  x : " + std::to_string(spr.tex_rect.x) + " y : " + std::to_string(spr.tex_rect.y) + " w : " + std::to_string(spr.tex_rect.w) + " h: " + std::to_string(spr.tex_rect.h) + '\n';
+				string += "Animation Hold time :" + std::to_string(spr.holdTime) + '\n';
+				string += "Acumulated time : " + std::to_string(spr.time) + '\n';
+				string += "Frames : " + std::to_string(spr.frames) + '\n';
+				string += "Current frame" + std::to_string(spr.cur_frame) + '\n';
+				string += "Color : r: " + std::to_string(spr.r) + " g : " + std::to_string(spr.g) + " b : " + std::to_string(spr.b) + '\n';
+				string += get_data("Position", spr.rect);
+			}
+
+		}
+
+
+		return string;
+	}
 
 
 }

@@ -34,7 +34,7 @@ namespace Empaerior {
 
 
 	//This function uses an array instead of a vector
-	Empaerior::byte createGlyphs(Empaerior::vector<surface_glyph>& s_glyphs , const Empaerior::string& path, const  Empaerior::u_inter& size, Empaerior::Color& color);
+	Empaerior::byte createGlyphs(Empaerior::vector<surface_glyph>& s_glyphs , const Empaerior::string& path, const  Empaerior::u_int& size, Empaerior::Color& color);
 
 
 	void Create_text_texture(const Empaerior::vector<Empaerior::byte>& text, const Empaerior::Float_Rect& rect, Empaerior::vector<surface_glyph>& s_glyphs, SDL_Renderer* renderer, std::shared_ptr<SDL_Texture>& texture, Empaerior::Int_Rect& tex_rect);

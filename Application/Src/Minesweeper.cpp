@@ -18,14 +18,14 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 				ecs.get_component<cell_component>(tile).is_revealed = true;
 				ecs.get_component<Empaerior::Spr_Component>(tile).sprites.pop_back();
 				ecs.get_component<Empaerior::Spr_Component>(tile).spr_index.pop_back();
-				if (x + 1 < 16) Reveal(ecs, entity_id, x + 1, y);
-				if (y + 1 < 16) Reveal(ecs, entity_id, x, y + 1);
+				if (x + 1 < board_size) Reveal(ecs, entity_id, x + 1, y);
+				if (y + 1 < board_size) Reveal(ecs, entity_id, x, y + 1);
 				if (x - 1 >= 0) Reveal(ecs, entity_id, x - 1, y);
 				if (y - 1 >= 0) Reveal(ecs, entity_id, x, y - 1);
-				if (x + 1 < 16 && y + 1 < 16)  Reveal(ecs, entity_id, x + 1, y + 1);
-				if (x + 1 < 16 && y - 1 >= 0)  Reveal(ecs, entity_id, x + 1, y - 1);
+				if (x + 1 < board_size && y + 1 < board_size)  Reveal(ecs, entity_id, x + 1, y + 1);
+				if (x + 1 < board_size && y - 1 >= 0)  Reveal(ecs, entity_id, x + 1, y - 1);
 				if (x - 1 >= 0 && y - 1 >= 0)  Reveal(ecs, entity_id, x - 1, y - 1);
-				if (x - 1 >= 0 && y + 1 < 16)  Reveal(ecs, entity_id, x - 1, y + 1);
+				if (x - 1 >= 0 && y + 1 < board_size)  Reveal(ecs, entity_id, x - 1, y + 1);
 			}
 
 
@@ -41,9 +41,9 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 			ecs.get_component<Mine_field>(entity_id).mine_encountered = 1;
 
 			//reveal ALL  mines
-			for (int i = 0; i < 16; i++)
+			for (int i = 0; i < board_size; i++)
 			{
-				for (int j = 0; j < 16; j++)
+				for (int j = 0; j < board_size; j++)
 				{
 #define it_tile ecs.get_component<Mine_field>(entity_id).field[i][j]
 					if (ecs.get_component<field_component>(it_tile).field_type == -1)

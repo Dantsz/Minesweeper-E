@@ -7,9 +7,9 @@ namespace Empaerior {
 
 
 
-	Empaerior::byte createGlyphs(Empaerior::vector<surface_glyph>& s_glyphs ,const Empaerior::string& path,const Empaerior::u_inter& size, Empaerior::Color& color)
+	Empaerior::byte createGlyphs(Empaerior::vector<surface_glyph>& s_glyphs ,const Empaerior::string& path,const Empaerior::u_int& size, Empaerior::Color& color)
 	{
-		Empaerior::s_int w, h;
+	
 		Empaerior::ch fontChar[EMP_LETTERS] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";
 		fontChar[84] = '"'; fontChar[EMP_LETTERS - 1] = ' ';
 		SDL_Surface* tempSurface;
@@ -24,10 +24,7 @@ namespace Empaerior {
 			tempSurface = TTF_RenderText_Solid(font, shortString, color);
 			temp.surface = tempSurface;
 			s_glyphs.push_back(std::move(temp));
-			//DOn;t delete surface , 
-			//SDL_FreeSurface(tempSurface);// delete surface
 		}
-		//std::cout << s_glyphs.size() << '\n';
 		return 1;
 	}
 
