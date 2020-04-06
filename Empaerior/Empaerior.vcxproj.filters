@@ -101,6 +101,9 @@
     <ClInclude Include="src\core\exceptions\Exceptions.h">
       <Filter>core\exceptions</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\unsafe_vector.h">
+      <Filter>core</Filter>
+    </ClInclude>
     <ClInclude Include="src\core\utilities\Math.h">
       <Filter>core\utilities</Filter>
     </ClInclude>
@@ -190,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="src\state\State.cpp">
       <Filter>state</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\Systems.cpp">
+      <Filter>systems</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

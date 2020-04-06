@@ -36,9 +36,6 @@ namespace Empaerior
 				{
 					throw E_runtime_exception("Cannot add component: the entity already has this type of component: " + Empaerior::string(typeid(T).name()),__FILE__,__LINE__, __FUNCTION__);
 				}
-
-
-
 				//if there isn't any free space,create one
 				if (free_index.empty())
 				{
@@ -49,6 +46,7 @@ namespace Empaerior
 				}
 				else//just take an unused component
 				{
+					std::cout << "Delete this line pls" << '\n';
 					components[free_index.front()] = component;
 					entitytocomponent[entity_id] = free_index.front();
 					componenttoentity[free_index.front()] = entity_id;
@@ -114,12 +112,14 @@ namespace Empaerior
 				free_index.push(removed_index);
 
 
+	
 
 				//delete the entity from the registries
 				entitytocomponent.erase(entity_id);
 				componenttoentity.erase(removed_index);
 
-				//the data is still there until is overwritten by a new component
+
+
 			}
 			catch (E_runtime_exception & e)
 			{
@@ -209,7 +209,7 @@ namespace Empaerior
 		void remove_component(const Entity& entity)
 		{
 
-			get_container<T>()->remove_component(entity);
+			get_container<T>()->remove_component(entity.id);
 
 		}
 		template<typename T>

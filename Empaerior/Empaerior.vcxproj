@@ -290,6 +290,7 @@
     <ClInclude Include="src\core\ecs\components\ComponentManager.h" />
     <ClInclude Include="src\core\ecs\system\system.h" />
     <ClInclude Include="src\core\exceptions\Exceptions.h" />
+    <ClInclude Include="src\core\unsafe_vector.h" />
     <ClInclude Include="src\core\utilities\Math.h" />
     <ClInclude Include="src\core\utilities\Timer.h" />
     <ClInclude Include="src\core\utilities\Utilities.h" />
@@ -326,6 +327,7 @@
     <ClCompile Include="src\rendering\glyphs\Glyphs.cpp" />
     <ClCompile Include="src\rendering\objects\Sprite.cpp" />
     <ClCompile Include="src\state\State.cpp" />
+    <ClCompile Include="src\systems\Systems.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

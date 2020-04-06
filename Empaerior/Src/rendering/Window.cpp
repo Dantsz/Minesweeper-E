@@ -41,7 +41,7 @@ int Empaerior::Window::Init(const Empaerior::string& name, const Empaerior::u_in
 	height = m_height;
 	window = SDL_CreateWindow(name.c_str(),
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
-	renderer = SDL_CreateRenderer(window, -1, 0);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	window_listener.register_event(SDL_QUIT, [](Empaerior::Event const& event) { // add quit event 
 		Empaerior::Application::is_running = false;
@@ -75,5 +75,5 @@ void Empaerior::Window::clear()
 void Empaerior::Window::reset()
 {
 	if (window != nullptr)	SDL_DestroyWindow(window);
-	if (renderer != nullptr)SDL_DestroyRenderer(renderer);
+	if (renderer != nullptr) SDL_DestroyRenderer(renderer);
 }

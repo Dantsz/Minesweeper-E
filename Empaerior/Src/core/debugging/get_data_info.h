@@ -77,7 +77,7 @@ namespace Empaerior {
 			string += it.first;
 			string += '\n';
 		}
-		string + '\n';
+		string += '\n';
 
 		//Systems
 		string += "There are: " + std::to_string(ecs.system_manager->typetosystem.size()) + " systems registered by this ecs:\n";
@@ -88,7 +88,7 @@ namespace Empaerior {
 
 			string += '\n';
 		}
-		string + '\n';
+		string += '\n';
 
 		return string;
 	}

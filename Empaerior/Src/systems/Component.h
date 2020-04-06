@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include "rendering/Camera.h"
 #include "rendering/objects/Sprite.h"
-
+#include "core/defines/Defines.h"
 #include "input/eventhandler/EventHandler.h"
 
 namespace Empaerior
@@ -16,16 +16,33 @@ namespace Empaerior
 	/*
 	New Sprite Component
 	*/
-	struct Spr_Component
+	
+
+	
+	struct Animation
 	{
 
-		Empaerior::Graphic_element test_spr;
+		Empaerior::Int_Rect rect;//the frame of the animation
+		Empaerior::u_inter next_animation; // the next animation in line, as index in animations
+	};
 
-		//the order in which sprites are drawn
-		Empaerior::vector<size_t> spr_index;
-		Empaerior::vector<Empaerior::Graphic_element> sprites;
-		//indexes for sprites that are deleted 
-		Empaerior::queue<size_t> freed_indexes;
+	
+
+
+	struct Sprite_Component
+	{
+	
+		Empaerior::vector<Empaerior::u_inter> all_sprite_index;
+
+		struct Animation_Entry
+		{
+			Empaerior::u_inter anim_begin;
+			Empaerior::u_inter anim_end;
+		};
+
+		Empaerior::unsafe_vector<Animation_Entry> animation_index;
+
+	
 	};
 
 

@@ -3,6 +3,7 @@
 #include <string>
 #include "core/Vector2.h"
 #include "core/Rect.h"
+#include "core/unsafe_vector.h"
 namespace Empaerior
 {
 

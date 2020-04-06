@@ -19,12 +19,6 @@
 //static objects variables
 #pragma region static objects
 
-#pragma region asset_managing
-Empaerior::hash_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
-Empaerior::hash_map<Empaerior::string, Empaerior::hash_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
-Empaerior::hash_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
-Empaerior::hash_map<Empaerior::v_pair<Empaerior::string, Empaerior::s_int>, std::shared_ptr<Empaerior::vector<Empaerior::surface_glyph>>, pair_hash> dim_to_glyphs;
-#pragma endregion
 
 #pragma region app_statics
 Empaerior::vector <Empaerior::State*> Empaerior::Application::states;
@@ -33,7 +27,7 @@ Empaerior::vector <Empaerior::u_inter> Empaerior::Application::to_be_paused;
 Empaerior::vector <Empaerior::u_inter> Empaerior::Application::to_be_deleted;
 Empaerior::vector <Empaerior::u_inter> Empaerior::Application::freed_indexes;
 //time between frames
-Empaerior::u_int Empaerior::Application::dt = 1000 / 60;
+Empaerior::u_int Empaerior::Application::dt = 1000 / 100;
 Empaerior::boole Empaerior::Application::is_paused = 0;
 Empaerior::boole Empaerior::Application::is_running = 1;
 Empaerior::Event Empaerior::Application::event;
@@ -132,6 +126,8 @@ int main(int argc, char** argv)
 	ENGINE_INFO("Application ran for " +std::to_string(timer.getTicks()) + " ms");
 	timer.stop();
 #endif // EMPAERIOR_DEBUG
+
+
 	Empaerior::Application::window.reset();
 
 	Empaerior::Asset_Loading::reset_assets();
@@ -139,6 +135,7 @@ int main(int argc, char** argv)
 
 	SDLW::Quit();
 	
+
 #ifdef EMP_USE_LOGS
 	ENGINE_WARN("Stopped Application");
 #endif // EMPAERIOR_DEBUG

@@ -77,17 +77,18 @@ namespace Empaerior
 			//add the new signature
 			e_signature[component_type] = 1;
 			entity_manager->set_signature(entity_id, e_signature);
-			system_manager->OnEntitySignatureChange(entity_id, e_signature);
+			system_manager->OnEntitySignatureChange(this,entity_id, e_signature);
 		}
 
 		template <typename T>
-		void remove_component(const Empaerior::u_inter& entity_id)
+		void remove_component(const Empaerior::Entity& entity_id)
 		{
-			component_manager->remove_component<T>(entity_id); \
-				Empaerior::vector<bool> e_signature = entity_manager->get_signature(entity_id);
+		
+			Empaerior::vector<bool> e_signature = entity_manager->get_signature(entity_id.id);
 			Empaerior::u_inter component_type = component_manager->get_component_id<T>();
 			e_signature[component_type] = 0;
-			system_manager->OnEntitySignatureChange(entity_id, e_signature);
+			system_manager->OnEntitySignatureChange(this,entity_id.id, e_signature);
+			component_manager->remove_component<T>(entity_id);
 		}
 
 		template <typename T>

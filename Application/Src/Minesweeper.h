@@ -41,7 +41,7 @@ class Mine_sweep_system : public Empaerior::System
 {
 public:
 	//reveal a cell
-	void Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, int x, int y);
+	void Reveal(Empaerior::ECS& ecs,std::shared_ptr<Empaerior::Sprite_System>& Spr_system, const uint64_t& entity_id, int x, int y);
 	Empaerior::u_inter get_nr_cell(Empaerior::ECS& ecs, const uint64_t& entity_id)
 	{
 		Empaerior::u_inter nr = 0;

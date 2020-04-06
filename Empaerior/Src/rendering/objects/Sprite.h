@@ -28,7 +28,10 @@ namespace Empaerior {
 			while (time >= holdTime)// check if the necesarry time passed
 			{
 				time -= holdTime;
-				next_frame(); // advance
+
+				//need to rethink the whole animation thing
+
+		
 			}
 
 		}
@@ -91,31 +94,31 @@ namespace Empaerior {
 		
 		
 
-	private:
-		EMP_FORCEINLINE void next_frame()// goes to the next frame in the animation 
-		{
-			// get next frame in animation
-			//if cur_frames has been all frames, go to the frame 0
-			cur_frame >= frames - 1 ? cur_frame = 0 : ++cur_frame;
-			//set the frame
-			tex_rect.x = anim_x + cur_frame * tex_rect.w;
-			//tex_rect.y = anim_y + cur_frame * tex_rect.h;
-
-		}
+	
 	
 	public:
 		std::shared_ptr<SDL_Texture> texture;
 		//it's the tecture path for sprites and font_path dor text_sprites;
+
+
 		Empaerior::string path;// the path
+		
+		Empaerior::u_inter animation_begin;//the very first frame of the animation
+		Empaerior::u_inter cur_frame;//the id of the current animation
+		Empaerior::u_inter animation_end;//the last non-repeating frame of the animation
 
 		Empaerior::Int_Rect tex_rect;// the portion of the texture the sprite represents
-		Empaerior::u_int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
 
+
+		//the initial animation the entity had when emplace_sprite/emplace_text_sprite was called
+		//it can be deleted
+		Empaerior::u_inter default_anim_frame;//
+		
 		Empaerior::u_int time = 0;
 		Empaerior::u_int holdTime = 250; //time between animations currently 0.25 seconds
 
-		Empaerior::byte frames = 1; //each animation must have at least one frame
-		Empaerior::byte cur_frame = 0;
+		Empaerior::byte frames = 0; //each animation must have at least one frame
+		
 
 		//color values
 		Empaerior::byte r = 255;
@@ -151,14 +154,14 @@ namespace Empaerior {
 			return;
 		}
 		//Initialize as a normal sprite 
-		EMP_FORCEINLINE void InitSprite(Empaerior::Graphic_element& spr,const Empaerior::Float_Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const Empaerior::byte& m_frames)
+		EMP_FORCEINLINE void InitSprite(Empaerior::Graphic_element& spr,const Empaerior::Float_Rect& m_rect, const Empaerior::string& tex_path)
 		{
 			spr.path = tex_path;
 			spr.rect = m_rect;
-			spr.tex_rect = m_tex_rect;
+		
 			// load the texture
 			spr.texture = Asset_Loading::load_texture(tex_path);
-			spr.frames = m_frames;
+			
 		}
 
 		//Initialize as a Text_Sprite
@@ -173,8 +176,7 @@ namespace Empaerior {
 			spr.texture.reset();
 			spr.path = "";
 			spr.tex_rect = {};
-			spr.anim_x = 0;
-			spr.anim_y = 0;
+			
 			spr.time = 0;
 			spr.holdTime = 250;
 			spr.frames = 1;
@@ -185,6 +187,8 @@ namespace Empaerior {
 			spr.rect = { {0,0,0,0},0 };
 			spr.position_rect = {};
 		}
+
+		
 	}
 
 

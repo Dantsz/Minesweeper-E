@@ -58,4 +58,10 @@ struct pair_hash
 };
 
 //INLINE DEFINE
+#if defined(__clang__)
 #define EMP_FORCEINLINE SDL_FORCE_INLINE
+#elif defined(__GNUC__) || defined(__GNUG__)
+#define EMP_FORCEINLINE SDL_FORCE_INLINE
+#elif defined(_MSC_VER)
+#define EMP_FORCEINLINE SDL_FORCE_INLINE
+#endif

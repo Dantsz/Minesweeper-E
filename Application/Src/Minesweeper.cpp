@@ -1,6 +1,6 @@
 #include "Minesweeper.h"
 
-void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, int x, int y)
+void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, std::shared_ptr<Empaerior::Sprite_System>& Spr_system, const uint64_t& entity_id, int x, int y)
 {
 
 #define tile ecs.get_component<Mine_field>(entity_id).field[x][y]
@@ -16,16 +16,18 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 			{
 			
 				ecs.get_component<cell_component>(tile).is_revealed = true;
-				ecs.get_component<Empaerior::Spr_Component>(tile).sprites.pop_back();
-				ecs.get_component<Empaerior::Spr_Component>(tile).spr_index.pop_back();
-				if (x + 1 < board_size) Reveal(ecs, entity_id, x + 1, y);
-				if (y + 1 < board_size) Reveal(ecs, entity_id, x, y + 1);
-				if (x - 1 >= 0) Reveal(ecs, entity_id, x - 1, y);
-				if (y - 1 >= 0) Reveal(ecs, entity_id, x, y - 1);
-				if (x + 1 < board_size && y + 1 < board_size)  Reveal(ecs, entity_id, x + 1, y + 1);
-				if (x + 1 < board_size && y - 1 >= 0)  Reveal(ecs, entity_id, x + 1, y - 1);
-				if (x - 1 >= 0 && y - 1 >= 0)  Reveal(ecs, entity_id, x - 1, y - 1);
-				if (x - 1 >= 0 && y + 1 < board_size)  Reveal(ecs, entity_id, x - 1, y + 1);
+				Spr_system->delete_sprite(ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index[ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index.size() - 1]);
+			
+				ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index.pop_back();
+			
+				if (x + 1 < board_size) Reveal(ecs, Spr_system, entity_id, x + 1, y);
+				if (y + 1 < board_size) Reveal(ecs, Spr_system, entity_id, x, y + 1);
+				if (x - 1 >= 0) Reveal(ecs, Spr_system, entity_id, x - 1, y);
+				if (y - 1 >= 0) Reveal(ecs, Spr_system, entity_id, x, y - 1);
+				if (x + 1 < board_size && y + 1 < board_size)  Reveal(ecs, Spr_system, entity_id, x + 1, y + 1);
+				if (x + 1 < board_size && y - 1 >= 0)  Reveal(ecs, Spr_system, entity_id, x + 1, y - 1);
+				if (x - 1 >= 0 && y - 1 >= 0)  Reveal(ecs, Spr_system, entity_id, x - 1, y - 1);
+				if (x - 1 >= 0 && y + 1 < board_size)  Reveal(ecs, Spr_system,entity_id, x - 1, y + 1);
 			}
 
 
@@ -37,7 +39,7 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 
 			ecs.get_component<cell_component>(tile).is_revealed = true;
 			//change the texture of touched mine
-			ecs.get_component<Empaerior::Spr_Component>(tile).sprites[0].set_texture("assets/tex_mine_cross.png");
+			Spr_system->get_sprite(ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index[0]).set_texture("assets/tex_mine_cross.png");
 			ecs.get_component<Mine_field>(entity_id).mine_encountered = 1;
 
 			//reveal ALL  mines
@@ -49,12 +51,14 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 					if (ecs.get_component<field_component>(it_tile).field_type == -1)
 					{
 
-						if (ecs.get_component<Empaerior::Spr_Component>(it_tile).sprites.size() == 2 && ecs.get_component<cell_component>(it_tile).cell_type == 0)
+						if (ecs.get_component<Empaerior::Sprite_Component>(it_tile).all_sprite_index.size() == 2 && ecs.get_component<cell_component>(it_tile).cell_type == 0)
 						{
 						
 							ecs.get_component<cell_component>(it_tile).is_revealed = 1;
-							ecs.get_component<Empaerior::Spr_Component>(it_tile).sprites.pop_back();
-							ecs.get_component<Empaerior::Spr_Component>(it_tile).spr_index.pop_back();
+							Spr_system->delete_sprite(ecs.get_component<Empaerior::Sprite_Component>(it_tile).all_sprite_index[ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index.size() - 1]);
+
+							ecs.get_component<Empaerior::Sprite_Component>(it_tile).all_sprite_index.pop_back();
+
 
 						}
 					}
@@ -68,8 +72,10 @@ void Mine_sweep_system::Reveal(Empaerior::ECS& ecs, const uint64_t& entity_id, i
 			{
 		
 				ecs.get_component<cell_component>(tile).is_revealed = true;
-				ecs.get_component<Empaerior::Spr_Component>(tile).sprites.pop_back();
-				ecs.get_component<Empaerior::Spr_Component>(tile).spr_index.pop_back();
+				Spr_system->delete_sprite(ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index[ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index.size() - 1]);
+
+				ecs.get_component<Empaerior::Sprite_Component>(tile).all_sprite_index.pop_back();
+
 			}
 		}
 		

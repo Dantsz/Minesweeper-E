@@ -13,11 +13,11 @@ void Empaerior::Graphic_element::draw(const Camera& camera)
 	//setting the texture's color, because each sprite that uses the texture uses it differently (or not)
 	SDL_SetTextureColorMod(texture.get(), r, g, b);//Safe/acceptable to call SDL_SetTextureColorMod a lot?
 	//render it
-	Empaerior::Render::RenderEx(Application::window.renderer, &(*texture), SDL_FLIP_NONE, rect.angle, 0, &tex_rect, &position_rect);
+	//Empaerior::Render::RenderEx(Application::window.renderer, &(*texture), SDL_FLIP_NONE, rect.angle, 0, &tex_rect, &position_rect);
 
 }
 
-void Empaerior::SpriteFunctions::InitTextSprite(Empaerior::Graphic_element& spr, const Empaerior::Float_Rect& rect, const Empaerior::string& font_path, const Empaerior::u_int& size, const Empaerior::string& message, Empaerior::Color& color)
+void Empaerior::SpriteFunctions::InitTextSprite(Empaerior::Graphic_element& spr, const Empaerior::Float_Rect& rect , const Empaerior::string& font_path, const Empaerior::u_int& size, const Empaerior::string& message, Empaerior::Color& color)
 {
 	spr.rect = rect;
 	spr.r = color.r;

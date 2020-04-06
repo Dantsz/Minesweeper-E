@@ -7,10 +7,10 @@
 
 
 
-extern Empaerior::hash_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
-extern Empaerior::hash_map<Empaerior::string, Empaerior::hash_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
-extern Empaerior::hash_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
-extern Empaerior::hash_map<Empaerior::v_pair<Empaerior::string, Empaerior::s_int>,std::shared_ptr<Empaerior::vector<Empaerior::surface_glyph>>,pair_hash> dim_to_glyphs;
+inline  Empaerior::hash_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
+inline Empaerior::hash_map<Empaerior::string, Empaerior::hash_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
+inline Empaerior::hash_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
+inline Empaerior::hash_map<Empaerior::v_pair<Empaerior::string, Empaerior::s_int>,std::shared_ptr<Empaerior::vector<Empaerior::surface_glyph>>,pair_hash> dim_to_glyphs;
 namespace Empaerior::Asset_Loading
 {
 

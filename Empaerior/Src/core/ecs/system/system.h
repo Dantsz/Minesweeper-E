@@ -6,13 +6,18 @@ namespace Empaerior {
 	//Thanks to 
 	//"A system is any functionality that iterates upon a list of entities with a certain signature of components."
 	//
-
+	class ECS;     // forward declaration
 
 	class System
 	{
 	public:
 
 		virtual ~System()
+		{
+
+		}
+
+		virtual void OnEntityRemovedfromSystem(Empaerior::ECS* ecs,const Empaerior::u_inter& entity_id)
 		{
 
 		}
@@ -119,7 +124,8 @@ namespace Empaerior {
 		}
 
 		// Notify each system that an entity's signature changed
-		void OnEntitySignatureChange(const Empaerior::u_inter& entity_id, Empaerior::vector<bool>& signature)
+		
+		 void OnEntitySignatureChange(Empaerior::ECS* ecs,const Empaerior::u_inter& entity_id, Empaerior::vector<bool>& signature)
 		{
 			for (auto const& it : typetosystem)
 			{
@@ -128,11 +134,15 @@ namespace Empaerior {
 				auto const& systemSignature = typetosignature[type];
 				if (compare_entity_to_system(signature,systemSignature))
 				{
+					//TODO : MAKE A METHOD TO SYSTEM , method needs to be virtual /Onewntitierase/insert
 					system->entities_id.insert(entity_id);
+
+
 				}
 				else
 				{
 					system->entities_id.erase(entity_id);
+					system->OnEntityRemovedfromSystem(ecs, entity_id);
 				}
 
 			}
