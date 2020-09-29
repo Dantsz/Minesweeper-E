@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Dan/Desktop/Empaerior/Empaerior-Engine/Empaerior
+# Install script for directory: C:/Users/Dan/source/repos/Empaerior/Empaerior
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

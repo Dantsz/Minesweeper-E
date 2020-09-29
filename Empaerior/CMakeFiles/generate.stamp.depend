@@ -1,4 +1,6 @@
 # CMake generation dependency list for this directory.
-C:/Users/Dan/Desktop/Empaerior/Empaerior-Engine/CMake/Default.cmake
-C:/Users/Dan/Desktop/Empaerior/Empaerior-Engine/CMake/DefaultCXX.cmake
-C:/Users/Dan/Desktop/Empaerior/Empaerior-Engine/Empaerior/CMakeLists.txt
+C:/Users/Dan/source/repos/Empaerior/CMake/Default.cmake
+C:/Users/Dan/source/repos/Empaerior/CMake/DefaultCXX.cmake
+C:/Users/Dan/source/repos/Empaerior/Empaerior/CMakeLists.txt
+C:/Users/Dan/source/repos/Empaerior/Empaerior/include/core/CMakeLists.txt
+C:/Users/Dan/source/repos/Empaerior/Empaerior/include/rendering/vulkan_rendering/CMakeLists.txt

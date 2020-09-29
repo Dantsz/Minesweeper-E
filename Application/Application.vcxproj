@@ -1,300 +1,234 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug32|Win32">
-      <Configuration>Debug32</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug32|x64">
-      <Configuration>Debug32</Configuration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release32|Win32">
-      <Configuration>Release32</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release32|x64">
-      <Configuration>Release32</Configuration>
+    <ProjectConfiguration Include="Dist|x64">
+      <Configuration>Dist</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Dist32|Win32">
-      <Configuration>Dist32</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Dist32|x64">
-      <Configuration>Dist32</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug64|Win32">
-      <Configuration>Debug64</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug64|x64">
-      <Configuration>Debug64</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release64|Win32">
-      <Configuration>Release64</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release64|x64">
-      <Configuration>Release64</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Dist64|Win32">
-      <Configuration>Dist64</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Dist64|x64">
-      <Configuration>Dist64</Configuration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D9DE78AF-4594-F1A4-CE88-EB7B3A3DE8A8}</ProjectGuid>
-    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <ProjectGuid>{4DBE3786-E24D-39BA-B9C6-9A6E31106509}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Application</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>Application</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist32|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist64|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist32|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist64|x64'">
+  <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\Debug32-windows-\Application\</OutDir>
-    <IntDir>..\bin-int\Debug32-windows-\Application\</IntDir>
-    <TargetName>Application</TargetName>
-    <TargetExt>.exe</TargetExt>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Dan\source\repos\Minesweeper\bin\Debug64\Application\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Application.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Application</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">C:\Users\Dan\source\repos\Minesweeper\bin\Dist64\Application\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">Application.dir\Dist\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">Application</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Dan\source\repos\Minesweeper\bin\Release64\Application\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Application.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Application</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Release32-windows-\Application\</OutDir>
-    <IntDir>..\bin-int\Release32-windows-\Application\</IntDir>
-    <TargetName>Application</TargetName>
-    <TargetExt>.exe</TargetExt>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist32|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Dist32-windows-\Application\</OutDir>
-    <IntDir>..\bin-int\Dist32-windows-\Application\</IntDir>
-    <TargetName>Application</TargetName>
-    <TargetExt>.exe</TargetExt>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\Debug64-windows-\Application\</OutDir>
-    <IntDir>..\bin-int\Debug64-windows-\Application\</IntDir>
-    <TargetName>Application</TargetName>
-    <TargetExt>.exe</TargetExt>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Release64-windows-\Application\</OutDir>
-    <IntDir>..\bin-int\Release64-windows-\Application\</IntDir>
-    <TargetName>Application</TargetName>
-    <TargetExt>.exe</TargetExt>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist64|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Dist64-windows-\Application\</OutDir>
-    <IntDir>..\bin-int\Dist64-windows-\Application\</IntDir>
-    <TargetName>Application</TargetName>
-    <TargetExt>.exe</TargetExt>
-  </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>EMPAERIOR_WINDOWS;EMPAERIOR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;..\Empaerior\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>EMPAERIOR_DEBUG;EMPAERIOR_WINDOWS;UNICODE;_UNICODE;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;EMPAERIOR_DEBUG;EMPAERIOR_WINDOWS;UNICODE;_UNICODE;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;vulkan-1.lib;freetype.lib;Empaerior.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2_mixer/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2_mixer/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/Empaerior/lib;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/Empaerior/lib/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/freetype/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/freetype/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/VulkanSDK/Lib;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/VulkanSDK/Lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\External_Libraries\SDL\SDL2\lib\x86;..\External_Libraries\SDL\SDL2_image\lib\x86;..\External_Libraries\SDL\SDL2_mixer\lib\x86;..\External_Libraries\SDL\SDL2_ttf\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <PreprocessorDefinitions>EMPAERIOR_WINDOWS;EMPAERIOR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;..\Empaerior\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <Optimization>Full</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <MinimalRebuild>false</MinimalRebuild>
-      <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-    </ClCompile>
-    <Link>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Dan/source/repos/Minesweeper/bin/Debug64/Application/Application.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Dan/source/repos/Minesweeper/bin/Debug64/Application/Application.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\External_Libraries\SDL\SDL2\lib\x86;..\External_Libraries\SDL\SDL2_image\lib\x86;..\External_Libraries\SDL\SDL2_mixer\lib\x86;..\External_Libraries\SDL\SDL2_ttf\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist32|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>EMPAERIOR_WINDOWS;EMPAERIOR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;..\Empaerior\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <Optimization>Full</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <MinimalRebuild>false</MinimalRebuild>
-      <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\External_Libraries\SDL\SDL2\lib\x86;..\External_Libraries\SDL\SDL2_image\lib\x86;..\External_Libraries\SDL\SDL2_mixer\lib\x86;..\External_Libraries\SDL\SDL2_ttf\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>EMPAERIOR_WINDOWS;EMPAERIOR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;..\Empaerior\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\External_Libraries\SDL\SDL2\lib\x64;..\External_Libraries\SDL\SDL2_image\lib\x64;..\External_Libraries\SDL\SDL2_mixer\lib\x64;..\External_Libraries\SDL\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <PreprocessorDefinitions>EMPAERIOR_WINDOWS;EMPAERIOR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;..\Empaerior\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <Optimization>Full</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <MinimalRebuild>false</MinimalRebuild>
-      <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\External_Libraries\SDL\SDL2\lib\x64;..\External_Libraries\SDL\SDL2_image\lib\x64;..\External_Libraries\SDL\SDL2_mixer\lib\x64;..\External_Libraries\SDL\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist64|x64'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>EMPAERIOR_WINDOWS;EMPAERIOR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;..\Empaerior\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <Optimization>Full</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <MinimalRebuild>false</MinimalRebuild>
-      <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\External_Libraries\SDL\SDL2\lib\x64;..\External_Libraries\SDL\SDL2_image\lib\x64;..\External_Libraries\SDL\SDL2_mixer\lib\x64;..\External_Libraries\SDL\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Minesweeper.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\Minesweeper.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Empaerior\Empaerior.vcxproj">
-      <Project>{A998D186-1503-86FD-5E41-37A3CAEA6352}</Project>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>EMPAERIOR_DIST;EMPAERIOR_WINDOWS;UNICODE;_UNICODE;CMAKE_INTDIR="Dist";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;EMPAERIOR_DIST;EMPAERIOR_WINDOWS;UNICODE;_UNICODE;CMAKE_INTDIR=\"Dist\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;vulkan-1.lib;freetype.lib;Empaerior.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2_mixer/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2_mixer/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/Empaerior/lib;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/Empaerior/lib/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/freetype/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/freetype/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/VulkanSDK/Lib;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/VulkanSDK/Lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Dan/source/repos/Minesweeper/bin/Dist64/Application/Application.lib</ImportLibrary>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/Dan/source/repos/Minesweeper/bin/Dist64/Application/Application.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>EMPAERIOR_RELEASE;EMPAERIOR_WINDOWS;UNICODE;_UNICODE;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;EMPAERIOR_RELEASE;EMPAERIOR_WINDOWS;UNICODE;_UNICODE;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\SDL\SDL2_mixer\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\spdlog\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\stb;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\glm;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanSDK\Include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\VulkanMemoryAllocator\src;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\freetype\include;C:\Users\Dan\source\repos\Minesweeper\Application\..\External_Libraries\Empaerior\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;vulkan-1.lib;freetype.lib;Empaerior.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2_mixer/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/SDL/SDL2_mixer/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/Empaerior/lib;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/Empaerior/lib/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/freetype/lib/x64;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/freetype/lib/x64/$(Configuration);C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/VulkanSDK/Lib;C:/Users/Dan/source/repos/Minesweeper/Application/../External_Libraries/VulkanSDK/Lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Dan/source/repos/Minesweeper/bin/Release64/Application/Application.lib</ImportLibrary>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/Dan/source/repos/Minesweeper/bin/Release64/Application/Application.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Application.cpp" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Minesweeper.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Minesweeper.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\Emp_Imgui.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_empaerior.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_empaerior.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_impl_vulkan.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_impl_vulkan.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imconfig.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_demo.cpp" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_draw.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_internal.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_widgets.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imstb_rectpack.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imstb_textedit.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imstb_truetype.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\cpp\imgui_stdlib.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\cpp\imgui_stdlib.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\fonts\binary_to_compressed_c.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\single_file\imgui_single_file.h" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui_sdl-master\example.cpp" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui_sdl-master\imgui_sdl.cpp" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui_sdl-master\imgui_sdl.h" />
+  </ItemGroup>
+  <ItemGroup>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

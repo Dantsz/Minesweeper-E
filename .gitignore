@@ -12,7 +12,7 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+#
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -336,6 +336,9 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
+#VScode stuff
+.vscode/
+
 # BeatPulse healthcheck temp database
 healthchecksdb
 
@@ -347,3 +350,19 @@ External_Libraries/SDL/SDL2_mixer/
 
 #Ignore DLLS in the Application project
 Application/*.dll
+
+#Ignore build folders
+*.dir/
+
+#Ignore spdlog
+External_Libraries/spdlog
+
+#Ignore CMakefiles
+CMakeFiles/
+build/Makefile
+build/Application/cmake_install.cmake
+build/Empaerior/cmake_install.cmake
+build/Application/Makefile
+build/Empaerior/Makefile
+#Ignore anything external
+External_Libraries/

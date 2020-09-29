@@ -1,201 +1,213 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="assetmanager">
-      <UniqueIdentifier>{A08EF851-8CF1-87F6-3577-C0AC21B95379}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core">
-      <UniqueIdentifier>{4E40957C-3A77-960D-E363-7C10CF79120F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\debugging">
-      <UniqueIdentifier>{A93723CF-9505-17D5-7E99-87FB6A06F339}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\defines">
-      <UniqueIdentifier>{1BBF9F40-0722-2FE5-B0A7-679B9CE9FA67}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\ecs">
-      <UniqueIdentifier>{F837D44A-E404-2F56-0D1E-1DFEF94964E4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\ecs\components">
-      <UniqueIdentifier>{2D56A5F1-99B7-82FF-2225-C9B18E85B9BE}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\ecs\system">
-      <UniqueIdentifier>{2C98D78F-9823-4554-A134-C8480D3FA154}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\exceptions">
-      <UniqueIdentifier>{9FDB588F-0B67-C653-1478-494880822254}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\utilities">
-      <UniqueIdentifier>{59BE4669-458C-3A6F-2E20-AB951A8D16D4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="input">
-      <UniqueIdentifier>{B54AA90F-215F-D1C0-EAE0-742056B4CDF1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="input\eventhandler">
-      <UniqueIdentifier>{C4FAF02D-B0DE-B183-193F-ACD605429C05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="rendering">
-      <UniqueIdentifier>{03CFAD0B-6F39-6282-B877-1328242140D7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="rendering\SDLwrappers">
-      <UniqueIdentifier>{A9B4EDA3-1521-A99E-DE14-41FC4A40CB06}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="rendering\glyphs">
-      <UniqueIdentifier>{69880FA1-5581-2EF3-7EB3-13786A0B0EFF}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="rendering\objects">
-      <UniqueIdentifier>{DC586912-486F-67A8-91E6-F2C9FD3B3830}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="state">
-      <UniqueIdentifier>{064A6110-725E-89C1-3BE0-2C21A7B385F2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="systems">
-      <UniqueIdentifier>{3D76CBBA-A955-4A56-B26D-D52C1ECCB0B7}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\application.cpp" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\pch.cpp" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\input\mouse.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\input\eventhandler\eventhandler.cpp">
+      <Filter>input\eventhandler</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\rendering\window.cpp">
+      <Filter>rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\rendering\vulkan_rendering\renderer.cpp">
+      <Filter>rendering\vulkan_rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\rendering\vulkan_rendering\sprite.cpp">
+      <Filter>rendering\vulkan_rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\rendering\vulkan_rendering\texture_atlas.cpp">
+      <Filter>rendering\vulkan_rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\rendering\vulkan_rendering\misc_functions.cpp">
+      <Filter>rendering\vulkan_rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\state\state.cpp">
+      <Filter>state</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\systems\systems.cpp">
+      <Filter>systems</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\debugging\log.cpp">
+      <Filter>debugging</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\utilities\utilities.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Application.h" />
-    <ClInclude Include="src\Empaerior.h" />
-    <ClInclude Include="src\assetmanager\AssetManager.h">
-      <Filter>assetmanager</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Point2.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\core.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\Rect.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\point2.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\Vector2.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\rect.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\debugging\Log.h">
-      <Filter>core\debugging</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\vector2.h">
+      <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\debugging\get_data_info.h">
-      <Filter>core\debugging</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\unsafe_vector.h">
+      <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\debugging\v_proffiler.h">
-      <Filter>core\debugging</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\vec.h">
+      <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\defines\Basic_Defines.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\mat.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\defines\basic_defines.h">
       <Filter>core\defines</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\defines\Defines.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\defines\defines.h">
       <Filter>core\defines</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\defines\Struct_Defines.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\defines\struct_defines.h">
       <Filter>core\defines</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\ecs\ECS.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\ecs\ecs.h">
       <Filter>core\ecs</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\ecs\Entity.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\ecs\entity.h">
       <Filter>core\ecs</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\ecs\components\ComponentManager.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\ecs\components\componentmanager.h">
       <Filter>core\ecs\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\ecs\system\system.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\ecs\system\system.h">
       <Filter>core\ecs\system</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\exceptions\Exceptions.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\exceptions\exceptions.h">
       <Filter>core\exceptions</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\unsafe_vector.h">
-      <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\utilities\Math.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\utilities\math.h">
       <Filter>core\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\utilities\Timer.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\utilities\timer.h">
       <Filter>core\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\utilities\Utilities.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\utilities\hash\emp_hash.h">
       <Filter>core\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="src\input\eventhandler\EventHandler.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\core\utilities\hash\sha256.h">
+      <Filter>core\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\application.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\Empaerior.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\main.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\src\pch.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\input\input.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\input\keyboard.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\input\mouse.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\input\eventhandler\eventhandler.h">
       <Filter>input\eventhandler</Filter>
     </ClInclude>
-    <ClInclude Include="src\input\input.h">
-      <Filter>input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\input\keyboard.h">
-      <Filter>input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\input\mouse.h">
-      <Filter>input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\main.h" />
-    <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\rendering\Camera.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\window.h">
       <Filter>rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\SDLwrappers\Ptr_Wrappers.h">
-      <Filter>rendering\SDLwrappers</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\renderer.h">
+      <Filter>rendering\vulkan_rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\SDLwrappers\Rendering_Wrappers.h">
-      <Filter>rendering\SDLwrappers</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\camera.h">
+      <Filter>rendering\vulkan_rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\SDLwrappers\SDL_Wrappers.h">
-      <Filter>rendering\SDLwrappers</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\texture_atlas.h">
+      <Filter>rendering\vulkan_rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\Window.h">
-      <Filter>rendering</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\geometry_buffer.h">
+      <Filter>rendering\vulkan_rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\glyphs\Glyphs.h">
-      <Filter>rendering\glyphs</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\misc_functions.h">
+      <Filter>rendering\vulkan_rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\objects\Sprite.h">
-      <Filter>rendering\objects</Filter>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\sprite.h">
+      <Filter>rendering\vulkan_rendering</Filter>
     </ClInclude>
-    <ClInclude Include="src\state\State.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\glyphs.h">
+      <Filter>rendering\vulkan_rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\rendering\vulkan_rendering\graphic_settings.h">
+      <Filter>rendering\vulkan_rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\state\state.h">
       <Filter>state</Filter>
     </ClInclude>
-    <ClInclude Include="src\systems\Component.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\systems\component.h">
       <Filter>systems</Filter>
     </ClInclude>
-    <ClInclude Include="src\systems\Systems.h">
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\systems\systems.h">
       <Filter>systems</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\debugging\get_data_info.h">
+      <Filter>debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\debugging\log.h">
+      <Filter>debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\utilities\utilities.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Empaerior\Empaerior\include\SDLwrappers\sdl_wrappers.h">
+      <Filter>SDLwrapper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\assetmanager\AssetManager.cpp">
-      <Filter>assetmanager</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\debugging\Log.cpp">
-      <Filter>core\debugging</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\utilities\Timer.cpp">
-      <Filter>core\utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\utilities\Utilities.cpp">
-      <Filter>core\utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\input\eventhandler\EventHandler.cpp">
-      <Filter>input\eventhandler</Filter>
-    </ClCompile>
-    <ClCompile Include="src\input\mouse.cpp">
-      <Filter>input</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\rendering\Camera.cpp">
-      <Filter>rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rendering\Window.cpp">
-      <Filter>rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rendering\glyphs\Glyphs.cpp">
-      <Filter>rendering\glyphs</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rendering\objects\Sprite.cpp">
-      <Filter>rendering\objects</Filter>
-    </ClCompile>
-    <ClCompile Include="src\state\State.cpp">
-      <Filter>state</Filter>
-    </ClCompile>
-    <ClCompile Include="src\systems\Systems.cpp">
-      <Filter>systems</Filter>
-    </ClCompile>
+    <Filter Include="SDLwrapper">
+      <UniqueIdentifier>{5C2B20C4-CF38-3D0F-838D-A90FFBD4FEB4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{47957CCF-6622-3ECC-BFAE-0CC0A98C019C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\defines">
+      <UniqueIdentifier>{DAD7B6B5-DB12-32CD-B68B-A3DEDD6F06A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\ecs">
+      <UniqueIdentifier>{7F841BD1-8AFB-3C4B-A8F6-A03D10AC8CB1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\ecs\components">
+      <UniqueIdentifier>{52A3E5F0-AF08-3373-946E-08BE2EEA3FBD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\ecs\system">
+      <UniqueIdentifier>{8BBE6E2D-33A2-3394-9AB7-E0536D7727C9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\exceptions">
+      <UniqueIdentifier>{F9BC6DED-9AB8-39C2-934C-FCB7963296FC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\utilities">
+      <UniqueIdentifier>{947A85C7-A6EA-338B-A790-4865EEB303ED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="debugging">
+      <UniqueIdentifier>{DA20497C-2304-357C-AC55-2811F207A1E3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="input">
+      <UniqueIdentifier>{45C21516-7B82-3CFB-859D-49F00BCFBCC1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="input\eventhandler">
+      <UniqueIdentifier>{7A6A1002-553A-3CB2-AA54-A85AF89F055F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rendering">
+      <UniqueIdentifier>{77568D3F-6C51-3E26-8C05-6176820774E5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rendering\vulkan_rendering">
+      <UniqueIdentifier>{6BE8CB07-20B9-38DB-AD23-BF01F86DEF6F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="state">
+      <UniqueIdentifier>{CB1CE0F1-7615-3F4E-AEDD-7BC62CC796D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="systems">
+      <UniqueIdentifier>{CF999769-1CCF-3A8D-A021-417F5ABB0C69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utilities">
+      <UniqueIdentifier>{DEA79C34-F7C8-360A-AB60-12315ACD8164}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

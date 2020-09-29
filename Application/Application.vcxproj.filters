@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Application.cpp" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Minesweeper.cpp" />
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_empaerior.cpp">
+      <Filter>Tools\Imgui\imgui-empaerior</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_impl_vulkan.cpp">
+      <Filter>Tools\Imgui\imgui-empaerior</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui.cpp">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_demo.cpp">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_draw.cpp">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_widgets.cpp">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\cpp\imgui_stdlib.cpp">
+      <Filter>Tools\Imgui\imgui-master\misc\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\fonts\binary_to_compressed_c.cpp">
+      <Filter>Tools\Imgui\imgui-master\misc\fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui_sdl-master\example.cpp">
+      <Filter>Tools\Imgui\imgui_sdl-master</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui_sdl-master\imgui_sdl.cpp">
+      <Filter>Tools\Imgui\imgui_sdl-master</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Minesweeper.h" />
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\Emp_Imgui.h">
+      <Filter>Tools\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_empaerior.h">
+      <Filter>Tools\Imgui\imgui-empaerior</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-empaerior\imgui_impl_vulkan.h">
+      <Filter>Tools\Imgui\imgui-empaerior</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imconfig.h">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui.h">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imgui_internal.h">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imstb_rectpack.h">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imstb_textedit.h">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\imstb_truetype.h">
+      <Filter>Tools\Imgui\imgui-master</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\cpp\imgui_stdlib.h">
+      <Filter>Tools\Imgui\imgui-master\misc\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui-master\misc\single_file\imgui_single_file.h">
+      <Filter>Tools\Imgui\imgui-master\misc\single_file</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Dan\source\repos\Minesweeper\Application\Src\Tools\Imgui\imgui_sdl-master\imgui_sdl.h">
+      <Filter>Tools\Imgui\imgui_sdl-master</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{AEE4C8F4-26D3-3E77-9303-BD2AABE5FF4C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui">
+      <UniqueIdentifier>{3C57D724-8F71-3485-BB4A-F52D5A745FFF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui\imgui-empaerior">
+      <UniqueIdentifier>{1E2DAB10-49F8-3416-BEBE-DCA16F623C3C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui\imgui-master">
+      <UniqueIdentifier>{137B973E-47B6-3532-A74E-C36782E267FA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui\imgui-master\misc">
+      <UniqueIdentifier>{E573B1C2-D74F-3B48-8E48-C7D1A78FEB05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui\imgui-master\misc\cpp">
+      <UniqueIdentifier>{4EC34223-3538-3772-86D7-0BFF33573D9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui\imgui-master\misc\fonts">
+      <UniqueIdentifier>{9D3C63F0-2AB7-3B2A-A5BB-A2ADCCA6A438}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui\imgui-master\misc\single_file">
+      <UniqueIdentifier>{BAA3E637-0EA3-361A-B68B-FC0CB2580F71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Imgui\imgui_sdl-master">
+      <UniqueIdentifier>{C40F4ABF-4D25-3482-B384-2906603673A9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

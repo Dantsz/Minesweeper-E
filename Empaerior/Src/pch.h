@@ -10,13 +10,14 @@
 #include <map>
 
 
-#include "Empaerior.h"
+#include "../include/core/core.h"
+
+#include "../include/Empaerior.h"
+
+
 
 #include <memory>
 #include <functional>
 #include <algorithm>
 
-
-#include "core/debugging/v_proffiler.h"
-#include "rendering/SDLwrappers/Ptr_Wrappers.h"
 
